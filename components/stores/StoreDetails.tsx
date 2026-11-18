@@ -1,0 +1,99 @@
+import type { Store } from "@/types/content";
+import { Button } from "@/components/ui/Button";
+import { RichText } from "@/components/ui/RichText";
+import { SocialIcons } from "@/components/ui/SocialIcon";
+import { formatAddress, mapEmbedUrl } from "@/lib/stores";
+import type { SocialLink } from "@/types/site";
+
+type StoreDetailsProps = {
+  store: Store;
+  enquireHref?: string;
+};
+
+function telHref(phone: string): string {
+  return `tel:${phone.replace(/[^0-9+]/g, "")}`;
+}
+
+// Single store: contact details, services, opening hours and map
+export function StoreDetails({ store, enquireHref = "#enquire" }: StoreDetailsProps) {
+  const socials: SocialLink[] = [
+    ...(store.socials.facebook ? [{ platform: "facebook" as const, href: store.socials.facebook }] : []),
+    ...(store.socials.instagram ? [{ platform: "instagram" as const, href: store.socials.instagram }] : []),
+  ];
+
+  return (
+    <div>
+      <h1 className="text-[28px] font-bold leading-tight text-heading md:text-[32px]">{store.name}</h1>
+      <dl className="mt-4 space-y-2 text-[13px]">
+        <div>
+          <dt className="inline font-bold">Address: </dt>
+          <dd className="inline">{formatAddress(store)}</dd>
+        </div>
+        {store.phone && (
+          <div>
+            <dt className="inline font-bold">Phone: </dt>
+            <dd className="inline">
+              <a href={telHref(store.phone)} className="hover:text-brand">
+                {store.phone}
+              </a>
+            </dd>
+          </div>
+        )}
+      </dl>
+
+      <div className="mt-6 grid gap-8 md:grid-cols-2 lg:grid-cols-[1fr_1fr_2fr]">
+        <section aria-labelledby="store-services" className="lg:border-r lg:border-line lg:pr-6">
+          <h2 id="store-services" className="text-[18px] font-semibold text-brand">
+            Services at {store.name}
+          </h2>
+          {store.services.map((group) => (
+            <div key={group.title} className="mt-4 text-[13px]">
+              <h3 className="font-heading text-[14px] font-bold">{group.title}</h3>
+              <ul className="mt-1 list-disc space-y-1 pl-8">
+                {group.items.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+
+        <section aria-labelledby="store-hours">
+          <h2 id="store-hours" className="text-[18px] font-semibold text-brand">
+            Business Hours:
+          </h2>
+          <ul className="mt-3 space-y-1 text-[13px]">
+            {store.hours.map((entry) => (
+              <li key={entry.day}>
+                {entry.day}: {entry.hours}
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-col items-start gap-4">
+            {store.phone && (
+              <Button href={telHref(store.phone)} className="w-[200px]">
+                Call us today
+              </Button>
+            )}
+            <Button href={enquireHref} className="w-[200px]">
+              Enquire now
+            </Button>
+          </div>
+          {socials.length > 0 && <SocialIcons links={socials} className="mt-6 flex gap-4" iconClassName="h-6 w-6 text-ink" />}
+        </section>
+
+        <div className="min-h-[320px] bg-panel md:col-span-2 lg:col-span-1">
+          <iframe
+            src={mapEmbedUrl(store)}
+            title={`Map of ${store.name}`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            className="h-full min-h-[320px] w-full border-0"
+          />
+        </div>
+      </div>
+
+      {store.descriptionHtml && <RichText html={store.descriptionHtml} className="mt-8 border-b border-line pb-10 text-[13px]" />}
+    </div>
+  );
+}

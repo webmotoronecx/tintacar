@@ -1,0 +1,29 @@
+{
+  "slug": "zip-pay",
+  "title": "Zip Pay",
+  "excerpt": "",
+  "date": "2020-09-14T19:10:14",
+  "group": "car",
+  "categories": [
+    "car-window-tinting",
+    "car-wraps",
+    "ceramic-paint-protection",
+    "ceramic-window-tint",
+    "decorative-window-film",
+    "frosted-window-film",
+    "home-window-tinting",
+    "house-window-tinting",
+    "paint-protection-for-your-car",
+    "privacy-window-film",
+    "safety-window-film",
+    "security-window-film",
+    "solar-window-film"
+  ],
+  "modified": "2023-08-01T12:54:02",
+  "seo": {
+    "title": "Zip - Own it Now, Pay Later - Tint a Car",
+    "description": "We've partnered with Zip to give you the freedom to buy things for your car today. Learn about the interest free payment options then apply online today."
+  },
+  "html": "<p><img alt=\"Zip - Own it now, pay later\" src=\"/images/articles/zip-pay-banner.png\" width=\"1920\" height=\"750\"></p>",
+  "embed": "zip-landing"
+}
