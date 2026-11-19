@@ -7,20 +7,18 @@ import { cn } from "@/lib/utils";
 
 type FeatureSplitProps = Omit<FeatureSplitSection, "type">;
 
-function SpecBars({ specs }: { specs: NonNullable<FeatureSplitSection["specs"]> }) {
+function SpecBars({ specs, headingAs: Heading }: { specs: NonNullable<FeatureSplitSection["specs"]>; headingAs: "h2" | "h3" }) {
   return (
     <div className="mt-8 border-t border-line pt-8">
-      <h3 className="text-[22px] font-semibold text-heading">{specs.title}</h3>
+      <Heading className="text-[22px] font-semibold text-heading">{specs.title}</Heading>
       <dl className="mt-4 space-y-5">
         {specs.items.map((item) => (
-          <div key={item.label}>
-            <div className="flex justify-between text-[13px] leading-5">
-              <dt>{item.label}</dt>
-              <dd>{item.value}%</dd>
-            </div>
-            <div className="mt-1 h-1 w-full bg-[#e5e5e5]" role="presentation">
+          <div key={item.label} className="grid grid-cols-[1fr_auto] text-[13px] leading-5">
+            <dt>{item.label}</dt>
+            <dd>{item.value}%</dd>
+            <dd aria-hidden="true" className="col-span-2 mt-1 h-1 w-full bg-[#e5e5e5]">
               <div className="h-1 bg-accent" style={{ width: `${Math.min(100, Math.max(0, item.value))}%` }} />
-            </div>
+            </dd>
           </div>
         ))}
       </dl>
@@ -67,7 +65,7 @@ export function FeatureSplit({
             </p>
           ))}
           {closing && <p className="mt-4 font-heading text-[14px] font-bold text-heading">{closing}</p>}
-          {specs && <SpecBars specs={specs} />}
+          {specs && <SpecBars specs={specs} headingAs={Tag === "h1" ? "h2" : "h3"} />}
           {button && (
             <div className="mt-8 border-t border-line pt-8">
               <Button href={button.href} variant={button.variant ?? "solid"} size={button.size}>

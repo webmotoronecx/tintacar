@@ -15,7 +15,8 @@
   --color-mist: #f7f7f7;
   --color-panel: #eeeeee;
   --color-line: #dddddd;
-  --color-muted: #8f8f8f;
+  /* Darkest grey that still reads as muted while meeting 4.5:1 on white */
+  --color-muted: #707070;
 
   --container-site: 1200px;
   --container-wide: 1920px;

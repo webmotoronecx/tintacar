@@ -21,7 +21,7 @@ export function Accordion({ id, background, spacing = "md", title, highlightColo
       <div className="border border-line">
         {items.map((item, index) => (
           <details key={`${index}-${item.title}`} name={groupName} open={index === defaultOpen} className="group border-b border-line last:border-b-0">
-            <summary className="relative flex cursor-pointer list-none items-center justify-center bg-panel px-12 py-3 text-center text-[13px] font-bold text-[#9a9a9a] transition-colors group-open:text-[#444] hover:text-[#444] [&::-webkit-details-marker]:hidden">
+            <summary className="relative flex cursor-pointer list-none items-center justify-center bg-panel px-12 py-3 text-center text-[13px] font-bold text-[#666] transition-colors group-open:text-[#444] hover:text-[#444] [&::-webkit-details-marker]:hidden">
               <Plus aria-hidden="true" className="absolute left-4 h-3 w-3 group-open:hidden" />
               <Minus aria-hidden="true" className="absolute left-4 hidden h-3 w-3 group-open:block" />
               {item.title}
