@@ -1112,8 +1112,160 @@
     "destination": "/finevu-dashcams/"
   },
   {
+    "source": "/media/1018/cta-decorative.jpg",
+    "destination": "/images/articles/cta-decorative-1.jpg"
+  },
+  {
+    "source": "/media/1023/cta-tint.jpg",
+    "destination": "/images/articles/cta-tint.jpg"
+  },
+  {
+    "source": "/media/1025/cta-book.gif",
+    "destination": "/wp-content/uploads/2020/02/cta-book.gif"
+  },
+  {
+    "source": "/media/1026/cta-home.gif",
+    "destination": "/wp-content/uploads/2020/02/cta-home.gif"
+  },
+  {
+    "source": "/media/1140979/myerone_dark_106x21.png",
+    "destination": "/images/articles/myerone-light.gif"
+  },
+  {
+    "source": "/media/1176608/lexus-window-tinting_500x375.jpg",
+    "destination": "/wp-content/uploads/2020/02/lexus-window-tinting_500x375.jpg"
+  },
+  {
+    "source": "/media/1176613/uv-window-coatings-living-room.jpg",
+    "destination": "/wp-content/uploads/2020/02/uv-window-coatings-living-room.jpg"
+  },
+  {
+    "source": "/media/1176614/uv-window-coatings-living-room_599x246.jpg",
+    "destination": "/wp-content/uploads/2020/02/uv-window-coatings-living-room_599x246.jpg"
+  },
+  {
+    "source": "/media/1176615/auto-tinting_299x200.jpg",
+    "destination": "/wp-content/uploads/2020/02/auto-tinting_299x200.jpg"
+  },
+  {
+    "source": "/media/1176615/auto-tinting_500x335.jpg",
+    "destination": "/wp-content/uploads/2020/02/auto-tinting_500x335.jpg"
+  },
+  {
+    "source": "/media/1176622/safety-glass-film.jpg",
+    "destination": "/wp-content/uploads/2020/02/safety-glass-film.jpg"
+  },
+  {
+    "source": "/media/1176624/remove-window-tint-from-car-windows.jpg",
+    "destination": "/images/articles/remove-window-tint-from-car-windows.jpg"
+  },
+  {
+    "source": "/media/1176625/window-tinting-castle-hill-kitchen_400x269.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-castle-hill-kitchen_400x269.png"
+  },
+  {
+    "source": "/media/1176626/window-tinting-castle-hill-lounge_350x239.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-castle-hill-lounge_350x239.png"
+  },
+  {
+    "source": "/media/1176629/window-tinting-blacktown-blue-sports-car-header_719x246.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-blacktown-blue-sports-car-header_719x246.jpg"
+  },
+  {
+    "source": "/media/1176630/audi-q3-in-city_644x249.jpg",
+    "destination": "/wp-content/uploads/2020/02/audi-q3-in-city_644x249.jpg"
+  },
+  {
+    "source": "/media/1176631/privacy-window-film-for-windows-header-banner_706x170.jpg",
+    "destination": "/wp-content/uploads/2020/02/privacy-window-film-for-windows-header-banner_706x170.jpg"
+  },
+  {
+    "source": "/media/1176634/window-tinting-penrith-outdoors-4wd_250x239.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-penrith-outdoors-4wd_250x239.jpg"
+  },
+  {
     "source": "/media/1176640/bolle-auto-tint-web-brochure-aug14-.pdf",
     "destination": "/"
+  },
+  {
+    "source": "/media/1176749/car-tinting-adelaide.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-adelaide.jpg"
+  },
+  {
+    "source": "/media/1176751/mazda-car-tinting-car-tinting-adelaide_400x213.jpg",
+    "destination": "/wp-content/uploads/2020/02/mazda-car-tinting-car-tinting-adelaide_400x213.jpg"
+  },
+  {
+    "source": "/media/1176753/car-solar-film-4-wheel-drive_496x250.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-solar-film-4-wheel-drive_496x250.jpg"
+  },
+  {
+    "source": "/media/1176754/house-window-tinting-brisbane-banner_499x224.jpg",
+    "destination": "/images/articles/house-window-tinting-brisbane-banner_499x224.jpg"
+  },
+  {
+    "source": "/media/1176823/best-window-tinting-film-for-cars-4-wheel-drive_600x293.jpg",
+    "destination": "/wp-content/uploads/2020/02/best-window-tinting-film-for-cars-4-wheel-drive_600x293.jpg"
+  },
+  {
+    "source": "/media/1176829/home-window-tinting-prices-living-room_500x311.jpg",
+    "destination": "/images/articles/home-window-tinting-prices-living-room_500x311.jpg"
+  },
+  {
+    "source": "/media/1176830/how-to-remove-window-tinting-bubbled-up-tint.jpg",
+    "destination": "/wp-content/uploads/2020/02/how-to-remove-window-tinting-bubbled-up-tint.jpg"
+  },
+  {
+    "source": "/media/1176831/house-window-tinting-melbourne-home_499x330.jpg",
+    "destination": "/images/articles/house-window-tinting-melbourne-home_499x330.jpg"
+  },
+  {
+    "source": "/media/1176860/bubbled-window-tint_600x348.jpg",
+    "destination": "/wp-content/uploads/2020/02/bubbled-window-tint_600x348.png"
+  },
+  {
+    "source": "/media/1176861/legal-tint-nsw_500x273.jpg",
+    "destination": "/wp-content/uploads/2020/02/legal-tint-nsw_500x273.png"
+  },
+  {
+    "source": "/media/1176862/how-to-remove-car-window-tint_500x268.jpg",
+    "destination": "/wp-content/uploads/2020/02/how-to-remove-car-window-tint_500x268.png"
+  },
+  {
+    "source": "/media/1176942/window-uv-protection-pic.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-uv-protection-pic.jpg"
+  },
+  {
+    "source": "/media/1176942/window-uv-protection-pic_498x265.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-uv-protection-pic_498x265.jpg"
+  },
+  {
+    "source": "/media/1176944/install-window-tint_497x320.jpg",
+    "destination": "/wp-content/uploads/2020/02/install-window-tint_497x320.jpg"
+  },
+  {
+    "source": "/media/1176946/llumar-tint-pic_497x285.jpg",
+    "destination": "/wp-content/uploads/2020/02/llumar-tint-pic_497x285.jpg"
+  },
+  {
+    "source": "/media/1176947/insulating-window-film_500x365.jpg",
+    "destination": "/wp-content/uploads/2020/02/insulating-window-film_500x365.jpg"
+  },
+  {
+    "source": "/media/1176951/window-tinting-service_497x275.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-service_497x275.jpg"
+  },
+  {
+    "source": "/media/1176952/installing-tint-on-windows_500x364.jpg",
+    "destination": "/wp-content/uploads/2020/02/installing-tint-on-windows_500x364.jpg"
+  },
+  {
+    "source": "/media/1176953/dyi-car-tinting_495x235.jpg",
+    "destination": "/wp-content/uploads/2020/02/dyi-car-tinting_495x235.jpg"
+  },
+  {
+    "source": "/media/1176955/car-tint-removal_500x320.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tint-removal_500x320.jpg"
   },
   {
     "source": "/media/13940/formula-1_brochure_2013.pdf",
@@ -1126,6 +1278,46 @@
   {
     "source": "/media/13944/sirius_brochure_2013.pdf",
     "destination": "/protection-products/elitex-surface-protection/"
+  },
+  {
+    "source": "/media/13953/global-green-tag_plus_gold_cert_halfmspluspms873-copy-2_100x157.jpg",
+    "destination": "/wp-content/uploads/2020/02/global-green-tag_plus_gold_cert_halfmspluspms873-copy-2_100x157.jpg"
+  },
+  {
+    "source": "/media/13994/taw-landing-page-tile_solar.jpg",
+    "destination": "/wp-content/uploads/2020/02/taw-landing-page-tile_solar.jpg"
+  },
+  {
+    "source": "/media/13998/adrian-watson.jpg",
+    "destination": "/wp-content/uploads/2020/02/adrian-watson.jpg"
+  },
+  {
+    "source": "/media/14001/default-car.jpg",
+    "destination": "/wp-content/uploads/2020/02/default-car.jpg"
+  },
+  {
+    "source": "/media/14003/glen-cooper.jpg",
+    "destination": "/wp-content/uploads/2020/02/glen-cooper.jpg"
+  },
+  {
+    "source": "/media/14004/jackson-spinks.jpg",
+    "destination": "/wp-content/uploads/2020/02/jackson-spinks.jpg"
+  },
+  {
+    "source": "/media/14005/leigh-murphy.jpg",
+    "destination": "/wp-content/uploads/2020/02/leigh-murphy.jpg"
+  },
+  {
+    "source": "/media/14006/neil-baillie.jpg",
+    "destination": "/wp-content/uploads/2020/02/neil-baillie.jpg"
+  },
+  {
+    "source": "/media/14007/stephen-keane.jpg",
+    "destination": "/wp-content/uploads/2020/02/stephen-keane.jpg"
+  },
+  {
+    "source": "/media/14008/stuart-brown.jpg",
+    "destination": "/wp-content/uploads/2020/02/stuart-brown.jpg"
   },
   {
     "source": "/media/2461051/ADHESIVE.pdf",
@@ -1174,6 +1366,22 @@
   {
     "source": "/media/2461113/lpuap-sirius-85-dry-wash-shampoo.pdf",
     "destination": "/car-care/"
+  },
+  {
+    "source": "/media/2461162/tac_product-images_web-site-jul14-_trade-your-tint8_octane.png",
+    "destination": "/wp-content/uploads/2020/02/tac_product-images_web-site-jul14-_trade-your-tint8_octane.png"
+  },
+  {
+    "source": "/media/2461169/applying-window-tint-to-car-tint-a-car-branded_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/applying-window-tint-to-car-tint-a-car-branded_500x333.jpg"
+  },
+  {
+    "source": "/media/2461171/tint-a-car-shop-front-best-way-to-tint-car-windows_336x336.jpg",
+    "destination": "/wp-content/uploads/2020/02/tint-a-car-shop-front-best-way-to-tint-car-windows_336x336.jpg"
+  },
+  {
+    "source": "/media/2461172/car-tinting-faq-interior.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-faq-interior.jpg"
   },
   {
     "source": "/media/2698045/DEFENSE-PAK-WINDOW-TINT-CLEANER.pdf",
@@ -1284,6 +1492,194 @@
     "destination": "/extras/"
   },
   {
+    "source": "/media/2698733/car-window-tint-removal_300x225.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-window-tint-removal_300x225.jpg"
+  },
+  {
+    "source": "/media/2698739/have-rear-window-tint-removed-and-replaced_300x225.jpg",
+    "destination": "/wp-content/uploads/2020/02/have-rear-window-tint-removed-and-replaced_300x225.jpg"
+  },
+  {
+    "source": "/media/2698740/car-window-tint-uv-protection_459x306.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-window-tint-uv-protection_459x306.jpg"
+  },
+  {
+    "source": "/media/2698740/car-window-tint-uv-protection_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-window-tint-uv-protection_500x333.jpg"
+  },
+  {
+    "source": "/media/2698767/removing-old-window-tint-bubbled_261x196.jpg",
+    "destination": "/wp-content/uploads/2020/02/removing-old-window-tint-bubbled_261x196.jpg"
+  },
+  {
+    "source": "/media/2698768/tah_home-page-tiles-jan16-8.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_home-page-tiles-jan16-8.jpg"
+  },
+  {
+    "source": "/media/2698769/window-tinting-cairns-the-tint-range_438x274.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-cairns-the-tint-range_438x274.jpg"
+  },
+  {
+    "source": "/media/2698781/best-sun-control-film-for-cars-interior_310x207.jpg",
+    "destination": "/images/articles/best-sun-control-film-for-cars-interior_310x207.jpg"
+  },
+  {
+    "source": "/media/2698783/is-window-tinting-worth-it-on-a-car-break-in_320x213.jpg",
+    "destination": "/wp-content/uploads/2020/02/is-window-tinting-worth-it-on-a-car-break-in_320x213.jpg"
+  },
+  {
+    "source": "/media/2698784/sunblock-window-film_450x300.jpg",
+    "destination": "/wp-content/uploads/2020/02/sunblock-window-film_450x300.jpg"
+  },
+  {
+    "source": "/media/2698793/tah_films-landing-tiles-jan16-4.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_films-landing-tiles-jan16-4.jpg"
+  },
+  {
+    "source": "/media/2698797/tah_films-landing-tiles-jan16-3.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_films-landing-tiles-jan16-3.jpg"
+  },
+  {
+    "source": "/media/2698797/tah_films-landing-tiles-jan16-3_220x220.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_films-landing-tiles-jan16-3_220x220.jpg"
+  },
+  {
+    "source": "/media/2698799/tah_films-landing-tiles-jan16-6_220x220.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_films-landing-tiles-jan16-6_220x220.jpg"
+  },
+  {
+    "source": "/media/2698808/ppf-gallery-images_oct15_v22_499x283.jpg",
+    "destination": "/wp-content/uploads/2020/02/ppf-gallery-images_oct15_v22_499x283.jpg"
+  },
+  {
+    "source": "/media/2698812/tah_product-slider_living_500x323.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_product-slider_living_500x323.jpg"
+  },
+  {
+    "source": "/media/2698813/tah_product-slider_living2_500x323.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_product-slider_living2_500x323.jpg"
+  },
+  {
+    "source": "/media/2698828/tah_product-slider_dining_500x323.jpg",
+    "destination": "/wp-content/uploads/2020/02/tah_product-slider_dining_500x323.jpg"
+  },
+  {
+    "source": "/media/2698850/uv-protection-window-film-for-vehicles_405x278.jpg",
+    "destination": "/wp-content/uploads/2020/02/uv-protection-window-film-for-vehicles_405x278.jpg"
+  },
+  {
+    "source": "/media/2698853/sunshine-coast-decorative-1_230x149.jpg",
+    "destination": "/wp-content/uploads/2020/02/sunshine-coast-decorative-1_230x149.jpg"
+  },
+  {
+    "source": "/media/2698854/sunshine-coast-decorative-2_230x149.jpg",
+    "destination": "/wp-content/uploads/2020/02/sunshine-coast-decorative-2_230x149.jpg"
+  },
+  {
+    "source": "/media/2698855/sunshine-coast-decorative-3_230x149.jpg",
+    "destination": "/wp-content/uploads/2020/02/sunshine-coast-decorative-3_230x149.jpg"
+  },
+  {
+    "source": "/media/2698856/free-measure-and-quote.jpg",
+    "destination": "/wp-content/uploads/2020/02/free-measure-and-quote.jpg"
+  },
+  {
+    "source": "/media/2699059/window-tint-review-mick-kerr.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tint-review-mick-kerr.jpg"
+  },
+  {
+    "source": "/media/2699060/window-tint-review-david-garlick.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tint-review-david-garlick.jpg"
+  },
+  {
+    "source": "/media/2699154/window_tinting_bendigo_store_495x230.jpg",
+    "destination": "/wp-content/uploads/2020/02/window_tinting_bendigo_store_495x230.jpg"
+  },
+  {
+    "source": "/media/2699155/illegal-car-tint_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/illegal-car-tint_500x333.jpg"
+  },
+  {
+    "source": "/media/2699158/uv-shield_500x333.jpg",
+    "destination": "/images/articles/uv-shield_500x333.jpg"
+  },
+  {
+    "source": "/media/2699161/privacy-glass-film-for-cars_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/privacy-glass-film-for-cars_500x333.jpg"
+  },
+  {
+    "source": "/media/2699162/lifestyle-window-tint_499x230.jpg",
+    "destination": "/wp-content/uploads/2020/02/lifestyle-window-tint_499x230.jpg"
+  },
+  {
+    "source": "/media/2699163/how-much-is-window-tinting_272x182.jpg",
+    "destination": "/wp-content/uploads/2020/02/how-much-is-window-tinting_272x182.jpg"
+  },
+  {
+    "source": "/media/2699164/limo-tint-black_499x340.jpg",
+    "destination": "/wp-content/uploads/2020/02/limo-tint-black_499x340.jpg"
+  },
+  {
+    "source": "/media/2699167/how-to-remove-window-tinting-tint-a-car-experts_348x261.jpg",
+    "destination": "/images/articles/how-to-remove-window-tinting-tint-a-car-experts_348x261.jpg"
+  },
+  {
+    "source": "/media/2699201/home-window-tinting_500x333.jpg",
+    "destination": "/images/articles/home-window-tinting_500x333.jpg"
+  },
+  {
+    "source": "/media/2699202/frosted-window-film_300x470.jpg",
+    "destination": "/images/articles/frosted-window-film_300x470.jpg"
+  },
+  {
+    "source": "/media/2699203/how-to-remove-window-tint_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/how-to-remove-window-tint_500x333.jpg"
+  },
+  {
+    "source": "/media/2699396/home-window-tinting-in-the-gold-coast_499x334.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-window-tinting-in-the-gold-coast_499x334.jpg"
+  },
+  {
+    "source": "/media/2699397/home-window-tinting-in-perth_496x315.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-window-tinting-in-perth_496x315.jpg"
+  },
+  {
+    "source": "/media/2699398/window-insulation-film_497x310.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-insulation-film_497x310.jpg"
+  },
+  {
+    "source": "/media/2699400/window-tint-in-brisbane_500x335.jpg",
+    "destination": "/images/articles/window-tint-in-brisbane_500x335.jpg"
+  },
+  {
+    "source": "/media/2699407/security-film-1_499x333.jpg",
+    "destination": "/images/articles/security-film-1_499x333.jpg"
+  },
+  {
+    "source": "/media/2699409/home-tinting_349x262.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-tinting_349x262.jpg"
+  },
+  {
+    "source": "/media/2699410/home-window-tinting-sydney-2_499x332.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-window-tinting-sydney-2_499x332.jpg"
+  },
+  {
+    "source": "/media/2699412/window-film-diy_499x332.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-film-diy_499x332.jpg"
+  },
+  {
+    "source": "/media/2699413/johnson-window-films_499x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/johnson-window-films_499x333.jpg"
+  },
+  {
+    "source": "/media/2699414/reflective-window-film_200x300.jpg",
+    "destination": "/wp-content/uploads/2020/02/reflective-window-film_200x300.jpg"
+  },
+  {
+    "source": "/media/2699415/energy-efficient-heating_499x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/energy-efficient-heating_499x333.jpg"
+  },
+  {
     "source": "/media/2699417/msdsshow_pcdyemetalpshpr.pdf",
     "destination": "/"
   },
@@ -1292,12 +1688,180 @@
     "destination": "/"
   },
   {
+    "source": "/media/2699486/house-tinting1_350x220.jpg",
+    "destination": "/wp-content/uploads/2020/02/house-tinting1_350x220.png"
+  },
+  {
+    "source": "/media/2699487/house-tinting2_350x216.jpg",
+    "destination": "/wp-content/uploads/2020/02/house-tinting2_350x216.png"
+  },
+  {
+    "source": "/media/2699488/patterned-window-film1_350x225.jpg",
+    "destination": "/images/articles/patterned-window-film1_350x225.png"
+  },
+  {
+    "source": "/media/2699489/patterned-window-film2_350x223.jpg",
+    "destination": "/wp-content/uploads/2020/02/patterned-window-film2_350x223.png"
+  },
+  {
+    "source": "/media/2699490/window-protection-film1_350x221.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-protection-film1_350x221.png"
+  },
+  {
+    "source": "/media/2699491/window-protection-film2_349x220.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-protection-film2_349x220.png"
+  },
+  {
+    "source": "/media/2699492/best-window-tint1_317x235.jpg",
+    "destination": "/wp-content/uploads/2020/02/best-window-tint1_317x235.png"
+  },
+  {
+    "source": "/media/2699493/best-window-tint2_350x234.jpg",
+    "destination": "/wp-content/uploads/2020/02/best-window-tint2_350x234.png"
+  },
+  {
+    "source": "/media/2699494/how-to-reduce-electricity-bill_500x349.jpg",
+    "destination": "/wp-content/uploads/2020/02/how-to-reduce-electricity-bill_500x349.png"
+  },
+  {
+    "source": "/media/2699496/thermal-window-film_498x310.jpg",
+    "destination": "/wp-content/uploads/2020/02/thermal-window-film_498x310.png"
+  },
+  {
+    "source": "/media/2699497/low-e-coating_500x375.jpg",
+    "destination": "/wp-content/uploads/2020/02/low-e-coating_500x375.png"
+  },
+  {
+    "source": "/media/2699500/privacy-glass-film1_351x550.jpg",
+    "destination": "/wp-content/uploads/2020/02/privacy-glass-film1_351x550.png"
+  },
+  {
+    "source": "/media/2699501/privacy-glass-film2_301x200.jpg",
+    "destination": "/wp-content/uploads/2020/02/privacy-glass-film2_301x200.jpg"
+  },
+  {
+    "source": "/media/2699502/privacy-tint-for-home-windows1_333x250.jpg",
+    "destination": "/images/articles/privacy-tint-for-home-windows1_333x250.png"
+  },
+  {
+    "source": "/media/2699503/privacy-tint-for-home-windows2_188x250.jpg",
+    "destination": "/images/articles/privacy-tint-for-home-windows2_188x250.png"
+  },
+  {
+    "source": "/media/2699528/solar-window-film1_399x266.jpg",
+    "destination": "/wp-content/uploads/2020/02/solar-window-film1_399x266.png"
+  },
+  {
+    "source": "/media/2699532/sun-control-window-film1_438x365.jpg",
+    "destination": "/wp-content/uploads/2020/02/sun-control-window-film1_438x365.png"
+  },
+  {
+    "source": "/media/2699533/sun-control-window-film2_473x345.jpg",
+    "destination": "/wp-content/uploads/2020/02/sun-control-window-film2_473x345.png"
+  },
+  {
+    "source": "/media/2699536/diy-home-tint1_324x200.jpg",
+    "destination": "/wp-content/uploads/2020/02/diy-home-tint1_324x200.png"
+  },
+  {
+    "source": "/media/2699537/diy-home-tint2_422x309.jpg",
+    "destination": "/wp-content/uploads/2020/02/diy-home-tint2_422x309.png"
+  },
+  {
+    "source": "/media/2699538/diy-home-tint3_415x309.jpg",
+    "destination": "/wp-content/uploads/2020/02/diy-home-tint3_415x309.png"
+  },
+  {
     "source": "/media/5748299/tac-unbreakable-online-brochure-jan17-.pdf",
     "destination": "/"
   },
   {
+    "source": "/media/5748312/mobile-tinting4_350x234.jpg",
+    "destination": "/wp-content/uploads/2020/02/mobile-tinting4_350x234.jpg"
+  },
+  {
+    "source": "/media/5748313/mobile-tinting3_500x354.jpg",
+    "destination": "/wp-content/uploads/2020/02/mobile-tinting3_500x354.jpg"
+  },
+  {
+    "source": "/media/5748314/m-tint1.jpg",
+    "destination": "/wp-content/uploads/2020/02/m-tint1.jpg"
+  },
+  {
+    "source": "/media/5748316/mobile-tinting4.jpg",
+    "destination": "/wp-content/uploads/2020/02/mobile-tinting4.jpg"
+  },
+  {
+    "source": "/media/5748343/how-to-tint-windows-interior_599x259.jpg",
+    "destination": "/wp-content/uploads/2020/02/how-to-tint-windows-interior_599x259.jpg"
+  },
+  {
+    "source": "/media/5748344/window-tint-supplers-bathroom-tinting_496x310.jpg",
+    "destination": "/images/articles/window-tint-supplers-bathroom-tinting_496x310.png"
+  },
+  {
+    "source": "/media/5748345/window-tint-installation-and-measure.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tint-installation-and-measure.jpg"
+  },
+  {
+    "source": "/media/5748347/window-film-for-home-outdoor-decking_449x299.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-film-for-home-outdoor-decking_449x299.jpg"
+  },
+  {
+    "source": "/media/5748348/bathroom-window-tint.jpg",
+    "destination": "/images/articles/bathroom-window-tint.jpg"
+  },
+  {
+    "source": "/media/5748348/bathroom-window-tint_499x312.jpg",
+    "destination": "/wp-content/uploads/2020/02/bathroom-window-tint_499x312.jpg"
+  },
+  {
+    "source": "/media/5748349/home-window-tinting-cost_500x333.jpg",
+    "destination": "/images/articles/home-window-tinting-cost_500x333.jpg"
+  },
+  {
+    "source": "/media/5748350/residential-window-films.jpg",
+    "destination": "/wp-content/uploads/2020/02/residential-window-films.jpg"
+  },
+  {
     "source": "/media/5748370/lq7u0-sirius-85-stain-remover.pdf",
     "destination": "/protection-products/elitex-surface-protection/"
+  },
+  {
+    "source": "/media/5748371/security-film_500x333.jpg",
+    "destination": "/images/articles/security-film_500x333.jpg"
+  },
+  {
+    "source": "/media/5748372/frosted-window-film_499x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/frosted-window-film_499x333.jpg"
+  },
+  {
+    "source": "/media/5748373/commercial-window-tinting_smashed-glass_500x338.jpg",
+    "destination": "/wp-content/uploads/2020/02/commercial-window-tinting_smashed-glass_500x338.jpg"
+  },
+  {
+    "source": "/media/5748374/commercial-window-tinting_office_497x330.jpg",
+    "destination": "/wp-content/uploads/2020/02/commercial-window-tinting_office_497x330.jpg"
+  },
+  {
+    "source": "/media/5748375/frosted-glass-1.jpg",
+    "destination": "/images/articles/window-frosting-1.jpg"
+  },
+  {
+    "source": "/media/5748376/frosted-glass-2_500x335.jpg",
+    "destination": "/images/articles/frosted-glass-2_500x335.jpg"
+  },
+  {
+    "source": "/media/5748377/residential-window-tinting-1_500x375.jpg",
+    "destination": "/wp-content/uploads/2020/02/residential-window-tinting-1_500x375.jpg"
+  },
+  {
+    "source": "/media/5748378/residential-window-tinting-2_499x665.jpg",
+    "destination": "/wp-content/uploads/2020/02/residential-window-tinting-2_499x665.jpg"
+  },
+  {
+    "source": "/media/5748379/car-windowscreens_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-windowscreens_500x333.jpg"
   },
   {
     "source": "/media/6059985/LQ2YK-FILM-EDGE-TAPE-A109-.pdf",
@@ -1356,8 +1920,76 @@
     "destination": "/protection-products/elitex-surface-protection/"
   },
   {
+    "source": "/media/6081304/lifetime-warranty.png",
+    "destination": "/images/home-tint/icon-certified.png"
+  },
+  {
+    "source": "/media/6081305/interest-free.png",
+    "destination": "/images/home-tint/icon-certified.png"
+  },
+  {
+    "source": "/media/6081332/Homepage_Article-Thumb_Bathroom.jpg",
+    "destination": "/images/articles/window-tint-supplers-bathroom-tinting_496x310.png"
+  },
+  {
+    "source": "/media/6081332/homepage_article-thumb_bathroom.jpg",
+    "destination": "/images/articles/window-tint-supplers-bathroom-tinting_496x310.png"
+  },
+  {
+    "source": "/media/6081333/Homepage_Article-Thumb_FAQ.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-faq-interior.jpg"
+  },
+  {
+    "source": "/media/6081333/homepage_article-thumb_faq.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-faq-interior.jpg"
+  },
+  {
+    "source": "/media/6081389/tint-a-car-darwin_495x245.jpg",
+    "destination": "/wp-content/uploads/2020/02/tint-a-car-darwin_495x245.png"
+  },
+  {
+    "source": "/media/6081390/window-tinting-darwin_500x214.jpg",
+    "destination": "/images/articles/window-tinting-darwin_500x214-9.png"
+  },
+  {
+    "source": "/media/6081391/car-window-tinting-darwin_500x334.jpg",
+    "destination": "/images/articles/car-window-tinting-darwin_500x334-1.png"
+  },
+  {
+    "source": "/media/6081391/car-window-tinting-darwin_549x366.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-window-tinting-darwin_549x366.png"
+  },
+  {
     "source": "/media/6081404/elitex-interior.pdf",
     "destination": "/protection-products/elitex-surface-protection/"
+  },
+  {
+    "source": "/media/6081406/screen-shot-2018-06-26-at-34810-pm.png",
+    "destination": "/images/articles/PPF-ALL-Highlights-web.png"
+  },
+  {
+    "source": "/media/6081465/tint-a-car-logo.png",
+    "destination": "/wp-content/uploads/2020/01/tint-a-car-logo.png"
+  },
+  {
+    "source": "/media/62684/qantas-light.gif",
+    "destination": "/images/articles/qantas-light.gif"
+  },
+  {
+    "source": "/media/62684/qff-logo_dark.png",
+    "destination": "/images/articles/qantas-light.gif"
+  },
+  {
+    "source": "/media/62686/myerone-light.gif",
+    "destination": "/images/articles/myerone-light.gif"
+  },
+  {
+    "source": "/media/62697/limo-black-window-tint.jpg",
+    "destination": "/wp-content/uploads/2020/02/limo-black-window-tint.jpg"
+  },
+  {
+    "source": "/media/62732/metallic-window-tint.jpg",
+    "destination": "/images/articles/metallic-window-tint.jpg"
   },
   {
     "source": "/media/62739/black-metallic.jpg",
@@ -1404,6 +2036,90 @@
     "destination": "/"
   },
   {
+    "source": "/media/62769/window-protection.jpg",
+    "destination": "/images/articles/window-protection.jpg"
+  },
+  {
+    "source": "/media/62792/window-film-applied.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-film-applied.jpg"
+  },
+  {
+    "source": "/media/62793/window-film-apply.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-film-apply.jpg"
+  },
+  {
+    "source": "/media/62793/window-film-apply_344x211.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-film-apply.jpg"
+  },
+  {
+    "source": "/media/62795/window-tinting-sydney_644x238.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-sydney_644x238.jpg"
+  },
+  {
+    "source": "/media/62796/car-window-repair.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-window-repair.jpg"
+  },
+  {
+    "source": "/media/62796/car-window-repair_500x163.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-window-repair_500x163.jpg"
+  },
+  {
+    "source": "/media/62797/window-tinting-canberra_657x206.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-canberra_657x206.jpg"
+  },
+  {
+    "source": "/media/62805/window-tinting-gold-coast.jpg",
+    "destination": "/wp-content/uploads/2020/02/window-tinting-gold-coast.jpg"
+  },
+  {
+    "source": "/media/62810/car-tint-glare_325x213.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tint-glare_325x213.jpg"
+  },
+  {
+    "source": "/media/62815/frosted-film.jpg",
+    "destination": "/wp-content/uploads/2020/02/frosted-film.jpg"
+  },
+  {
+    "source": "/media/62823/opaque-window-film.jpg",
+    "destination": "/images/articles/opaque-window-film.jpg"
+  },
+  {
+    "source": "/media/62824/premier-window-tinting.jpg",
+    "destination": "/wp-content/uploads/2020/02/premier-window-tinting.jpg"
+  },
+  {
+    "source": "/media/62825/reflective-window-tint.jpg",
+    "destination": "/wp-content/uploads/2020/02/reflective-window-tint.jpg"
+  },
+  {
+    "source": "/media/62863/security-glass.jpg",
+    "destination": "/images/articles/security-glass.jpg"
+  },
+  {
+    "source": "/media/62865/commercial-window-tinting_363x242.jpg",
+    "destination": "/wp-content/uploads/2020/02/commercial-window-tinting_office_497x330.jpg"
+  },
+  {
+    "source": "/media/62868/exclusive-window-tinting.jpg",
+    "destination": "/wp-content/uploads/2020/02/exclusive-window-tinting.jpg"
+  },
+  {
+    "source": "/media/62869/blackout-window-film.jpg",
+    "destination": "/wp-content/uploads/2020/02/blackout-window-film.jpg"
+  },
+  {
+    "source": "/media/62899/vinyl-wrap-1_357x268.jpg",
+    "destination": "/images/articles/Wraps_Feature-Tile-Mini.png"
+  },
+  {
+    "source": "/media/62902/tintacar-carwrapping-holden-bonnet-second-skin_496x335.jpg",
+    "destination": "/images/articles/Wraps_Feature-Tile-Mini.png"
+  },
+  {
+    "source": "/media/62903/tintacar-whole-car-business-wrapping-second-skin_500x413.jpg",
+    "destination": "/images/articles/Wraps_Feature-Tile-Mini.png"
+  },
+  {
     "source": "/media/6354812/5D-Wash-Concentrate-Dewaxer.pdf",
     "destination": "/"
   },
@@ -1412,12 +2128,112 @@
     "destination": "/"
   },
   {
+    "source": "/media/6354882/automotive-glass-tinting_498x340.jpg",
+    "destination": "/wp-content/uploads/2020/02/automotive-glass-tinting_498x340.jpg"
+  },
+  {
+    "source": "/media/6354883/home-and-office-glass-tinting_500x333.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-and-office-glass-tinting_500x333.jpg"
+  },
+  {
+    "source": "/media/6354883/home-and-office-glass-tinting_521x347.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-and-office-glass-tinting_500x333.jpg"
+  },
+  {
+    "source": "/media/6354883/home-and-office-glass-tinting_599x399.jpg",
+    "destination": "/wp-content/uploads/2020/02/home-and-office-glass-tinting_599x399.jpg"
+  },
+  {
+    "source": "/media/6354884/decorative-window-film.jpg",
+    "destination": "/images/articles/decorative-window-film-3.jpg"
+  },
+  {
+    "source": "/media/6354885/mirror-window-film_315x476.jpg",
+    "destination": "/wp-content/uploads/2020/02/mirror-window-film_315x476.jpg"
+  },
+  {
+    "source": "/media/6354885/mirror-window-film_331x500.jpg",
+    "destination": "/wp-content/uploads/2020/02/mirror-window-film_331x500.jpg"
+  },
+  {
+    "source": "/media/6354886/window-frosting.jpg",
+    "destination": "/images/articles/window-frosting-1.jpg"
+  },
+  {
+    "source": "/media/6354886/window-frosting_438x291.jpg",
+    "destination": "/images/articles/window-frosting-1.jpg"
+  },
+  {
+    "source": "/media/6354887/graffiti-prevention-strategies_500x333.jpg",
+    "destination": "/images/articles/Graffiti-Prevention-Strategies.jpg"
+  },
+  {
+    "source": "/media/6354888/stained-glass-window-film_500x328.jpg",
+    "destination": "/images/articles/stained-glass-window-film_500x328-1.jpg"
+  },
+  {
+    "source": "/media/6354889/find-your-local-tint-a-car-store_319x150.jpg",
+    "destination": "/wp-content/uploads/2020/02/find-your-local-tint-a-car-store_500x235.png"
+  },
+  {
+    "source": "/media/6354889/find-your-local-tint-a-car-store_500x235.jpg",
+    "destination": "/wp-content/uploads/2020/02/find-your-local-tint-a-car-store_500x235.png"
+  },
+  {
+    "source": "/media/6354927/paint-protection-tile.png",
+    "destination": "/images/articles/paint-protection-tile.png"
+  },
+  {
+    "source": "/media/6354927/paint-protection-tile_210x150.jpg",
+    "destination": "/wp-content/uploads/2020/02/paint-protection-tile_478x341.png"
+  },
+  {
+    "source": "/media/6354927/paint-protection-tile_478x341.jpg",
+    "destination": "/wp-content/uploads/2020/02/paint-protection-tile_478x341.png"
+  },
+  {
+    "source": "/media/6354942/car-tinting-tile.png",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-tile.png"
+  },
+  {
+    "source": "/media/6354942/car-tinting-tile_210x150.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-tile_210x150.png"
+  },
+  {
+    "source": "/media/6354942/car-tinting-tile_447x319.jpg",
+    "destination": "/wp-content/uploads/2020/02/car-tinting-tile_447x319.png"
+  },
+  {
+    "source": "/media/6354972/tac_desktop_home-tint-tiles_low-e_174x150.jpg",
+    "destination": "/wp-content/uploads/2020/02/low-e-coating_500x375.png"
+  },
+  {
+    "source": "/media/6354976/tac_desktop_home-tint-tiles_ceramic_174x150.jpg",
+    "destination": "/wp-content/uploads/2020/02/Safety_Home-Tint-Tile.png"
+  },
+  {
+    "source": "/media/6354977/tac_desktop_home-tint-tiles_decorative.jpg",
+    "destination": "/wp-content/uploads/2020/02/Decorative_Home-Tint-Tile.png"
+  },
+  {
+    "source": "/media/6355001/screen-shot-2018-07-11-at-15025-pm_325x217.jpg",
+    "destination": "/images/articles/PPF-ALL-Highlights-web.png"
+  },
+  {
     "source": "/media/6764793/LQ9A8-ELITEX-CAR-SHAMPOO.pdf",
     "destination": "/car-care/"
   },
   {
     "source": "/media/6764793/lq9a8-elitex-car-shampoo.pdf",
     "destination": "/car-care/"
+  },
+  {
+    "source": "/media/6764798/apple.jpg",
+    "destination": "/images/articles/AppStore-Button.png"
+  },
+  {
+    "source": "/media/6764799/android.jpg",
+    "destination": "/images/articles/GooglePlay-Button.png"
   },
   {
     "source": "/media/6960633/5D-Wash-Concentrate-Dewaxer-2020.pdf",

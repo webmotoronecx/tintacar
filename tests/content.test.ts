@@ -30,6 +30,17 @@ function knownRoutes(): Set<string> {
   ]);
 }
 
+function isPublicFile(urlPath: string): boolean {
+  const file = path.join(PUBLIC_DIR, decodeURIComponent(urlPath));
+  return file.startsWith(PUBLIC_DIR) && fs.existsSync(file) && fs.statSync(file).isFile();
+}
+
+// Every HTML fragment rendered on the site: page sections plus article bodies
+function contentHtml(): string[] {
+  const articles = getArticleSummaries().map((summary) => getArticle(summary.slug)?.html ?? "");
+  return [...collect(getAllPages(), "html"), ...articles];
+}
+
 describe("page registry", () => {
   const pages = getAllPages();
 
@@ -62,6 +73,19 @@ describe("page registry", () => {
       .map((href) => href.split(/[?#]/)[0])
       .filter((href) => !routes.has(href) && !fs.existsSync(path.join(PUBLIC_DIR, href)));
     expect([...new Set(broken)]).toEqual([]);
+  });
+
+  test("links to the site's own pages and files are root-relative", () => {
+    const absolute = /href="https?:\/\/(www\.)?tintacar\.com\.au/;
+    expect(contentHtml().filter((html) => absolute.test(html))).toEqual([]);
+  });
+
+  // Files under public/wp-content keep their old WordPress URLs working
+  test("files linked from page and article content are hosted", () => {
+    const missing = contentHtml()
+      .flatMap((html) => [...html.matchAll(/href="(\/[^"#?]+\.[a-z0-9]{2,5})"/gi)].map((m) => m[1]))
+      .filter((href) => !isPublicFile(href));
+    expect([...new Set(missing)]).toEqual([]);
   });
 });
 
@@ -118,18 +142,19 @@ describe("stores", () => {
 describe("redirects", () => {
   const redirects = loadRedirects();
 
-  test("sources are unique and never shadow a real page", () => {
+  test("sources are unique and never shadow a real page or file", () => {
     const routes = knownRoutes();
     const sources = redirects.map((r) => r.source);
     expect(new Set(sources).size).toBe(sources.length);
-    expect(sources.filter((s) => routes.has(s))).toEqual([]);
+    const literal = sources.map((s) => s.replace(/\\(.)/g, "$1"));
+    expect(literal.filter((s) => routes.has(s) || isPublicFile(s))).toEqual([]);
   });
 
-  test("internal destinations point to real routes", () => {
+  test("internal destinations point to real routes or hosted files", () => {
     const routes = knownRoutes();
     const missing = redirects
       .map((r) => r.destination)
-      .filter((d) => d.startsWith("/") && !routes.has(d.split("?")[0]));
+      .filter((d) => d.startsWith("/") && !routes.has(d.split("?")[0]) && !isPublicFile(d));
     expect([...new Set(missing)]).toEqual([]);
   });
 });

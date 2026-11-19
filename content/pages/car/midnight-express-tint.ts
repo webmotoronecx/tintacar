@@ -63,7 +63,7 @@ export const midnightExpressTintPage: PageData = {
       defaultOpen: 2,
       items: [
         lifetimeWarrantyItem("almost 50"),
-        arpansaItem("https://tintacar.com.au/wp-content/uploads/2021/06/MIDNIGHT-EXPRESS.pdf"),
+        arpansaItem("/wp-content/uploads/2021/06/MIDNIGHT-EXPRESS.pdf"),
         {
           title: "Buy Now. Pay Later. Zero Interest.",
           html: '<p>Both Zip Pay and Open Pay are a fast, simple, and flexible service that allows you to easily manage your finances through an App. You can split your purchases on products such as Octane Darkest Legal Tint, Elite X Hydrophobic Surface Protection, Vehicle Wrap your purchase over 3,6,9, or 12 months with ZERO interest. It’s never been easier to pay up to 80% of the purchase price after instalment of your car tint, surface protection, or wrap. Get the right look, protection and privacy for your ride sooner using <a href="/articles/afterpay/">Open Pay</a>, <a href="/articles/afterpay/">Afterpay</a> or <a href="/articles/zip-pay/">Zip</a> to pay later!</p>',

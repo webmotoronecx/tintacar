@@ -151,7 +151,7 @@ export const blackPantherWindowTintPage: PageData = {
       defaultOpen: 2,
       items: [
         lifetimeWarrantyItem("almost 50"),
-        arpansaItem("https://tintacar.com.au/wp-content/uploads/2025/10/Black-Panther-35.pdf"),
+        arpansaItem("/wp-content/uploads/2025/10/Black-Panther-35.pdf"),
         buyNowPayLaterItem,
         moneyBackItem,
       ],

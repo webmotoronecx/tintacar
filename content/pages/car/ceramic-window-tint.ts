@@ -78,7 +78,7 @@ export const ceramicWindowTintPage: PageData = {
           html: "<p><strong>For something better … Meet Nano-Ceramic Technology.</strong><br>Spectre nano-ceramic tint maintains all the protective qualities of our darkest legal tint, along with the additional benefit of infrared heat rejection. Infrared heat rejection helps to maintain a consistent temperature inside your car, meaning a more comfortable drive for you and your passengers.</p><p><strong>You don’t have to compromise on great looks.</strong><br>Its appearance matches privacy glass and gives a great looking, uniform colour application for your whole car. You don’t have to compromise for great looks, Spectre gives you clear, uninterrupted viewing through your car’s windows, day, and night.</p>",
         },
         lifetimeWarrantyItem("over 50"),
-        arpansaItem("https://tintacar.com.au/wp-content/uploads/2026/04/ARPANSA-Spectre-Sheets-2026-VLT35.pdf"),
+        arpansaItem("/wp-content/uploads/2026/04/ARPANSA-Spectre-Sheets-2026-VLT35.pdf"),
         buyNowPayLaterItem,
         moneyBackItem,
       ],

@@ -75,7 +75,7 @@ export const darkestLegalTintPage: PageData = {
           html: "<p><strong>Protecting you from harmful UV Rays.</strong><br>Octane Darkest Legal Tint is our most popular tint. Providing 99% UV protection, keeping you and your car protected from the harmful Australian sun. Not only do you get UV protection, but the Darkest Legal colour also reduces glare entering your line of sight, helping to keep your attention on the road.</p><p><strong>Maintaining your privacy.</strong><br>No one wants people to look through our car windows to see what’s inside. Our Darkest Legal Tint helps to prevent prying eyes. With the deep black colour, you really have to look to see in! Have peace of mind knowing that strangers will find it hard to look through your windows.</p>",
         },
         lifetimeWarrantyItem("almost 50"),
-        arpansaItem("https://tintacar.com.au/wp-content/uploads/2021/06/Octane-40.pdf"),
+        arpansaItem("/wp-content/uploads/2021/06/Octane-40.pdf"),
         buyNowPayLaterItem,
         moneyBackItem,
       ],
