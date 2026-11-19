@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, test } from "vitest";
 import { loadRedirects } from "@/config/redirects";
+import nextConfig from "@/next.config";
 import { siteConfig } from "@/config/site.config";
 import { getArticle, getArticleSummaries, getArticlesByGroup } from "@/lib/articles";
 import { getAllPages } from "@/lib/pages";
@@ -136,6 +137,18 @@ describe("stores", () => {
     expect(mapEmbedUrl(store)).toContain("output=embed");
     expect(directionsUrl(store)).toContain("destination=");
     expect(getStoreBySlug("nowhere")).toBeUndefined();
+  });
+});
+
+describe("indexing", () => {
+  test("only the live domain is indexable", async () => {
+    const rules = (await nextConfig.headers?.()) ?? [];
+    const noindex = rules.filter((rule) => rule.headers.some((h) => h.key === "X-Robots-Tag"));
+    expect(noindex).toHaveLength(1);
+    // Next.js anchors host patterns as ^value$
+    const live = new RegExp(`^${noindex[0].missing?.[0]?.value}$`);
+    expect(["tintacar.com.au", "www.tintacar.com.au"].every((host) => live.test(host))).toBe(true);
+    expect(["tintacar.vercel.app", "tintacar-git-main.vercel.app", "tintacar.com.au.example.com", "localhost"].some((host) => live.test(host))).toBe(false);
   });
 });
 

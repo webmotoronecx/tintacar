@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { GoogleTagManager } from "@/components/analytics/GoogleTagManager";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { TopBar } from "@/components/layout/TopBar";
@@ -40,6 +41,7 @@ export const metadata: Metadata = {
     locale: "en_AU",
     type: "website",
   },
+  verification: siteConfig.verification,
 };
 
 export const viewport: Viewport = {
@@ -57,6 +59,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <Header config={siteConfig} />
         <main id="main">{children}</main>
         <Footer config={siteConfig} />
+        {siteConfig.analytics.gtmId && <GoogleTagManager gtmId={siteConfig.analytics.gtmId} hosts={siteConfig.analytics.hosts} />}
       </body>
     </html>
   );

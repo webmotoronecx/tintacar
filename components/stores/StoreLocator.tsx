@@ -145,16 +145,17 @@ export function StoreLocator({ stores, brandName, region }: StoreLocatorProps) {
         </p>
 
         <ul className="max-h-[480px] flex-1 overflow-y-auto px-4 pb-4 lg:max-h-none">
+          {/* Labels and nesting match the existing GTM listings_cta triggers and .store-location variables */}
           {results.map((store) => (
-            <li key={store.slug} className="border-b border-line py-4 last:border-b-0">
+            <li key={store.slug} className="flex flex-wrap items-center gap-x-4 gap-y-1 border-b border-line py-4 text-[13px] last:border-b-0">
               <button
                 type="button"
                 onClick={() => setSelectedSlug(store.slug)}
                 aria-pressed={selected?.slug === store.slug}
-                className={cn("block w-full text-left", selected?.slug === store.slug && "text-brand")}
+                className={cn("mb-1 block w-full text-left", selected?.slug === store.slug && "text-brand")}
               >
                 <span className="flex items-start justify-between gap-2">
-                  <span className="font-heading text-[16px] font-bold leading-snug">{store.name}</span>
+                  <span className="store-location font-heading text-[16px] font-bold leading-snug">{store.name}</span>
                   {store.distance !== undefined && <span className="shrink-0 text-[12px] text-muted">{store.distance.toFixed(1)} km</span>}
                 </span>
                 <span className="mt-1 flex gap-1.5 text-[13px] leading-5 text-ink">
@@ -162,23 +163,23 @@ export function StoreLocator({ stores, brandName, region }: StoreLocatorProps) {
                   {store.addressLine}
                 </span>
               </button>
-              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[13px]">
-                {store.phone && (
-                  <a href={`tel:${store.phone.replace(/\s+/g, "")}`} className="inline-flex items-center gap-1.5 font-bold hover:text-brand">
-                    <Phone aria-hidden="true" className="h-3.5 w-3.5" />
-                    {store.phone}
-                  </a>
-                )}
-                <Link href={`/store/${store.slug}/`} className="underline hover:text-brand">
-                  Store details
-                </Link>
-                <Link href={`/store/${store.slug}/#enquire`} className="underline hover:text-brand">
-                  Enquire
-                </Link>
-                <a href={store.directionsUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-brand">
-                  Directions
+              {store.phone && (
+                <a href={`tel:${store.phone.replace(/\s+/g, "")}`} className="inline-flex items-center gap-1.5 py-1 font-bold hover:text-brand">
+                  <Phone aria-hidden="true" className="h-3.5 w-3.5" />
+                  {store.phone}
                 </a>
-              </div>
+              )}
+              <span className="flex flex-wrap gap-x-4 gap-y-1 uppercase">
+                <Link href={`/store/${store.slug}/`} className="py-1 underline hover:text-brand">
+                  Store information
+                </Link>
+                <Link href={`/store/${store.slug}/#enquire`} className="py-1 underline hover:text-brand">
+                  Email
+                </Link>
+                <a href={store.directionsUrl} target="_blank" rel="noopener noreferrer" className="py-1 underline hover:text-brand">
+                  Get directions
+                </a>
+              </span>
             </li>
           ))}
           {results.length === 0 && <li className="py-6 text-[14px]">No stores match your search. Try a nearby suburb or postcode.</li>}

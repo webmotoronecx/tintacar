@@ -1,5 +1,9 @@
 import type { NextConfig } from "next";
 import { loadRedirects } from "./config/redirects";
+import { siteConfig } from "./config/site.config";
+
+// Only the live domain may be indexed; vercel.app and preview hosts answer with noindex
+const LIVE_HOST = `(www\\.)?${new URL(siteConfig.url).hostname.replace(/\./g, "\\.")}`;
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -20,7 +24,10 @@ const nextConfig: NextConfig = {
     return loadRedirects();
   },
   async headers() {
-    return [{ source: "/:path*", headers: securityHeaders }];
+    return [
+      { source: "/:path*", headers: securityHeaders },
+      { source: "/:path*", missing: [{ type: "host", value: LIVE_HOST }], headers: [{ key: "X-Robots-Tag", value: "noindex" }] },
+    ];
   },
 };
 

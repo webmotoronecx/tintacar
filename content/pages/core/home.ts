@@ -37,17 +37,17 @@ export const homePage: PageData = {
       gap: "md",
       items: [
         {
-          image: { src: "/images/home/tile-black-panther.gif", alt: "Black Panther - Simply Wild Tint", width: 532, height: 517 },
+          image: { src: "/images/home/tile-black-panther.webp", alt: "Black Panther - Simply Wild Tint", width: 532, height: 517 },
           href: "/car-window-tint/black-panther-window-tint/",
           title: "Black Panther Window Tint",
         },
         {
-          image: { src: "/images/home/tile-octane.gif", alt: "Octane - Darkest Legal Tint", width: 540, height: 525 },
+          image: { src: "/images/home/tile-octane.webp", alt: "Octane - Darkest Legal Tint", width: 540, height: 525 },
           href: "/car-window-tint/darkest-legal-tint/",
           title: "Octane Darkest Legal Tint",
         },
         {
-          image: { src: "/images/home/tile-spectre.gif", alt: "Spectre - Ceramic Film Technology", width: 532, height: 517 },
+          image: { src: "/images/home/tile-spectre.webp", alt: "Spectre - Ceramic Film Technology", width: 532, height: 517 },
           href: "/car-window-tint/ceramic-window-tint/",
           title: "Spectre Ceramic Tint",
         },
@@ -62,7 +62,7 @@ export const homePage: PageData = {
       type: "imageBanner",
       spacing: "sm",
       href: "/protection-products/elitex-graphene-surface-protection/",
-      image: { src: "/images/home/elitex-banner.gif", alt: "Elite X - Surface protection with ceramic technology", width: 1124, height: 459 },
+      image: { src: "/images/home/elitex-banner.webp", alt: "Elite X - Surface protection with ceramic technology", width: 1124, height: 459 },
     },
     {
       type: "reviews",
@@ -80,7 +80,7 @@ export const homePage: PageData = {
       type: "imageBanner",
       width: "narrow",
       href: "/home-tint/",
-      image: { src: "/images/home/home-tinting-banner.gif", alt: "Home tinting by Tint a Car", width: 842, height: 344 },
+      image: { src: "/images/home/home-tinting-banner.webp", alt: "Home tinting by Tint a Car", width: 842, height: 344 },
     },
     {
       type: "buttonGroup",

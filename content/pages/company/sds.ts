@@ -8,6 +8,7 @@ export const sdsPage: PageData = {
       "Read safety data sheets (SDS) on Solar Film, Fabric / Leather / Vinyl Protection, EliteX, Sirius, Llumar and more. Contact us for more information.",
   },
   sections: [
+    { type: "heading", title: "Safety Data Sheets (SDS)", as: "h1", size: "lg", spacing: "sm" },
     {
       type: "richText",
       title: "(Safety Data Sheets) Solar Film",

@@ -5,7 +5,7 @@ import { StoreDetails } from "@/components/stores/StoreDetails";
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/config/site.config";
-import { getStoreBySlug, getStores } from "@/lib/stores";
+import { formatAddress, getStoreBySlug, getStores } from "@/lib/stores";
 import type { Store } from "@/types/content";
 
 type StorePageProps = {
@@ -25,7 +25,10 @@ export async function generateMetadata({ params }: StorePageProps): Promise<Meta
 
   return {
     title: { absolute: store.seo.title || `${store.name} - ${siteConfig.name}` },
-    description: store.seo.description,
+    // Some imported stores have no description, so fall back to one built from the store details
+    description:
+      store.seo.description ||
+      `${store.name} at ${formatAddress(store)}: window tinting for cars, homes and offices.${store.phone ? ` Call ${store.phone} for a quote.` : ""}`,
     alternates: { canonical: `/store/${store.slug}/` },
   };
 }
@@ -65,7 +68,12 @@ export default async function StorePage({ params }: StorePageProps) {
       </Section>
       <Section id="enquire" spacing="md" background="mist" className="scroll-mt-28">
         <SectionHeading title={`Enquire with ${store.name}`} size="md" className="mb-8" />
-        <EnquiryForm storeSlug={store.slug} storeName={store.name} fallbackContact={siteConfig.phone.label.toLowerCase()} />
+        <EnquiryForm
+          storeSlug={store.slug}
+          storeName={store.name}
+          fallbackContact={siteConfig.phone.label.toLowerCase()}
+          leadEvent={siteConfig.analytics.leadEvent}
+        />
       </Section>
     </>
   );

@@ -31,7 +31,7 @@ export function Footer({ config }: FooterProps) {
 
         {footer.columns.map((column) => (
           <div key={column.title}>
-            <h4 className="text-[25px] font-bold leading-[30px] tracking-[0.02em] text-white">{column.title}</h4>
+            <h2 className="text-[25px] font-bold leading-[30px] tracking-[0.02em] text-white">{column.title}</h2>
             <span aria-hidden="true" className="mt-5 block h-[3px] w-[70px] bg-brand" />
             <ul className="mt-12 space-y-1.5">
               {column.links.map((link) => (
@@ -51,7 +51,7 @@ export function Footer({ config }: FooterProps) {
         <ul className="container-site flex flex-wrap items-center justify-center gap-x-8 gap-y-2 py-6 text-[14px]">
           {footer.legal.map((link) => (
             <li key={link.href}>
-              <SmartLink href={link.href} className="text-white hover:text-brand">
+              <SmartLink href={link.href} className="inline-block py-1 text-white hover:text-brand">
                 {link.label}
               </SmartLink>
             </li>

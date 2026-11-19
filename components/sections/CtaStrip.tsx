@@ -19,7 +19,7 @@ export function CtaStrip({ id, background, spacing = "md", text, buttons, link }
           ))}
         </div>
         {link && (
-          <SmartLink href={link.href} className="text-[13px] font-bold uppercase text-accent hover:underline">
+          <SmartLink href={link.href} className="inline-block py-1 text-[13px] font-bold uppercase text-accent hover:underline">
             {link.label}
           </SmartLink>
         )}

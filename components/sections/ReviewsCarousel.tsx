@@ -35,7 +35,7 @@ function ReviewCard({ review }: { review: Review }) {
       </div>
       <p className="mt-3 whitespace-pre-line text-[14px] leading-6">{text}</p>
       {isLong && (
-        <button type="button" onClick={() => setIsExpanded((v) => !v)} className="mt-2 self-start text-[13px] text-muted underline hover:text-ink">
+        <button type="button" onClick={() => setIsExpanded((v) => !v)} className="mt-1 self-start py-1 text-[13px] text-muted underline hover:text-ink">
           {isExpanded ? "Hide" : "Read more"}
         </button>
       )}

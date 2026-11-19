@@ -69,7 +69,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0">
-          <RichText html={article.html} className="text-[13px] leading-[1.9] [&>p:first-child>img]:w-full" />
+          <RichText html={article.html} className="text-[13px] leading-[1.9]" />
           {article.embed === "zip-landing" && <ZipLandingWidget />}
         </div>
         <aside className="lg:sticky lg:top-28 lg:self-start">

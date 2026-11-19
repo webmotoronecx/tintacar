@@ -109,4 +109,12 @@ export const siteConfig: SiteConfig = {
     { platform: "facebook", href: "https://www.facebook.com/TintACarAus/" },
     { platform: "instagram", href: "https://www.instagram.com/tintacar/" },
   ],
+  // Same GTM container as the WordPress site: GA4 G-2KLYFZFFKH, Google Ads AW-983093299, Bing UET, Meta Pixel, Clarity
+  analytics: {
+    gtmId: "GTM-MM6K7BK",
+    hosts: ["tintacar.com.au", "www.tintacar.com.au"],
+    // The container's lead triggers still listen for the old Contact Form 7 event name
+    leadEvent: "cf7submission",
+  },
+  verification: { google: "ADe_PioCn6vY8Tsh1pO7WekABwNufl05GRuXp4OFhBY" },
 };

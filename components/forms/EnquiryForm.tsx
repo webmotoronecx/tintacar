@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { pushDataLayer } from "@/lib/analytics";
 import type { EnquiryInput, EnquiryResponse } from "@/lib/enquiry";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -15,6 +16,8 @@ type EnquiryFormProps = {
   submitLabel?: string;
   /** Shown in the network error message, e.g. "call 13 TINT" */
   fallbackContact?: string;
+  /** dataLayer event pushed once an enquiry is accepted, for conversion tracking */
+  leadEvent?: string;
 };
 
 const FIELDS: { name: FieldName; label: string; type: string; autoComplete: string; required: boolean }[] = [
@@ -32,6 +35,7 @@ export function EnquiryForm({
   endpoint = "/api/enquiry/",
   submitLabel = "Send enquiry",
   fallbackContact = "contact your nearest store",
+  leadEvent,
 }: EnquiryFormProps) {
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
@@ -53,6 +57,7 @@ export function EnquiryForm({
       const result = (await response.json()) as EnquiryResponse;
 
       if (response.ok && result.success) {
+        if (leadEvent) pushDataLayer({ event: leadEvent, formId: "enquiry", store: storeSlug, store_name: storeName });
         form.reset();
         setStatus("success");
         setMessage("Thanks! Your enquiry has been sent. The store will be in touch soon.");

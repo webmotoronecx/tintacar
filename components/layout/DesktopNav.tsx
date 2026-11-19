@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FocusEvent, type KeyboardEvent } from "react";
+import { useEffect, useState, type FocusEvent, type KeyboardEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronDown } from "lucide-react";
@@ -30,6 +30,7 @@ function DropdownLink({ link }: { link: NavLink }) {
 export function DesktopNav({ items }: DesktopNavProps) {
   const pathname = usePathname();
   const [dismissed, setDismissed] = useState<string | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
 
   // Escape hides the open dropdown until the pointer/focus leaves that item
   const handleKeyDown = (label: string) => (event: KeyboardEvent) => {
@@ -38,6 +39,16 @@ export function DesktopNav({ items }: DesktopNavProps) {
   const handleBlur = (event: FocusEvent<HTMLLIElement>) => {
     if (!event.currentTarget.contains(event.relatedTarget)) setDismissed(null);
   };
+
+  // A dropdown opened by hover must also close on Escape while focus is elsewhere (WCAG 1.4.13)
+  useEffect(() => {
+    if (!hovered) return;
+    const closeOnEscape = (event: globalThis.KeyboardEvent) => {
+      if (event.key === "Escape") setDismissed(hovered);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    return () => document.removeEventListener("keydown", closeOnEscape);
+  }, [hovered]);
 
   return (
     <nav aria-label="Main navigation" className="hidden lg:block">
@@ -52,7 +63,11 @@ export function DesktopNav({ items }: DesktopNavProps) {
               className={cn("group", item.groups ? "static" : "relative", dismissed === item.label && "[&>div]:hidden")}
               onKeyDown={handleKeyDown(item.label)}
               onBlur={handleBlur}
-              onMouseLeave={() => setDismissed(null)}
+              onMouseEnter={() => setHovered(item.label)}
+              onMouseLeave={() => {
+                setHovered(null);
+                setDismissed(null);
+              }}
             >
               <Link
                 href={item.href}

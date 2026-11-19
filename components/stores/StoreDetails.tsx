@@ -24,6 +24,10 @@ export function StoreDetails({ store, enquireHref = "#enquire" }: StoreDetailsPr
   return (
     <div>
       <h1 className="text-[28px] font-bold leading-tight text-heading md:text-[32px]">{store.name}</h1>
+      {/* Read by the existing GTM store_name variable (h3.entry-post-title) */}
+      <h3 className="entry-post-title" hidden>
+        {store.name}
+      </h3>
       <dl className="mt-4 space-y-2 text-[13px]">
         <div>
           <dt className="inline font-bold">Address: </dt>

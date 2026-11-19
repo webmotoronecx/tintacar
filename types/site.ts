@@ -26,6 +26,15 @@ export type SocialLink = {
   href: string;
 };
 
+export type AnalyticsConfig = {
+  /** Google Tag Manager container; analytics, ads and pixel tags are managed inside it */
+  gtmId?: string;
+  /** Hostnames that load the container, so previews and staging stay out of reports */
+  hosts: string[];
+  /** dataLayer event pushed after a successful enquiry */
+  leadEvent: string;
+};
+
 export type SiteConfig = {
   name: string;
   legalName: string;
@@ -53,4 +62,7 @@ export type SiteConfig = {
     legal: NavLink[];
   };
   socials: SocialLink[];
+  analytics: AnalyticsConfig;
+  /** Search engine ownership tokens rendered as meta tags */
+  verification?: { google?: string };
 };
