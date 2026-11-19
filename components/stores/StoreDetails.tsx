@@ -33,7 +33,7 @@ export function StoreDetails({ store, enquireHref = "#enquire" }: StoreDetailsPr
           <div>
             <dt className="inline font-bold">Phone: </dt>
             <dd className="inline">
-              <a href={telHref(store.phone)} className="hover:text-brand">
+              <a href={telHref(store.phone)} className="inline-block py-1 hover:text-brand">
                 {store.phone}
               </a>
             </dd>

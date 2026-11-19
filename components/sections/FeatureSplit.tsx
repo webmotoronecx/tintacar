@@ -45,44 +45,46 @@ export function FeatureSplit({
   imagePosition = "right",
 }: FeatureSplitProps) {
   return (
-    <section id={id} className="grid lg:grid-cols-2">
-      <div className={cn("px-6 py-10 sm:px-10 lg:py-6 lg:pr-10 lg:pl-[max(30px,calc((100vw-1200px)/2+15px))]", imagePosition === "left" && "lg:order-2")}>
-        <Tag className="border-b border-line pb-4 text-[28px] leading-[1.25] tracking-[0.02em] md:text-[32px]">
-          <Highlight text={title} color={highlightColor} />
-        </Tag>
-        {features && (
-          <ul className="mt-6 space-y-4">
-            {features.map((feature) => (
-              <li key={feature.title} className="text-[13px] leading-6">
-                <p className="font-heading text-[14px] font-bold text-heading">{feature.title}</p>
-                {feature.text && <p>{feature.text}</p>}
-              </li>
-            ))}
-          </ul>
-        )}
-        {notes?.map((note) => (
-          <p key={note} className="mt-4 text-[12px] italic">
-            {note}
-          </p>
-        ))}
-        {closing && <p className="mt-4 font-heading text-[14px] font-bold text-heading">{closing}</p>}
-        {specs && <SpecBars specs={specs} />}
-        {button && (
-          <div className="mt-8 border-t border-line pt-8">
-            <Button href={button.href} variant={button.variant ?? "solid"} size={button.size}>
-              {button.label}
-            </Button>
-          </div>
-        )}
-        {paymentText && (
-          <div className="mt-8">
-            <p className="font-heading text-[16px] font-bold leading-snug text-heading">{paymentText}</p>
-            <PaymentLogos className="mt-4" />
-          </div>
-        )}
-      </div>
-      <div className="relative min-h-[420px] lg:min-h-full">
-        <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1024px) 50vw, 100vw" className="object-cover object-top" />
+    <section id={id}>
+      <div className="mx-auto grid max-w-wide lg:grid-cols-2">
+        <div className={cn("px-6 py-10 sm:px-10 lg:py-6 lg:pr-10 lg:pl-[max(30px,calc((min(100vw,1920px)-1200px)/2+15px))]", imagePosition === "left" && "lg:order-2")}>
+          <Tag className="border-b border-line pb-4 text-[28px] leading-[1.25] tracking-[0.02em] md:text-[32px]">
+            <Highlight text={title} color={highlightColor} />
+          </Tag>
+          {features && (
+            <ul className="mt-6 space-y-4">
+              {features.map((feature) => (
+                <li key={feature.title} className="text-[13px] leading-6">
+                  <p className="font-heading text-[14px] font-bold text-heading">{feature.title}</p>
+                  {feature.text && <p>{feature.text}</p>}
+                </li>
+              ))}
+            </ul>
+          )}
+          {notes?.map((note) => (
+            <p key={note} className="mt-4 text-[12px] italic">
+              {note}
+            </p>
+          ))}
+          {closing && <p className="mt-4 font-heading text-[14px] font-bold text-heading">{closing}</p>}
+          {specs && <SpecBars specs={specs} />}
+          {button && (
+            <div className="mt-8 border-t border-line pt-8">
+              <Button href={button.href} variant={button.variant ?? "solid"} size={button.size}>
+                {button.label}
+              </Button>
+            </div>
+          )}
+          {paymentText && (
+            <div className="mt-8">
+              <p className="font-heading text-[16px] font-bold leading-snug text-heading">{paymentText}</p>
+              <PaymentLogos className="mt-4" />
+            </div>
+          )}
+        </div>
+        <div className="relative min-h-[420px] lg:min-h-full">
+          <Image src={image.src} alt={image.alt} fill sizes="(min-width: 1920px) 960px, (min-width: 1024px) 50vw, 100vw" className="object-cover object-top" />
+        </div>
       </div>
     </section>
   );

@@ -1,5 +1,5 @@
 import type { NextConfig } from "next";
-import { redirects } from "./config/redirects";
+import { loadRedirects } from "./config/redirects";
 
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
@@ -17,7 +17,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com" }],
   },
   async redirects() {
-    return redirects;
+    return loadRedirects();
   },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];

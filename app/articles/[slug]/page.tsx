@@ -60,7 +60,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <h1 className="text-[28px] font-bold leading-tight text-heading md:text-[32px]">{article.title}</h1>
       <nav aria-label="Breadcrumb" className="mt-2 text-[13px]">
-        <Link href="/articles/" className="underline hover:text-brand">
+        <Link href="/articles/" className="inline-block py-1 underline hover:text-brand">
           Articles
         </Link>
         <span aria-hidden="true"> &gt; </span>
@@ -68,7 +68,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       </nav>
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
-        <div>
+        <div className="min-w-0">
           <RichText html={article.html} className="text-[13px] leading-[1.9] [&>p:first-child>img]:w-full" />
           {article.embed === "zip-landing" && <ZipLandingWidget />}
         </div>

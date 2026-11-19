@@ -36,7 +36,7 @@ export function MediaText({
   return (
     <Section id={id} background={background} spacing={spacing} className={cn(decoration && "relative overflow-hidden")}>
       {decoration === "circle" && (
-        <span aria-hidden="true" className="pointer-events-none absolute top-1/2 left-[45%] h-[1100px] w-[1100px] -translate-y-1/2 rounded-full bg-sky/80" />
+        <span aria-hidden="true" className="pointer-events-none absolute top-1/2 left-[45%] hidden aspect-square w-[max(1100px,62vw)] -translate-y-1/2 rounded-full bg-sky/80 lg:block" />
       )}
       <div className="relative grid items-center gap-8 lg:grid-cols-2 lg:gap-[30px]">
         <div className={cn(imagePosition === "right" && "lg:order-2")}>

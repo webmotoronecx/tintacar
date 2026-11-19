@@ -26,7 +26,7 @@ function DropdownLink({ link }: { link: NavLink }) {
   );
 }
 
-// Hover/focus driven dropdowns: grouped items render as a multi-column mega menu
+// Hover/focus driven dropdowns; the mega menu centres on the header so it never overflows the viewport
 export function DesktopNav({ items }: DesktopNavProps) {
   const pathname = usePathname();
   const [dismissed, setDismissed] = useState<string | null>(null);
@@ -49,7 +49,7 @@ export function DesktopNav({ items }: DesktopNavProps) {
           return (
             <li
               key={item.label}
-              className={cn("group relative", dismissed === item.label && "[&>div]:hidden")}
+              className={cn("group", item.groups ? "static" : "relative", dismissed === item.label && "[&>div]:hidden")}
               onKeyDown={handleKeyDown(item.label)}
               onBlur={handleBlur}
               onMouseLeave={() => setDismissed(null)}
@@ -66,7 +66,7 @@ export function DesktopNav({ items }: DesktopNavProps) {
               </Link>
 
               {item.groups && (
-                <div className="invisible absolute top-full left-[-80px] z-50 w-[800px] border-b-2 border-brand bg-night px-[30px] py-[60px] opacity-0 transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                <div className="invisible absolute top-full left-1/2 z-50 w-[min(800px,calc(100vw-2rem))] -translate-x-1/2 border-b-2 border-brand bg-night px-[30px] py-[60px] opacity-0 transition-opacity duration-200 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                   <div className="grid grid-cols-3 gap-[60px]">
                     {item.groups.map((group) => (
                       <div key={group.label}>

@@ -32,7 +32,7 @@ const SPACING: Record<SectionSpacing, string> = {
 const WIDTHS: Record<SectionWidth, string> = {
   container: "container-site",
   narrow: "container-site max-w-[900px]",
-  full: "w-full",
+  full: "mx-auto w-full max-w-wide",
 };
 
 type SectionProps = {

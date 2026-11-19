@@ -9,6 +9,9 @@ const HEIGHTS = {
   lg: "min-h-[520px] md:min-h-[720px]",
 };
 
+// Artwork is capped at the wide container so it isn't stretched on very large screens
+const SIZES = "(min-width: 1920px) 1920px, 100vw";
+
 type HeroBannerProps = Omit<HeroBannerSection, "type">;
 
 // Without minHeight the image keeps its natural ratio (for banners with text baked in)
@@ -17,42 +20,50 @@ export function HeroBanner({ id, image, mobileImage, title, titleAs: TitleTag = 
   const hasContent = showTitle || Boolean(subtitle) || Boolean(buttons?.length);
 
   return (
-    <section id={id} className={cn("relative isolate overflow-hidden bg-ink", minHeight && HEIGHTS[minHeight])}>
-      {title && !showTitle && <TitleTag className="sr-only">{title}</TitleTag>}
+    <section id={id} className="relative isolate overflow-hidden bg-ink">
+      {/* Blurred copy fills the side gutters beyond the wide container */}
+      <div aria-hidden="true" className="absolute inset-0 -z-10 hidden min-[1921px]:block">
+        <ArtDirectedImage image={image} fill sizes={SIZES} className="scale-110 object-cover opacity-60 blur-2xl" />
+      </div>
 
-      <ArtDirectedImage
-        image={image}
-        mobileImage={mobileImage}
-        fill={Boolean(minHeight)}
-        isPriority
-        className={minHeight ? "-z-10 object-cover" : "block h-auto w-full"}
-      />
-      {overlay && <div aria-hidden="true" className="absolute inset-0 -z-10 bg-black/35" />}
+      <div className={cn("relative mx-auto max-w-wide", minHeight && HEIGHTS[minHeight])}>
+        {title && !showTitle && <TitleTag className="sr-only">{title}</TitleTag>}
 
-      {hasContent && (
-        <div
-          className={cn(
-            "absolute inset-0 flex px-4",
-            contentPosition === "bottom" ? "items-end pb-10 md:pb-14" : "items-center",
-          )}
-        >
-          <div className="container-site flex flex-col items-center gap-4 text-center">
-            {showTitle && <TitleTag className="text-[34px] leading-tight text-white md:text-[60px]">{title}</TitleTag>}
-            {subtitle && <p className="max-w-2xl text-[16px] text-white md:text-[20px]">{subtitle}</p>}
-            {buttons?.map((button, index) => (
-              <Button
-                key={button.label}
-                href={button.href}
-                variant={button.variant ?? (index === 0 ? "solid" : "outline-light")}
-                size={button.size}
-                className="min-w-[200px]"
-              >
-                {button.label}
-              </Button>
-            ))}
+        <ArtDirectedImage
+          image={image}
+          mobileImage={mobileImage}
+          fill={Boolean(minHeight)}
+          sizes={SIZES}
+          isPriority
+          className={minHeight ? "object-cover" : "block h-auto w-full"}
+        />
+        {overlay && <div aria-hidden="true" className="absolute inset-0 bg-black/35" />}
+
+        {hasContent && (
+          <div
+            className={cn(
+              "absolute inset-0 flex px-4",
+              contentPosition === "bottom" ? "items-end pb-10 md:pb-14" : "items-center",
+            )}
+          >
+            <div className="container-site flex flex-col items-center gap-4 text-center">
+              {showTitle && <TitleTag className="text-[34px] leading-tight text-white md:text-[60px]">{title}</TitleTag>}
+              {subtitle && <p className="max-w-2xl text-[16px] text-white md:text-[20px]">{subtitle}</p>}
+              {buttons?.map((button, index) => (
+                <Button
+                  key={button.label}
+                  href={button.href}
+                  variant={button.variant ?? (index === 0 ? "solid" : "outline-light")}
+                  size={button.size}
+                  className="min-w-[200px]"
+                >
+                  {button.label}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </section>
   );
 }

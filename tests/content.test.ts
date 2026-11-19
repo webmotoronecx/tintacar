@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { describe, expect, test } from "vitest";
+import { loadRedirects } from "@/config/redirects";
 import { siteConfig } from "@/config/site.config";
 import { getArticle, getArticleSummaries, getArticlesByGroup } from "@/lib/articles";
 import { getAllPages } from "@/lib/pages";
@@ -111,5 +112,24 @@ describe("stores", () => {
     expect(mapEmbedUrl(store)).toContain("output=embed");
     expect(directionsUrl(store)).toContain("destination=");
     expect(getStoreBySlug("nowhere")).toBeUndefined();
+  });
+});
+
+describe("redirects", () => {
+  const redirects = loadRedirects();
+
+  test("sources are unique and never shadow a real page", () => {
+    const routes = knownRoutes();
+    const sources = redirects.map((r) => r.source);
+    expect(new Set(sources).size).toBe(sources.length);
+    expect(sources.filter((s) => routes.has(s))).toEqual([]);
+  });
+
+  test("internal destinations point to real routes", () => {
+    const routes = knownRoutes();
+    const missing = redirects
+      .map((r) => r.destination)
+      .filter((d) => d.startsWith("/") && !routes.has(d.split("?")[0]));
+    expect([...new Set(missing)]).toEqual([]);
   });
 });

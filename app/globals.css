@@ -18,6 +18,7 @@
   --color-muted: #8f8f8f;
 
   --container-site: 1200px;
+  --container-wide: 1920px;
 }
 
 @theme inline {
@@ -51,7 +52,7 @@
 @layer components {
   /* Long-form HTML (articles, policies, accordion bodies) */
   .rich-text {
-    @apply text-[15px] leading-[1.8] text-ink;
+    @apply min-w-0 text-[15px] leading-[1.8] break-words text-ink;
   }
   .rich-text > * + * {
     @apply mt-4;
@@ -90,7 +91,7 @@
     @apply border-l-4 border-brand pl-4 italic;
   }
   .rich-text table {
-    @apply w-full border-collapse text-left text-[14px];
+    @apply block w-full max-w-full overflow-x-auto border-collapse text-left text-[14px] md:table;
   }
   .rich-text th,
   .rich-text td {
