@@ -2,6 +2,7 @@
 
 import Script from "next/script";
 import { useState, useSyncExternalStore, type FormEvent } from "react";
+import { pushDataLayer } from "@/lib/analytics";
 import type { QuickQuoteInterest, QuickQuoteStore } from "@/lib/quick-quote/types";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
@@ -19,6 +20,8 @@ type QuickQuoteFormProps = {
   recaptchaSiteKey?: string;
   /** Shown in the network error message, e.g. "call 13 tint" */
   fallbackContact?: string;
+  /** dataLayer event pushed after a successful send, for GTM conversions */
+  leadEvent?: string;
 };
 
 type Grecaptcha = { ready(callback: () => void): void; execute(siteKey: string, options: { action: string }): Promise<string> };
@@ -58,6 +61,7 @@ export function QuickQuoteForm({
   endpoint = "/api/quick-quote/",
   recaptchaSiteKey,
   fallbackContact = "contact your nearest store",
+  leadEvent,
 }: QuickQuoteFormProps) {
   const urlStore = useSyncExternalStore(subscribeNoop, readStoreParam, () => "");
   const [chosenStore, setChosenStore] = useState<string | null>(null);
@@ -108,6 +112,7 @@ export function QuickQuoteForm({
       const result = (await response.json()) as { success?: boolean; error?: string; fieldErrors?: Record<string, string> };
 
       if (response.ok && result.success) {
+        if (leadEvent) pushDataLayer({ event: leadEvent, formId: "quick-quote", store: storeId, store_name: store?.name, enquiry_type: interest?.label });
         form.reset();
         setInterestValue("");
         setStatus("success");
