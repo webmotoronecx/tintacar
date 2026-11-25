@@ -130,6 +130,17 @@ describe("POST /api/quick-quote", () => {
     expect(logged).not.toContain("sam@example.com");
   });
 
+  test("sends staging enquiries to the test inbox, but never on the live domain", async () => {
+    vi.stubEnv("QUICK_QUOTE_TEST_INBOX", "qa@example.com");
+    await POST(quoteRequest(validQuote));
+    expect(sent.map((mail) => mail.to)).toEqual(["qa@example.com", "sam@example.com"]);
+    expect(sent[1].replyTo).toBe("qa@example.com");
+
+    sent.length = 0;
+    await POST(quoteRequest(validQuote, { host: "tintacar.com.au", origin: "https://tintacar.com.au" }));
+    expect(sent[0].to).toBe("Alexandria@tintacar.com.au");
+  });
+
   test("fails loudly when email is not configured", async () => {
     vi.mocked(createMailer).mockReturnValue(null);
     expect((await POST(quoteRequest(validQuote))).status).toBe(503);

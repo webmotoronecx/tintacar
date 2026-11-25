@@ -68,8 +68,12 @@ export async function POST(request: NextRequest) {
     return reply({ success: false, error: FALLBACK_ERROR }, 503);
   }
 
+  // Staging hosts can swap every store inbox for QUICK_QUOTE_TEST_INBOX, so test enquiries never reach real stores
+  const isTest = !isLiveHost(request);
+  const testInbox = isTest ? process.env.QUICK_QUOTE_TEST_INBOX?.trim() : undefined;
+
   // The store email must go out; the customer autoreply is best effort
-  const recipient = { ...toQuickQuoteStore(store), email: store.email };
+  const recipient = { ...toQuickQuoteStore(store), email: testInbox || store.email };
   try {
     await mailer.send(buildStoreEmail(data, recipient, quickQuoteConfig, bccFor(store.address.state, quickQuoteConfig)));
   } catch (error: unknown) {
@@ -83,7 +87,6 @@ export async function POST(request: NextRequest) {
   }
 
   // MotorOne referrals run after the response, so a slow or failing API never affects the customer or the store email
-  const isTest = !isLiveHost(request);
   after(async () => {
     const outcome = await pushReferral(data, data.store, { config: quickQuoteConfig, isTest });
     if (outcome.status === "failed") console.error("[quick-quote] Referral push failed:", outcome.reason);
