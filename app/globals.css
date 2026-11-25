@@ -2,8 +2,9 @@
 
 /* Brand tokens: override these to re-theme every component */
 @theme {
-  --color-brand: #eba904;
-  --color-brand-dark: #c98f00;
+  /* Live gold (#eba904) darkened slightly so white button text reaches 3:1 */
+  --color-brand: #c38900;
+  --color-brand-dark: #a57703;
   --color-ink: #162329;
   --color-heading: #162329;
   --color-body: #304c59;
