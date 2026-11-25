@@ -122,6 +122,8 @@ export type ImageBannerSection = SectionBase & {
   mobileImage?: ImageAsset;
   href?: string;
   title?: string;
+  /** Links the matching words inside the title, as some live banners do */
+  titleLink?: TextLink;
   titleAlign?: "left" | "center";
   width?: "container" | "narrow" | "half" | "full";
 };

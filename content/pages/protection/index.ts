@@ -1,6 +1,7 @@
 import type { PageData } from "@/types/sections";
 import { carCarePage } from "./car-care";
 import { elitexGraphenePage } from "./elitex-graphene-surface-protection";
+import { electronicsPage } from "./electronics";
 import { elitexSurfaceProtectionPage } from "./elitex-surface-protection";
 import { extrasPage } from "./extras";
 import { finevuDashcamsPage } from "./finevu-dashcams";
@@ -13,6 +14,7 @@ export const protectionPages: PageData[] = [
   paintProtectionFilmPage,
   elitexSurfaceProtectionPage,
   carCarePage,
+  electronicsPage,
   finevuDashcamsPage,
   extrasPage,
 ];

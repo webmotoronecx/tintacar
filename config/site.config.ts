@@ -50,8 +50,7 @@ export const siteConfig: SiteConfig = {
         },
         {
           label: "Electronics",
-          // Live links this heading to /electronics/; FineVu replaces that RoadView page
-          href: "/finevu-dashcams/",
+          href: "/electronics/",
           links: [{ label: "FineVu Dashcams", href: "/finevu-dashcams/" }],
         },
       ],

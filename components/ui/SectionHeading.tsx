@@ -1,6 +1,8 @@
+import type { TextLink } from "@/types/sections";
 import { cn } from "@/lib/utils";
 import { Divider } from "./Divider";
 import { Highlight, HIGHLIGHT_TEXT, type HighlightColor } from "./Highlight";
+import { SmartLink } from "./SmartLink";
 
 export type HeadingLevel = "h1" | "h2" | "h3" | "h4";
 export type HeadingSize = "xs" | "sm" | "md" | "lg" | "xl";
@@ -21,6 +23,8 @@ type SectionHeadingProps = {
   highlightColor?: HighlightColor;
   light?: boolean;
   bold?: boolean;
+  /** Turns the matching words of the title into a link */
+  link?: TextLink;
   className?: string;
 };
 
@@ -48,8 +52,11 @@ export function SectionHeading({
   highlightColor = "accent",
   light = false,
   bold,
+  link,
   className,
 }: SectionHeadingProps) {
+  const linkAt = link ? title.indexOf(link.label) : -1;
+
   return (
     <div className={cn(align === "center" ? "text-center" : "text-left", className)}>
       {eyebrow && (
@@ -58,7 +65,17 @@ export function SectionHeading({
         </p>
       )}
       <Tag className={cn(SIZES[size], "tracking-[0.01em]", (bold ?? size === "sm") && "font-bold", light ? "text-white" : "text-heading")}>
-        <Highlight text={title} color={highlightColor} />
+        {link && linkAt >= 0 ? (
+          <>
+            <Highlight text={title.slice(0, linkAt)} color={highlightColor} />
+            <SmartLink href={link.href} className="transition-colors hover:text-brand">
+              {link.label}
+            </SmartLink>
+            <Highlight text={title.slice(linkAt + link.label.length)} color={highlightColor} />
+          </>
+        ) : (
+          <Highlight text={title} color={highlightColor} />
+        )}
       </Tag>
       {tagline && (
         <p className={cn("mt-4 font-heading text-[18px] font-bold uppercase", taglineColor ? HIGHLIGHT_TEXT[taglineColor] : light ? "text-white" : "text-heading")}>{tagline}</p>

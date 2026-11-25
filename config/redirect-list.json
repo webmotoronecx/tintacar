@@ -992,10 +992,6 @@
     "destination": "/"
   },
   {
-    "source": "/electronics/",
-    "destination": "/finevu-dashcams/"
-  },
-  {
     "source": "/elitex-graphene-surface-protection/",
     "destination": "/protection-products/elitex-graphene-surface-protection/"
   },

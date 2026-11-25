@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 type ImageBannerProps = Omit<ImageBannerSection, "type">;
 
 // Single wide promo image, optionally linked and titled
-export function ImageBanner({ id, background, spacing = "sm", image, mobileImage, href, title, titleAlign = "left", width = "container" }: ImageBannerProps) {
+export function ImageBanner({ id, background, spacing = "sm", image, mobileImage, href, title, titleLink, titleAlign = "left", width = "container" }: ImageBannerProps) {
   const picture = (
     <ArtDirectedImage
       image={image}
@@ -20,7 +20,7 @@ export function ImageBanner({ id, background, spacing = "sm", image, mobileImage
 
   return (
     <Section id={id} background={background} spacing={spacing} width={width === "full" ? "full" : "container"}>
-      {title && <SectionHeading title={title} size="md" align={titleAlign} divider={false} className="mb-4" />}
+      {title && <SectionHeading title={title} link={titleLink} size="md" align={titleAlign} divider={false} className="mb-4" />}
       <div className={cn(width === "narrow" && "mx-auto max-w-[842px]", width === "half" && "mx-auto max-w-[585px]")}>
         {href ? (
           <SmartLink href={href} className="block transition-opacity hover:opacity-90" aria-label={image.alt || title || "Learn more"}>
