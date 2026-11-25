@@ -38,6 +38,8 @@ export type HeroBannerSection = SectionBase & {
   title?: string;
   titleAs?: "h1" | "h2";
   hideTitle?: boolean;
+  /** Leave the banner out on phones, as some live pages do */
+  hideOnMobile?: boolean;
   subtitle?: string;
   buttons?: Cta[];
   minHeight?: "xs" | "sm" | "md" | "lg";

@@ -16,7 +16,7 @@ export const carWindowTintPage: PageData = {
       title: "Window Tinting for Car, Home & Office.",
       hideTitle: true,
       image: { src: `${IMG}/sunroof-bundle-hero.webp`, alt: "Complete your vehicle's glass protection. Bundle tint and Sunroof Protection Film and save $100.", width: 2100, height: 600 },
-      mobileImage: { src: "/images/home/hero-mobile.png", alt: "Tint a Car - Protects Best. Because your car & home deserve it.", width: 1080, height: 1350 },
+      hideOnMobile: true,
     },
     {
       type: "heading",
