@@ -54,7 +54,10 @@ export type Store = {
   name: string;
   address: StoreAddress;
   phone?: string;
-  email?: string;
+  /** Store inbox that receives Quick Quote enquiries */
+  email: string;
+  /** Spark store ID used in Quick Quote links and the referrals system */
+  sparkId: string;
   lat?: number;
   lng?: number;
   hours: StoreHours[];

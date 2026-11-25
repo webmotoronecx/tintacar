@@ -41,7 +41,9 @@ export const storeSchema = z.object({
     postcode: z.string(),
   }),
   phone: z.string().optional(),
-  email: z.string().optional(),
+  email: z.string().email(),
+  // Store ID used by the Quick Quote link (?id=) and the referrals system
+  sparkId: z.string().regex(/^\d+$/),
   lat: z.number().optional(),
   lng: z.number().optional(),
   hours: z.array(z.object({ day: z.string(), hours: z.string() })),

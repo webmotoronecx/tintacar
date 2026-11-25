@@ -119,9 +119,12 @@ describe("articles", () => {
 describe("stores", () => {
   const stores = getStores();
 
-  test("stores have unique slugs, a state and coordinates", () => {
+  test("stores have unique slugs and Spark IDs, an inbox, a state and coordinates", () => {
     const slugs = stores.map((store) => store.slug);
     expect(new Set(slugs).size).toBe(slugs.length);
+    const sparkIds = stores.map((store) => store.sparkId);
+    expect(new Set(sparkIds).size).toBe(sparkIds.length);
+    stores.forEach((store) => expect(store.email, store.slug).toMatch(/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i));
     stores.forEach((store) => {
       expect(store.address.state, store.slug).toMatch(/^(NSW|VIC|QLD|WA|SA|TAS|ACT|NT)$/);
       expect(typeof store.lat, store.slug).toBe("number");
