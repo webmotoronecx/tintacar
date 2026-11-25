@@ -47,6 +47,19 @@ export type HeroBannerSection = SectionBase & {
   overlay?: boolean;
 };
 
+/** Rotating full-width banners, e.g. the home page offers; each slide can link somewhere */
+export type BannerCarouselSection = SectionBase & {
+  type: "bannerCarousel";
+  /** Page heading kept for screen readers when the artwork carries the message */
+  title?: string;
+  titleAs?: "h1" | "h2";
+  /** Accessible name for the carousel */
+  label?: string;
+  slides: { image: ImageAsset; mobileImage?: ImageAsset; href?: string }[];
+  /** Milliseconds per slide (default 5000, as on live) */
+  interval?: number;
+};
+
 /** Split banner: coloured text panel beside a photo */
 export type SplitHeroSection = SectionBase & {
   type: "splitHero";
@@ -342,6 +355,7 @@ export type CompareCardsSection = SectionBase & {
 
 export type Section =
   | HeroBannerSection
+  | BannerCarouselSection
   | SplitHeroSection
   | ButtonGroupSection
   | HeadingSection

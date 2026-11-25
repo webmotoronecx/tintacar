@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import type { Section } from "@/types/sections";
 import { Accordion } from "./Accordion";
+import { BannerCarousel } from "./BannerCarousel";
 import { ButtonGroup } from "./ButtonGroup";
 import { CompareCards } from "./CompareCards";
 import { ComparisonTable } from "./ComparisonTable";
@@ -31,6 +32,8 @@ function renderSection(section: Section) {
   switch (section.type) {
     case "heroBanner":
       return <HeroBanner {...section} />;
+    case "bannerCarousel":
+      return <BannerCarousel {...section} />;
     case "splitHero":
       return <SplitHero {...section} />;
     case "buttonGroup":

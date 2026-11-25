@@ -6,6 +6,8 @@ type ArtDirectedImageProps = {
   mobileImage?: ImageAsset;
   sizes?: string;
   isPriority?: boolean;
+  /** Overrides lazy loading for images that start off-screen but must be ready, e.g. carousel slides */
+  loading?: "eager" | "lazy";
   fill?: boolean;
   className?: string;
 };
@@ -13,8 +15,8 @@ type ArtDirectedImageProps = {
 const MOBILE_QUERY = "(max-width: 767px)";
 
 // <picture> that swaps to a portrait/mobile crop on small screens
-export function ArtDirectedImage({ image, mobileImage, sizes = "100vw", isPriority, fill, className }: ArtDirectedImageProps) {
-  const loading = isPriority ? ("eager" as const) : ("lazy" as const);
+export function ArtDirectedImage({ image, mobileImage, sizes = "100vw", isPriority, loading: loadingOverride, fill, className }: ArtDirectedImageProps) {
+  const loading = loadingOverride ?? (isPriority ? ("eager" as const) : ("lazy" as const));
   const shared = { alt: image.alt, sizes, loading, ...(isPriority ? { fetchPriority: "high" as const } : {}) };
   const dims = (asset: ImageAsset) => (fill ? { fill: true } : { width: asset.width, height: asset.height });
 

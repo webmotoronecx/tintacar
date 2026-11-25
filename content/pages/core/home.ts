@@ -10,15 +10,26 @@ export const homePage: PageData = {
   },
   sections: [
     {
-      type: "heroBanner",
+      // Live rotates these every 5 seconds and both link to the sunroof film offer
+      type: "bannerCarousel",
+      spacing: "md",
       title: "Window Tinting for Car, Home & Office.",
-      hideTitle: true,
-      image: { src: "/images/home/hero.webp", alt: "Protect all your glass. Add Sunroof Protection Film with Window Tint and save $100.", width: 2100, height: 600 },
+      label: "Tint a Car offers",
+      slides: [
+        {
+          image: { src: "/images/home/banner-protects-best.webp", alt: "Tint a Car Protects Best. Because your car & home deserve it.", width: 2100, height: 600 },
+          href: "/car-window-tint/sunroof-film/",
+        },
+        {
+          image: { src: "/images/home/banner-sunroof.webp", alt: "Protect all your glass. Add Sunroof Protection Film with Window Tint and save $100.", width: 2100, height: 600 },
+          href: "/car-window-tint/sunroof-film/",
+        },
+      ],
     },
     {
       type: "buttonGroup",
       align: "spread",
-      spacing: "sm",
+      spacing: "none",
       buttons: [
         { label: "Find your nearest store", href: "/contact-a-store/" },
         { label: "Enquire now", href: "/contact-a-store/" },
