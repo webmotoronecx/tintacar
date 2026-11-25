@@ -1,11 +1,13 @@
 import { NextRequest } from "next/server";
 import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import { POST } from "@/app/api/quick-quote/route";
+import { checkForBot } from "@/lib/quick-quote/bot-check";
 import type { MailMessage } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { validQuote } from "./fixtures/quick-quote";
 
 vi.mock("@/lib/quick-quote/mailer", () => ({ createMailer: vi.fn() }));
+vi.mock("@/lib/quick-quote/bot-check", () => ({ checkForBot: vi.fn() }));
 
 const sent: MailMessage[] = [];
 const send = vi.fn(async (message: MailMessage) => {
@@ -35,6 +37,7 @@ describe("POST /api/quick-quote", () => {
     sent.length = 0;
     send.mockClear();
     vi.mocked(createMailer).mockReturnValue({ send });
+    vi.mocked(checkForBot).mockResolvedValue("skipped");
   });
 
   afterEach(() => {
@@ -85,6 +88,13 @@ describe("POST /api/quick-quote", () => {
     await POST(quoteRequest(validQuote));
     expect(sent[0].bcc).toEqual(["nsw-manager@example.com"]);
     expect(sent[1].bcc).toBeUndefined();
+  });
+
+  test("rejects bots flagged by BotID, and carries on when BotID cannot answer", async () => {
+    vi.mocked(checkForBot).mockResolvedValueOnce("bot");
+    expect((await POST(quoteRequest(validQuote))).status).toBe(400);
+    vi.mocked(checkForBot).mockResolvedValueOnce("unavailable");
+    expect((await POST(quoteRequest(validQuote))).status).toBe(200);
   });
 
   test("fails loudly when SMTP is not configured", async () => {

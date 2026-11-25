@@ -3,6 +3,7 @@ import { quickQuoteConfig } from "@/config/quick-quote";
 import { siteConfig } from "@/config/site.config";
 import { clientIp, fieldErrorsFrom, readJsonBody, reply } from "@/lib/api";
 import { isRateLimited } from "@/lib/rate-limit";
+import { checkForBot } from "@/lib/quick-quote/bot-check";
 import { bccFor, buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { verifyRecaptcha } from "@/lib/quick-quote/recaptcha";
@@ -14,6 +15,7 @@ const RATE_LIMIT = 5;
 const RATE_WINDOW_MS = 10 * 60 * 1000;
 const CALL_US = siteConfig.phone.label.toLowerCase();
 const FALLBACK_ERROR = `Sorry, we couldn't send your enquiry. Please try again or ${CALL_US}.`;
+const VERIFY_ERROR = `We couldn't verify your request. Please try again or ${CALL_US}.`;
 const schema = createQuickQuoteSchema(quickQuoteConfig);
 
 // SMTP error codes only: messages can echo recipient addresses, and customer data must stay out of logs
@@ -40,8 +42,12 @@ export async function POST(request: NextRequest) {
   // Honeypot filled: pretend success so bots get no signal
   if (data.company) return reply({ success: true }, 200);
 
+  const bot = await checkForBot();
+  if (bot === "bot") return reply({ success: false, error: VERIFY_ERROR }, 400);
+  if (bot === "unavailable") console.warn("[quick-quote] BotID could not answer; continuing without it.");
+
   const captcha = await verifyRecaptcha(data.recaptchaToken, ip);
-  if (captcha === "failed") return reply({ success: false, error: `We couldn't verify your request. Please try again or ${CALL_US}.` }, 400);
+  if (captcha === "failed") return reply({ success: false, error: VERIFY_ERROR }, 400);
   if (captcha === "unavailable") console.warn("[quick-quote] reCAPTCHA could not be reached; continuing without it.");
 
   const store = getStoreBySparkId(data.store);

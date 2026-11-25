@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withBotId } from "botid/next/config";
 import { loadRedirects } from "./config/redirects";
 import { siteConfig } from "./config/site.config";
 
@@ -46,4 +47,5 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// BotID adds the proxy routes its invisible bot check needs (used by the Quick Quote API)
+export default withBotId(nextConfig);

@@ -36,6 +36,25 @@ function readStoreParam(): string {
   return params.get("id") ?? params.get("store_id") ?? "";
 }
 
+const SUBMIT_TIMEOUT_MS = 30_000;
+
+// Never leave the customer waiting forever (e.g. a blocked bot-check script); they get the "please call" message instead
+function withTimeout<T>(promise: Promise<T>, ms = SUBMIT_TIMEOUT_MS): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const timer = window.setTimeout(() => reject(new Error("Request timed out")), ms);
+    promise.then(
+      (value) => {
+        window.clearTimeout(timer);
+        resolve(value);
+      },
+      (error: unknown) => {
+        window.clearTimeout(timer);
+        reject(error);
+      },
+    );
+  });
+}
+
 async function recaptchaToken(siteKey: string): Promise<string | undefined> {
   const grecaptcha = (window as Window & { grecaptcha?: Grecaptcha }).grecaptcha;
   if (!grecaptcha) return undefined;
@@ -91,7 +110,7 @@ export function QuickQuoteForm({
     try {
       const token = recaptchaSiteKey ? await recaptchaToken(recaptchaSiteKey) : undefined;
       const text = (name: string) => String(data.get(name) ?? "");
-      const response = await fetch(endpoint, {
+      const response = await withTimeout(fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -108,7 +127,7 @@ export function QuickQuoteForm({
           company: text("company"),
           recaptchaToken: token,
         }),
-      });
+      }));
       const result = (await response.json()) as { success?: boolean; error?: string; fieldErrors?: Record<string, string> };
 
       if (response.ok && result.success) {

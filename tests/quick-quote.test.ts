@@ -1,10 +1,14 @@
+import { checkBotId } from "botid/server";
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { quickQuoteConfig } from "@/config/quick-quote";
+import { checkForBot } from "@/lib/quick-quote/bot-check";
 import { bccFor, buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { verifyRecaptcha } from "@/lib/quick-quote/recaptcha";
 import { createQuickQuoteSchema } from "@/lib/quick-quote/schema";
 import { validQuote } from "./fixtures/quick-quote";
+
+vi.mock("botid/server", () => ({ checkBotId: vi.fn() }));
 
 const schema = createQuickQuoteSchema(quickQuoteConfig);
 const store = { id: "76", name: "Tint a Car Alexandria", street: "966 Elizabeth Street", suburb: "Zetland", postcode: "2017", state: "NSW", phone: "02 9119 7102", email: "Alexandria@tintacar.com.au" };
@@ -52,6 +56,30 @@ describe("quick quote emails", () => {
   test("mailer stays off until SMTP is configured", () => {
     expect(createMailer({})).toBeNull();
     expect(createMailer({ SMTP_HOST: "smtp.example.com", QUICK_QUOTE_FROM: "Tint a Car <noreply@example.com>" })).not.toBeNull();
+  });
+});
+
+describe("checkForBot", () => {
+  afterEach(() => vi.mocked(checkBotId).mockReset());
+
+  test("only runs on Vercel", async () => {
+    expect(await checkForBot({})).toBe("skipped");
+    expect(checkBotId).not.toHaveBeenCalled();
+  });
+
+  test("flags unverified bots and lets people and verified bots through", async () => {
+    const verdict = (isBot: boolean, isVerifiedBot: boolean) => ({ isHuman: !isBot, isBot, isVerifiedBot, bypassed: false });
+    vi.mocked(checkBotId).mockResolvedValueOnce(verdict(true, false));
+    expect(await checkForBot({ VERCEL: "1" })).toBe("bot");
+    vi.mocked(checkBotId).mockResolvedValueOnce(verdict(false, false));
+    expect(await checkForBot({ VERCEL: "1" })).toBe("human");
+    vi.mocked(checkBotId).mockResolvedValueOnce(verdict(true, true));
+    expect(await checkForBot({ VERCEL: "1" })).toBe("human");
+  });
+
+  test("never blocks an enquiry when BotID cannot answer", async () => {
+    vi.mocked(checkBotId).mockRejectedValueOnce(new Error("The 'x-vercel-oidc-token' header is missing"));
+    expect(await checkForBot({ VERCEL: "1" })).toBe("unavailable");
   });
 });
 
