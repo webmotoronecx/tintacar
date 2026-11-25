@@ -13,7 +13,7 @@ export const homePage: PageData = {
       type: "heroBanner",
       title: "Window Tinting for Car, Home & Office.",
       hideTitle: true,
-      image: { src: "/images/home/hero.png", alt: "Tint a Car - Protects Best. Because your car & home deserve it.", width: 2100, height: 600 },
+      image: { src: "/images/home/hero.webp", alt: "Protect all your glass. Add Sunroof Protection Film with Window Tint and save $100.", width: 2100, height: 600 },
       mobileImage: { src: "/images/home/hero-mobile.png", alt: "Tint a Car - Protects Best. Because your car & home deserve it.", width: 1080, height: 1350 },
     },
     {
