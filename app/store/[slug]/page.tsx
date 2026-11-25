@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site.config";
 import { formatAddress, getStoreBySlug, getStores, quickQuoteUrl } from "@/lib/stores";
 import type { Store } from "@/types/content";
+import { openingHoursSpecification } from "@/lib/opening-hours";
 
 type StorePageProps = {
   params: Promise<{ slug: string }>;
@@ -32,6 +33,7 @@ export async function generateMetadata({ params }: StorePageProps): Promise<Meta
 }
 
 function localBusinessJsonLd(store: Store) {
+  const openingHours = openingHoursSpecification(store.hours ?? []);
   return {
     "@context": "https://schema.org",
     "@type": "AutoPartsStore",
@@ -47,6 +49,7 @@ function localBusinessJsonLd(store: Store) {
       addressCountry: "AU",
     },
     ...(store.lat && store.lng ? { geo: { "@type": "GeoCoordinates", latitude: store.lat, longitude: store.lng } } : {}),
+    ...(openingHours.length > 0 ? { openingHoursSpecification: openingHours } : {}),
   };
 }
 

@@ -17,7 +17,7 @@ function telHref(phone: string): string {
 }
 
 // Single store: contact details, services, opening hours and map
-export function StoreDetails({ store, enquireHref, enquireLabel = "Email" }: StoreDetailsProps) {
+export function StoreDetails({ store, enquireHref, enquireLabel = "Enquire now" }: StoreDetailsProps) {
   const socials: SocialLink[] = [
     ...(store.socials.facebook ? [{ platform: "facebook" as const, href: store.socials.facebook }] : []),
     ...(store.socials.instagram ? [{ platform: "instagram" as const, href: store.socials.instagram }] : []),
@@ -25,12 +25,12 @@ export function StoreDetails({ store, enquireHref, enquireLabel = "Email" }: Sto
 
   return (
     <div>
-      <h1 className="text-[28px] font-bold leading-tight text-heading md:text-[32px]">{store.name}</h1>
+      <h1 className="text-[28px] font-bold leading-tight text-heading md:text-[34px]">{store.name}</h1>
       {/* Read by the existing GTM store_name variable (h3.entry-post-title) */}
       <h3 className="entry-post-title" hidden>
         {store.name}
       </h3>
-      <dl className="mt-4 space-y-2 text-[13px]">
+      <dl className="mt-4 space-y-2">
         <div>
           <dt className="inline font-bold">Address: </dt>
           <dd className="inline">{formatAddress(store)}</dd>
@@ -53,8 +53,8 @@ export function StoreDetails({ store, enquireHref, enquireLabel = "Email" }: Sto
             Services at {store.name}
           </h2>
           {store.services.map((group) => (
-            <div key={group.title} className="mt-4 text-[13px]">
-              <h3 className="font-heading text-[14px] font-bold">{group.title}</h3>
+            <div key={group.title} className="mt-4">
+              <h3 className="font-heading text-[15px] font-bold">{group.title}</h3>
               <ul className="mt-1 list-disc space-y-1 pl-8">
                 {group.items.map((item) => (
                   <li key={item}>{item}</li>
@@ -68,7 +68,7 @@ export function StoreDetails({ store, enquireHref, enquireLabel = "Email" }: Sto
           <h2 id="store-hours" className="text-[18px] font-semibold text-brand">
             Business Hours:
           </h2>
-          <ul className="mt-3 space-y-1 text-[13px]">
+          <ul className="mt-3 space-y-1">
             {store.hours.map((entry) => (
               <li key={entry.day}>
                 {entry.day}: {entry.hours}
@@ -99,7 +99,7 @@ export function StoreDetails({ store, enquireHref, enquireLabel = "Email" }: Sto
         </div>
       </div>
 
-      {store.descriptionHtml && <RichText html={store.descriptionHtml} className="mt-8 border-b border-line pb-10 text-[13px]" />}
+      {store.descriptionHtml && <RichText html={store.descriptionHtml} className="mt-8 border-b border-line pb-10" />}
     </div>
   );
 }
