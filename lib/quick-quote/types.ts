@@ -10,6 +10,8 @@ export type QuickQuoteInterest = {
 
 export type QuickQuoteConfig = {
   interests: QuickQuoteInterest[];
+  /** Prefix for the store email subject, e.g. "Tint a Car" + the customer's name */
+  brandName: string;
 };
 
 /** Store details the browser needs; inbox emails stay on the server */

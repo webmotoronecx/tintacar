@@ -2,6 +2,7 @@ import type { QuickQuoteConfig } from "@/lib/quick-quote/types";
 
 // Quick Quote options copied from the live Contact Form 7 form (ID 6401)
 export const quickQuoteConfig: QuickQuoteConfig = {
+  brandName: "Tint a Car",
   interests: [
     {
       value: "automotive",

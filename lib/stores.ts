@@ -1,5 +1,6 @@
 import { z } from "zod";
 import storesData from "@/content/stores.json";
+import type { QuickQuoteStore } from "@/lib/quick-quote/types";
 import type { Store } from "@/types/content";
 import { storeSchema } from "./schemas";
 
@@ -17,6 +18,20 @@ export function getStores(): Store[] {
 
 export function getStoreBySlug(slug: string): Store | undefined {
   return getStores().find((store) => store.slug === slug);
+}
+
+export function getStoreBySparkId(sparkId: string): Store | undefined {
+  return getStores().find((store) => store.sparkId === sparkId);
+}
+
+// Browser-safe store details for the Quick Quote form (no inbox address)
+export function toQuickQuoteStore(store: Store): QuickQuoteStore {
+  const { street, suburb, postcode, state } = store.address;
+  return { id: store.sparkId, name: store.name, street, suburb, postcode, state, phone: store.phone };
+}
+
+export function quickQuoteUrl(store: Store): string {
+  return `/quick-quote/?store_id=${store.sparkId}&id=${store.sparkId}`;
 }
 
 export function formatAddress(store: Store): string {
