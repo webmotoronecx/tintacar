@@ -2,12 +2,12 @@ import type { PageData } from "@/types/sections";
 import {
   arpansaItem,
   buyNowPayLaterItem,
-  ceramicBundle,
   hibaTestimonial,
   lifetimeWarrantyItem,
   moneyBackItem,
   productIcons,
   quoteStrip,
+  sunroofCrossSell,
   warrantyNote,
 } from "./shared";
 
@@ -66,7 +66,7 @@ export const ceramicWindowTintPage: PageData = {
     },
     { type: "video", youtubeId: "ohGOQVjXRcE", title: "Spectre ceramic film technology" },
     { type: "ctaStrip", ...quoteStrip },
-    { type: "promoCard", ...ceramicBundle },
+    { type: "imageBanner", ...sunroofCrossSell },
     { type: "note", text: "*Prices vary depending on tint selection & vehicle size, T&C’s apply ask in store for detail." },
     {
       type: "accordion",

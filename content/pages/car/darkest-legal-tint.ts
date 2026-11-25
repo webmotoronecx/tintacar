@@ -1,5 +1,5 @@
 import type { PageData } from "@/types/sections";
-import { arpansaItem, buyNowPayLaterItem, lifetimeWarrantyItem, moneyBackItem, productIcons, quoteStrip } from "./shared";
+import { arpansaItem, buyNowPayLaterItem, lifetimeWarrantyItem, moneyBackItem, productIcons, protectAllGlassCrossSell, quoteStrip } from "./shared";
 
 export const darkestLegalTintPage: PageData = {
   path: "/car-window-tint/darkest-legal-tint/",
@@ -21,7 +21,7 @@ export const darkestLegalTintPage: PageData = {
     {
       type: "featureSplit",
       as: "h1",
-      title: "==The darkest legal tint==\non the market.",
+      title: "The ==darkest legal tint==\non the market.",
       features: [
         { title: "Darkest Legal black colour tint", text: "for great looks and ultimate privacy." },
         { title: "Rejects 99% of UV", text: "protecting you and your car." },
@@ -56,7 +56,8 @@ export const darkestLegalTintPage: PageData = {
     },
     {
       type: "heading",
-      title: "Find out how the Darkest Legal Tint can protect and enhance your driving experience.",
+      title: "==Find out how the Darkest Legal Tint can protect and enhance your driving experience.==",
+      highlightColor: "accent-soft",
       as: "h2",
       size: "md",
       align: "center",
@@ -65,6 +66,7 @@ export const darkestLegalTintPage: PageData = {
     },
     { type: "video", youtubeId: "_AnhzscST7s", title: "Octane darkest legal tint", spacing: "sm" },
     { type: "ctaStrip", ...quoteStrip },
+    { type: "imageBanner", ...protectAllGlassCrossSell },
     {
       type: "accordion",
       title: "Some key reasons to buy Darkest Legal window tint.",

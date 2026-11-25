@@ -1,4 +1,4 @@
-import type { AccordionSection, CtaStripSection, PromoCardSection, TestimonialSection } from "@/types/sections";
+import type { AccordionSection, CtaStripSection, ImageBannerSection, PromoCardSection, TestimonialSection } from "@/types/sections";
 
 const IMG = "/images/car-window-tint";
 
@@ -28,6 +28,19 @@ export const ceramicBundle: Omit<PromoCardSection, "type"> = {
     "<p><strong>Contact your local store today to find out more.</strong></p>",
   ].join(""),
   buttons: [{ label: "Find your nearest store", href: "/contact-a-store/", variant: "outline-light" }],
+};
+
+// Sunroof film cross-sell tiles shown under the quote prompt on the tint product pages
+export const sunroofCrossSell: Omit<ImageBannerSection, "type"> = {
+  image: { src: `${IMG}/sunroof-cross-sell.webp`, alt: "Complete your vehicle's glass protection. Bundle tint and sunroof film and save $100.", width: 1200, height: 800 },
+  href: "/contact-a-store/",
+  width: "half",
+};
+
+export const protectAllGlassCrossSell: Omit<ImageBannerSection, "type"> = {
+  image: { src: `${IMG}/sunroof-cross-sell-2.webp`, alt: "Protect all your glass. Add sunroof protection film with window tint and save $100.", width: 1200, height: 800 },
+  href: "/contact-a-store/",
+  width: "half",
 };
 
 export const warrantyNote = "^Warranty terms, conditions and exclusions apply. See in store for more information.";
