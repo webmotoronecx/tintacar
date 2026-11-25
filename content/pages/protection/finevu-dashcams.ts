@@ -9,15 +9,17 @@ export const finevuDashcamsPage: PageData = {
     description: "Get the best out of your drive, with quality 4K recording from the FineVu Dashcam range. Call 13TINT or speak to your local store today!",
   },
   sections: [
+    { type: "heading", title: "FineVu Dashcams", as: "h1", visuallyHidden: true },
     {
       type: "heading",
       title: "For the clearest view of the road, choose a FineVu Dash Cam.",
-      as: "h1",
+      as: "h2",
       size: "md",
+      bold: true,
       align: "center",
       divider: false,
       spacing: "sm",
-      html: "<p>The best possible clarity and ultra-sharp footage, powered by industry-leading SONY™ STARVIS™ front &amp; rear image sensors that capture every crucial detail, day and night.</p>",
+      html: "<p class=\"text-[20px]\">The best possible clarity and ultra-sharp footage, powered by industry-leading SONY™ STARVIS™ front &amp; rear image sensors that capture every crucial detail, day and night.</p>",
     },
     {
       type: "tileGrid",
