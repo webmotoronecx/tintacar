@@ -5,12 +5,14 @@
   --color-brand: #eba904;
   --color-brand-dark: #c98f00;
   --color-ink: #162329;
-  --color-heading: #1f1f1f;
+  --color-heading: #162329;
   --color-body: #304c59;
   --color-navy: #333a4c;
   --color-night: #111111;
   --color-accent: #c129b9;
   --color-accent-soft: #9f4c95;
+  --color-olive: #bcb43f;
+  --color-llumar: #dc2223;
   --color-sky: #d9eef1;
   --color-mist: #f7f7f7;
   --color-panel: #eeeeee;
@@ -65,12 +67,19 @@
     @apply mt-10 text-[28px] leading-tight md:text-[34px];
   }
   .rich-text h3 {
-    @apply mt-8 text-[22px] leading-snug md:text-[24px];
+    @apply mt-8 text-[22px] font-bold leading-snug md:text-[24px];
   }
-  .rich-text h4,
-  .rich-text h5,
+  .rich-text h4 {
+    @apply mt-6 text-[20px] font-bold leading-snug;
+  }
+  .rich-text h5 {
+    @apply mt-6 text-[18px] font-bold leading-snug;
+  }
   .rich-text h6 {
-    @apply mt-6 text-[18px] font-semibold leading-snug;
+    @apply mt-6 text-[15px] font-bold leading-snug;
+  }
+  .rich-text hr {
+    @apply my-8 border-line;
   }
   .rich-text a {
     @apply text-ink underline decoration-brand underline-offset-2 hover:text-brand;
@@ -107,7 +116,8 @@
   .rich-text iframe {
     @apply aspect-video h-auto w-full;
   }
-  .rich-text-light {
+  .rich-text-light,
+  .rich-text-light :is(h1, h2, h3, h4, h5, h6) {
     @apply text-white;
   }
   .rich-text-light a {
