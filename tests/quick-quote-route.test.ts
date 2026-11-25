@@ -4,10 +4,18 @@ import { POST } from "@/app/api/quick-quote/route";
 import { checkForBot } from "@/lib/quick-quote/bot-check";
 import type { MailMessage } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
+import { pushReferral } from "@/lib/quick-quote/referrals";
 import { validQuote } from "./fixtures/quick-quote";
 
 vi.mock("@/lib/quick-quote/mailer", () => ({ createMailer: vi.fn() }));
 vi.mock("@/lib/quick-quote/bot-check", () => ({ checkForBot: vi.fn() }));
+vi.mock("@/lib/quick-quote/referrals", () => ({ pushReferral: vi.fn() }));
+// Runs after() work straight away and keeps the promise, since tests have no request scope
+const afterTasks: Promise<unknown>[] = [];
+vi.mock("next/server", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("next/server")>();
+  return { ...actual, after: (task: () => Promise<unknown>) => afterTasks.push(task()) };
+});
 
 const sent: MailMessage[] = [];
 const send = vi.fn(async (message: MailMessage) => {
@@ -35,9 +43,11 @@ describe("POST /api/quick-quote", () => {
     vi.spyOn(console, "error").mockImplementation(() => undefined);
     vi.spyOn(console, "warn").mockImplementation(() => undefined);
     sent.length = 0;
+    afterTasks.length = 0;
     send.mockClear();
     vi.mocked(createMailer).mockReturnValue({ send });
     vi.mocked(checkForBot).mockResolvedValue("skipped");
+    vi.mocked(pushReferral).mockReset().mockResolvedValue({ status: "sent" });
   });
 
   afterEach(() => {
@@ -95,6 +105,29 @@ describe("POST /api/quick-quote", () => {
     expect((await POST(quoteRequest(validQuote))).status).toBe(400);
     vi.mocked(checkForBot).mockResolvedValueOnce("unavailable");
     expect((await POST(quoteRequest(validQuote))).status).toBe(200);
+  });
+
+  test("pushes the referral after the store email, flagged as a test off the live domain", async () => {
+    await POST(quoteRequest(validQuote));
+    await Promise.all(afterTasks);
+    expect(pushReferral).toHaveBeenCalledWith(expect.objectContaining({ store: "76", email: "sam@example.com" }), "76", expect.objectContaining({ isTest: true }));
+
+    await POST(quoteRequest(validQuote, { host: "www.tintacar.com.au", origin: "https://www.tintacar.com.au" }));
+    await Promise.all(afterTasks);
+    expect(vi.mocked(pushReferral).mock.calls[1][2]).toMatchObject({ isTest: false });
+  });
+
+  test("skips the referral when the store email fails, and logs referral failures without customer details", async () => {
+    send.mockRejectedValueOnce(Object.assign(new Error("rejected"), { code: "EENVELOPE" }));
+    await POST(quoteRequest(validQuote));
+    expect(pushReferral).not.toHaveBeenCalled();
+
+    vi.mocked(pushReferral).mockResolvedValueOnce({ status: "failed", reason: "enquiry 500" });
+    expect((await POST(quoteRequest(validQuote))).status).toBe(200);
+    await Promise.all(afterTasks);
+    const logged = JSON.stringify(vi.mocked(console.error).mock.calls);
+    expect(logged).toContain("enquiry 500");
+    expect(logged).not.toContain("sam@example.com");
   });
 
   test("fails loudly when email is not configured", async () => {

@@ -1,4 +1,4 @@
-import type { NextRequest } from "next/server";
+import { after, type NextRequest } from "next/server";
 import { quickQuoteConfig } from "@/config/quick-quote";
 import { siteConfig } from "@/config/site.config";
 import { clientIp, fieldErrorsFrom, readJsonBody, reply } from "@/lib/api";
@@ -7,6 +7,7 @@ import { checkForBot } from "@/lib/quick-quote/bot-check";
 import { bccFor, buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { verifyRecaptcha } from "@/lib/quick-quote/recaptcha";
+import { pushReferral } from "@/lib/quick-quote/referrals";
 import { createQuickQuoteSchema } from "@/lib/quick-quote/schema";
 import { getStoreBySparkId, toQuickQuoteStore } from "@/lib/stores";
 
@@ -16,7 +17,14 @@ const RATE_WINDOW_MS = 10 * 60 * 1000;
 const CALL_US = siteConfig.phone.label.toLowerCase();
 const FALLBACK_ERROR = `Sorry, we couldn't send your enquiry. Please try again or ${CALL_US}.`;
 const VERIFY_ERROR = `We couldn't verify your request. Please try again or ${CALL_US}.`;
+const LIVE_HOST = new URL(siteConfig.url).hostname;
 const schema = createQuickQuoteSchema(quickQuoteConfig);
+
+// Referrals from staging and preview hosts are flagged as tests
+function isLiveHost(request: NextRequest): boolean {
+  const host = (request.headers.get("host") ?? "").split(":")[0].replace(/^www\./, "");
+  return host === LIVE_HOST;
+}
 
 // Error codes only: provider messages can echo recipient addresses, and customer data must stay out of logs
 function mailError(error: unknown): string {
@@ -72,5 +80,12 @@ export async function POST(request: NextRequest) {
   } catch (error: unknown) {
     console.error("[quick-quote] Customer autoreply failed:", mailError(error));
   }
+
+  // MotorOne referrals run after the response, so a slow or failing API never affects the customer or the store email
+  const isTest = !isLiveHost(request);
+  after(async () => {
+    const outcome = await pushReferral(data, data.store, { config: quickQuoteConfig, isTest });
+    if (outcome.status === "failed") console.error("[quick-quote] Referral push failed:", outcome.reason);
+  });
   return reply({ success: true }, 200);
 }

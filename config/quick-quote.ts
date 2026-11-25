@@ -8,6 +8,8 @@ export const quickQuoteConfig: QuickQuoteConfig = {
     { states: ["NSW", "QLD", "ACT"], env: "QUICK_QUOTE_BCC_NSW_QLD_ACT" },
     { states: ["WA", "SA", "NT"], env: "QUICK_QUOTE_BCC_WA_SA_NT" },
   ],
+  // Same endpoint and IDs the WordPress child theme posted to
+  referrals: { url: "https://referrals.motorone.com/BackEnd/api/TACEnquiry", franchiseId: 1, campaignId: "230" },
   interests: [
     {
       value: "automotive",
@@ -15,6 +17,7 @@ export const quickQuoteConfig: QuickQuoteConfig = {
       productsLabel: "Which automotive products are you interested in?",
       products: ["Octane Tint", "Spectre Tint", "Black Panther Tint", "Elite X Ceramic Surface Protection", "Paint Protection Film (PPF)", "Dash Cameras"],
       vehicle: true,
+      referralCode: "auto",
     },
     {
       value: "residential",
@@ -28,6 +31,7 @@ export const quickQuoteConfig: QuickQuoteConfig = {
         "Decorative Window Films",
         "Office/Commercial Tinting Solutions",
       ],
+      referralCode: "home",
     },
   ],
 };

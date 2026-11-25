@@ -6,6 +6,15 @@ export type QuickQuoteInterest = {
   products: string[];
   /** Ask for vehicle make and model */
   vehicle?: boolean;
+  /** Prefix the referrals API expects in EnquiryAbout, e.g. "auto" or "home" */
+  referralCode?: string;
+};
+
+/** MotorOne referrals API (TACEnquiry); credentials come from env vars */
+export type QuickQuoteReferrals = {
+  url: string;
+  franchiseId: number;
+  campaignId: string;
 };
 
 export type QuickQuoteConfig = {
@@ -14,6 +23,7 @@ export type QuickQuoteConfig = {
   brandName: string;
   /** Regional managers copied on store emails; each env var holds comma-separated addresses */
   bccGroups: { states: string[]; env: string }[];
+  referrals?: QuickQuoteReferrals;
 };
 
 /** Store details the browser needs; inbox emails stay on the server */

@@ -5,6 +5,7 @@ import { checkForBot } from "@/lib/quick-quote/bot-check";
 import { bccFor, buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { verifyRecaptcha } from "@/lib/quick-quote/recaptcha";
+import { buildReferral, enquiryAbout, pushReferral } from "@/lib/quick-quote/referrals";
 import { createQuickQuoteSchema } from "@/lib/quick-quote/schema";
 import { validQuote } from "./fixtures/quick-quote";
 
@@ -86,6 +87,62 @@ describe("quick quote emails", () => {
     const error = await mailer?.send(buildAutoreply(parse(validQuote), store, quickQuoteConfig)).catch((caught: unknown) => caught);
     expect(error).toMatchObject({ code: "validation_error", responseCode: 422 });
     expect(JSON.stringify(error)).not.toContain("sam@example.com");
+  });
+});
+
+describe("MotorOne referrals push", () => {
+  const credentials = { REFERRALS_API_USERNAME: "user", REFERRALS_API_PASSWORD: "secret" };
+  const ok = (body: object) => new Response(JSON.stringify(body), { status: 200 });
+
+  test("EnquiryAbout uses the interest code and the ticked products", () => {
+    expect(enquiryAbout(parse({ ...validQuote, products: ["Spectre Tint", "Octane Tint"] }), quickQuoteConfig)).toBe("auto#Spectre Tint, Octane Tint");
+    expect(enquiryAbout(parse({ ...validQuote, interest: "residential", products: ["Heat Reduction"] }), quickQuoteConfig)).toBe("home#Heat Reduction");
+  });
+
+  test("builds the same fields the WordPress code sent", () => {
+    const body = buildReferral(parse({ ...validQuote, comments: "Line one\r\nLine two" }), "76", quickQuoteConfig, quickQuoteConfig.referrals!, false);
+    expect(body).toMatchObject({
+      StoreID: 76,
+      FranchiseID: 1,
+      CampaignID: "230",
+      FirstName: "Sam Citizen",
+      ContactNumber: "0400 123 456",
+      Email: "sam@example.com",
+      VehicleMake: "Toyota",
+      Comments: "Line one<BR>Line two",
+      EnquiryAbout: "auto#Spectre Tint",
+      IsTest: "N",
+    });
+  });
+
+  test("is skipped until the credentials are set", async () => {
+    const fetchImpl = vi.fn();
+    expect(await pushReferral(parse(validQuote), "76", { config: quickQuoteConfig, isTest: false, env: {}, fetchImpl })).toEqual({ status: "skipped" });
+    expect(fetchImpl).not.toHaveBeenCalled();
+  });
+
+  test("authenticates, then posts the enquiry with the token", async () => {
+    const fetchImpl = vi.fn().mockResolvedValueOnce(ok({ token: "abc" })).mockResolvedValueOnce(ok({ result: "OK" }));
+    const outcome = await pushReferral(parse(validQuote), "76", { config: quickQuoteConfig, isTest: true, env: credentials, fetchImpl });
+
+    expect(outcome).toEqual({ status: "sent" });
+    expect(fetchImpl.mock.calls[0][0]).toBe("https://referrals.motorone.com/BackEnd/api/TACEnquiry/Authenticate");
+    expect(JSON.parse(fetchImpl.mock.calls[0][1].body)).toEqual({ UserName: "user", Password: "secret" });
+    expect(fetchImpl.mock.calls[1][0]).toBe("https://referrals.motorone.com/BackEnd/api/TACEnquiry/Enquiry");
+    expect(fetchImpl.mock.calls[1][1].headers.Authorization).toBe("Bearer abc");
+    expect(JSON.parse(fetchImpl.mock.calls[1][1].body)).toMatchObject({ StoreID: 76, IsTest: "Y" });
+  });
+
+  test("reports failures without throwing or echoing customer details", async () => {
+    const rejected = vi.fn().mockResolvedValue(new Response("Blocked sam@example.com", { status: 403 }));
+    const outcome = await pushReferral(parse(validQuote), "76", { config: quickQuoteConfig, isTest: false, env: credentials, fetchImpl: rejected });
+    expect(outcome).toEqual({ status: "failed", reason: "authenticate 403" });
+
+    const offline = vi.fn().mockRejectedValue(new TypeError("fetch failed"));
+    expect(await pushReferral(parse(validQuote), "76", { config: quickQuoteConfig, isTest: false, env: credentials, fetchImpl: offline })).toEqual({
+      status: "failed",
+      reason: "TypeError",
+    });
   });
 });
 
