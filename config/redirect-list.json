@@ -2416,6 +2416,14 @@
     "destination": "/contact-a-store/"
   },
   {
+    "source": "/store/horsham/",
+    "destination": "/store/wimmera/"
+  },
+  {
+    "source": "/store/moorebank/",
+    "destination": "/store/liverpool/"
+  },
+  {
     "source": "/tac-online-survey-thank-you/",
     "destination": "/"
   },

@@ -12,11 +12,11 @@ function isRedirectEntry(value: unknown): value is RedirectEntry {
   return typeof entry?.source === "string" && entry.source.startsWith("/") && typeof entry.destination === "string";
 }
 
-// Permanent redirects carried over from the WordPress site; add new ones to redirect-list.json
+// 301 redirects carried over from the WordPress site (same status code as live); add new ones to redirect-list.json
 export function loadRedirects(): Redirect[] {
   const list: unknown = JSON.parse(fs.readFileSync(REDIRECTS_FILE, "utf8"));
   if (!Array.isArray(list) || !list.every(isRedirectEntry)) {
     throw new Error(`Invalid redirect list in ${REDIRECTS_FILE}`);
   }
-  return list.map(({ source, destination }) => ({ source, destination, permanent: true }));
+  return list.map(({ source, destination }) => ({ source, destination, statusCode: 301 as const }));
 }

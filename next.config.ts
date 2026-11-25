@@ -30,11 +30,11 @@ const nextConfig: NextConfig = {
           { type: "query", key: "store_id" },
         ],
         destination: "/contact-a-store/",
-        permanent: true,
+        statusCode: 301,
       },
       // WordPress archive URLs: page 1 lives at the category root, and author archives go to the article index
-      { source: "/articles/category/:category/page/1/", destination: "/articles/category/:category/", permanent: true },
-      { source: "/articles/author/:author/", destination: "/articles/", permanent: true },
+      { source: "/articles/category/:category/page/1/", destination: "/articles/category/:category/", statusCode: 301 },
+      { source: "/articles/author/:author/", destination: "/articles/", statusCode: 301 },
       ...loadRedirects(),
     ];
   },

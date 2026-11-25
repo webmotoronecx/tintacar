@@ -177,6 +177,12 @@ describe("redirects", () => {
     expect(literal.filter((s) => routes.has(s) || isPublicFile(s))).toEqual([]);
   });
 
+  test("every redirect answers 301, as the live site does", async () => {
+    const all = (await nextConfig.redirects?.()) ?? [];
+    expect(all.length).toBeGreaterThan(redirects.length);
+    all.forEach((r) => expect("statusCode" in r ? r.statusCode : undefined, r.source).toBe(301));
+  });
+
   test("internal destinations point to real routes or hosted files", () => {
     const routes = knownRoutes();
     const missing = redirects
