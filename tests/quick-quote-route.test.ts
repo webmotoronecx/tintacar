@@ -79,6 +79,14 @@ describe("POST /api/quick-quote", () => {
     expect(sent.map((mail) => mail.to)).toEqual(["Alexandria@tintacar.com.au", "sam@example.com"]);
   });
 
+  test("copies the store email to its state group only", async () => {
+    vi.stubEnv("QUICK_QUOTE_BCC_NSW_QLD_ACT", "nsw-manager@example.com");
+    vi.stubEnv("QUICK_QUOTE_BCC_VIC_TAS", "vic-manager@example.com");
+    await POST(quoteRequest(validQuote));
+    expect(sent[0].bcc).toEqual(["nsw-manager@example.com"]);
+    expect(sent[1].bcc).toBeUndefined();
+  });
+
   test("fails loudly when SMTP is not configured", async () => {
     vi.mocked(createMailer).mockReturnValue(null);
     expect((await POST(quoteRequest(validQuote))).status).toBe(503);

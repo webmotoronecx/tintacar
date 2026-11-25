@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
 import { quickQuoteConfig } from "@/config/quick-quote";
-import { buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
+import { bccFor, buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { verifyRecaptcha } from "@/lib/quick-quote/recaptcha";
 import { createQuickQuoteSchema } from "@/lib/quick-quote/schema";
@@ -34,6 +34,19 @@ describe("quick quote emails", () => {
     expect(mail).toMatchObject({ to: "sam@example.com", replyTo: store.email, subject: "Thanks for contacting Tint a Car Alexandria" });
     expect(mail.text).toMatch(/^Hi Sam,/);
     expect(mail.text).toContain("02 9119 7102");
+  });
+
+  test("BCC follows the store's state group", () => {
+    const env = {
+      QUICK_QUOTE_BCC_VIC_TAS: "vic@example.com",
+      QUICK_QUOTE_BCC_NSW_QLD_ACT: "east@example.com, north@example.com",
+      QUICK_QUOTE_BCC_WA_SA_NT: "west@example.com,not-an-email",
+    };
+    expect(bccFor("TAS", quickQuoteConfig, env)).toEqual(["vic@example.com"]);
+    expect(bccFor("qld", quickQuoteConfig, env)).toEqual(["east@example.com", "north@example.com"]);
+    expect(bccFor("NT", quickQuoteConfig, env)).toEqual(["west@example.com"]);
+    expect(bccFor("NSW", quickQuoteConfig, {})).toEqual([]);
+    expect(bccFor("NZ", quickQuoteConfig, env)).toEqual([]);
   });
 
   test("mailer stays off until SMTP is configured", () => {

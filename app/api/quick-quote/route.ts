@@ -3,7 +3,7 @@ import { quickQuoteConfig } from "@/config/quick-quote";
 import { siteConfig } from "@/config/site.config";
 import { clientIp, fieldErrorsFrom, readJsonBody, reply } from "@/lib/api";
 import { isRateLimited } from "@/lib/rate-limit";
-import { buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
+import { bccFor, buildAutoreply, buildStoreEmail } from "@/lib/quick-quote/email";
 import { createMailer } from "@/lib/quick-quote/mailer";
 import { verifyRecaptcha } from "@/lib/quick-quote/recaptcha";
 import { createQuickQuoteSchema } from "@/lib/quick-quote/schema";
@@ -56,7 +56,7 @@ export async function POST(request: NextRequest) {
   // The store email must go out; the customer autoreply is best effort
   const recipient = { ...toQuickQuoteStore(store), email: store.email };
   try {
-    await mailer.send(buildStoreEmail(data, recipient, quickQuoteConfig));
+    await mailer.send(buildStoreEmail(data, recipient, quickQuoteConfig, bccFor(store.address.state, quickQuoteConfig)));
   } catch (error: unknown) {
     console.error("[quick-quote] Store email failed:", mailError(error));
     return reply({ success: false, error: FALLBACK_ERROR }, 502);

@@ -13,6 +13,18 @@ export type MailMessage = {
 /** Store fields the emails need, including the inbox */
 export type QuickQuoteRecipient = QuickQuoteStore & { email: string };
 
+const EMAIL = /^[^@\s,]+@[^@\s,]+\.[a-z]{2,}$/i;
+
+// BCC list for a store's state group, read from that group's env var
+export function bccFor(state: string, config: QuickQuoteConfig, env: Record<string, string | undefined> = process.env): string[] {
+  const group = config.bccGroups.find((item) => item.states.includes(state.trim().toUpperCase()));
+  if (!group) return [];
+  return (env[group.env] ?? "")
+    .split(",")
+    .map((address) => address.trim())
+    .filter((address) => EMAIL.test(address));
+}
+
 function escapeHtml(value: string): string {
   return value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#39;");
 }

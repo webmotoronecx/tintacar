@@ -12,6 +12,8 @@ export type QuickQuoteConfig = {
   interests: QuickQuoteInterest[];
   /** Prefix for the store email subject, e.g. "Tint a Car" + the customer's name */
   brandName: string;
+  /** Regional managers copied on store emails; each env var holds comma-separated addresses */
+  bccGroups: { states: string[]; env: string }[];
 };
 
 /** Store details the browser needs; inbox emails stay on the server */
