@@ -18,7 +18,7 @@ export default function ArticlesPage() {
     <>
       <Section spacing="md">
         <SectionHeading title={articlesIndex.title} as="h1" divider={false} />
-        <p className="mt-4 text-[13px] leading-6">{articlesIndex.intro}</p>
+        <p className="mt-4 leading-6">{articlesIndex.intro}</p>
       </Section>
 
       {articlesIndex.groups.map(({ group, title, banner, bannerHref }) => (
