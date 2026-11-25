@@ -1,7 +1,8 @@
 import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
-export type SectionBackground = "white" | "mist" | "panel" | "sky" | "navy" | "ink" | "black";
+/** "overlay" is transparent with light text, for sections placed over a group background image */
+export type SectionBackground = "white" | "mist" | "panel" | "sky" | "navy" | "ink" | "black" | "overlay";
 export type SectionSpacing = "none" | "sm" | "md" | "lg";
 export type SectionWidth = "container" | "narrow" | "full";
 
@@ -13,9 +14,15 @@ const BACKGROUNDS: Record<SectionBackground, string> = {
   navy: "bg-navy text-white",
   ink: "bg-ink text-white",
   black: "bg-black text-white",
+  overlay: "text-white",
 };
 
-const DARK_BACKGROUNDS: SectionBackground[] = ["navy", "ink", "black"];
+const DARK_BACKGROUNDS: SectionBackground[] = ["navy", "ink", "black", "overlay"];
+
+/** Background (and text colour) classes for a band, for wrappers that are not a <Section> */
+export function sectionBackgroundClass(background: SectionBackground = "white"): string {
+  return BACKGROUNDS[background];
+}
 
 /** True when text on this background should switch to light colours */
 export function isDarkBackground(background?: SectionBackground): boolean {

@@ -10,8 +10,8 @@ export function SplitHero({ id, title, eyebrow, quote, buttons, image }: SplitHe
   return (
     <section id={id} className="bg-navy text-white">
       <div className="mx-auto grid max-w-wide lg:grid-cols-2">
-        <div className="flex flex-col justify-center px-6 py-12 sm:px-10 lg:py-16 lg:pr-12 lg:pl-[max(30px,calc((min(100vw,1920px)-1200px)/2))]">
-          <h1 className="text-[30px] leading-[1.25] tracking-[0.02em] text-white md:text-[36px]">
+        <div className="flex flex-col justify-center px-6 py-12 sm:px-10 lg:py-16 lg:pr-12 lg:pl-[50px]">
+          <h1 className="text-[30px] leading-[1.25] tracking-[0.02em] text-white md:text-[40px]">
             <Highlight text={title} color="brand" />
           </h1>
           {eyebrow && <p className="mt-6 text-[13px] font-bold uppercase tracking-wide text-[#e3ab43]">{eyebrow}</p>}

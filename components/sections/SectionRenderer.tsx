@@ -5,7 +5,9 @@ import { ButtonGroup } from "./ButtonGroup";
 import { CompareCards } from "./CompareCards";
 import { ComparisonTable } from "./ComparisonTable";
 import { CtaStrip } from "./CtaStrip";
+import { Faq } from "./Faq";
 import { FeatureSplit } from "./FeatureSplit";
+import { GroupBlock } from "./GroupBlock";
 import { HeadingBlock } from "./HeadingBlock";
 import { HeroBanner } from "./HeroBanner";
 import { IconFeatures } from "./IconFeatures";
@@ -18,6 +20,7 @@ import { PromoCard } from "./PromoCard";
 import { QuickQuoteBlock } from "./QuickQuoteBlock";
 import { Reviews } from "./Reviews";
 import { RichTextBlock } from "./RichTextBlock";
+import { SpecsPanel } from "./SpecsPanel";
 import { SplitHero } from "./SplitHero";
 import { StoreLocatorBlock } from "./StoreLocatorBlock";
 import { Testimonial } from "./Testimonial";
@@ -72,6 +75,18 @@ function renderSection(section: Section) {
       return <ProductShowcase {...section} />;
     case "compareCards":
       return <CompareCards {...section} />;
+    case "faq":
+      return <Faq {...section} />;
+    case "specsPanel":
+      return <SpecsPanel {...section} />;
+    case "group": {
+      const { sections, ...group } = section;
+      return (
+        <GroupBlock {...group}>
+          <SectionRenderer sections={sections.map((child) => ({ ...child, background: child.background ?? "overlay" }))} />
+        </GroupBlock>
+      );
+    }
     default: {
       const unknown: never = section;
       throw new Error(`Unknown section type: ${JSON.stringify(unknown)}`);

@@ -8,7 +8,7 @@ type NoteProps = Omit<NoteSection, "type">;
 export function Note({ id, background, spacing = "sm", text, align = "center" }: NoteProps) {
   return (
     <Section id={id} background={background} spacing={spacing}>
-      <p className={cn("text-[12px] italic leading-5", align === "center" && "text-center")}>{text}</p>
+      <p className={cn("italic leading-6", align === "center" && "text-center")}>{text}</p>
     </Section>
   );
 }

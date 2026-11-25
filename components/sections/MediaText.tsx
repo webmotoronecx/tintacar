@@ -19,6 +19,7 @@ export function MediaText({
   imageHref,
   imagePosition = "left",
   eyebrow,
+  eyebrowColor,
   title,
   as = "h2",
   size = "md",
@@ -27,6 +28,8 @@ export function MediaText({
   showPaymentLogos,
   decoration,
   highlightColor,
+  divider = false,
+  dividerColor,
 }: MediaTextProps) {
   const isLight = isDarkBackground(background);
   const picture = (
@@ -49,8 +52,21 @@ export function MediaText({
           )}
         </div>
         <div className="lg:px-4">
-          {title && <SectionHeading title={title} as={as} size={size} eyebrow={eyebrow} divider={false} highlightColor={highlightColor} light={isLight} className="mb-5" />}
-          {html && <RichText html={html} light={isLight} className="text-[13px]" />}
+          {title && (
+            <SectionHeading
+              title={title}
+              as={as}
+              size={size}
+              eyebrow={eyebrow}
+              eyebrowColor={eyebrowColor}
+              divider={divider}
+              dividerColor={dividerColor}
+              highlightColor={highlightColor}
+              light={isLight}
+              className="mb-5"
+            />
+          )}
+          {html && <RichText html={html} light={isLight} />}
           {buttons && buttons.length > 0 && (
             <div className="mt-8 flex flex-wrap gap-4">
               {buttons.map((button) => (

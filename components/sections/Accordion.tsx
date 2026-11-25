@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Minus, Plus } from "lucide-react";
+import { ChevronRight, Minus, Plus } from "lucide-react";
 import type { AccordionSection } from "@/types/sections";
 import { Highlight } from "@/components/ui/Highlight";
 import { RichText } from "@/components/ui/RichText";
@@ -9,9 +9,34 @@ import { cn } from "@/lib/utils";
 type AccordionProps = Omit<AccordionSection, "type">;
 
 // Native <details> accordion; the shared name keeps one panel open at a time
-export function Accordion({ id, background, spacing = "md", title, highlightColor = "accent-soft", items, defaultOpen = 0, align = "center" }: AccordionProps) {
+export function Accordion({ id, background, spacing = "md", title, highlightColor = "accent", items, defaultOpen = 0, align = "center", variant = "panel", columns = 1 }: AccordionProps) {
   const groupName = useId();
   const isLeft = align === "left";
+
+  if (variant === "toggle") {
+    return (
+      <Section id={id} background={background} spacing={spacing}>
+        {title && (
+          <h3 className="mb-6 text-center text-[22px] font-bold text-heading md:text-[24px]">
+            <Highlight text={title} color={highlightColor} />
+          </h3>
+        )}
+        <div className={cn("grid items-start gap-4", columns === 2 && "md:grid-cols-2 md:gap-[30px]")}>
+          {items.map((item, index) => (
+            <details key={`${index}-${item.title}`} open={index === defaultOpen} className="group border border-line">
+              <summary className="flex cursor-pointer list-none items-center gap-3 px-4 py-4 font-heading text-[15px] font-bold text-heading [&::-webkit-details-marker]:hidden">
+                <span aria-hidden="true" className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-heading">
+                  <ChevronRight className="h-3 w-3 transition-transform group-open:rotate-90" />
+                </span>
+                {item.title}
+              </summary>
+              <RichText html={item.html} className="px-4 pb-5 text-left" />
+            </details>
+          ))}
+        </div>
+      </Section>
+    );
+  }
 
   return (
     <Section id={id} background={background} spacing={spacing}>
@@ -25,7 +50,7 @@ export function Accordion({ id, background, spacing = "md", title, highlightColo
           <details key={`${index}-${item.title}`} name={groupName} open={index === defaultOpen} className="group border-b border-line last:border-b-0">
             <summary
               className={cn(
-                "relative flex cursor-pointer list-none items-center bg-panel px-12 py-3 text-[13px] font-bold text-[#666] transition-colors group-open:text-[#444] hover:text-[#444] [&::-webkit-details-marker]:hidden",
+                "relative flex cursor-pointer list-none items-center bg-panel px-12 py-3 text-[14px] font-bold text-[#666] transition-colors group-open:text-[#444] hover:text-[#444] [&::-webkit-details-marker]:hidden",
                 isLeft ? "justify-start text-left" : "justify-center text-center",
               )}
             >
@@ -33,7 +58,7 @@ export function Accordion({ id, background, spacing = "md", title, highlightColo
               <Minus aria-hidden="true" className="absolute left-4 hidden h-3 w-3 group-open:block" />
               {item.title}
             </summary>
-            <RichText html={item.html} className={cn("bg-white px-5 py-6 text-[13px] text-body md:px-10", isLeft ? "text-left" : "text-center")} />
+            <RichText html={item.html} className={cn("bg-white px-5 py-6 text-body md:px-10", isLeft ? "text-left" : "text-center")} />
           </details>
         ))}
       </div>

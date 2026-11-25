@@ -9,7 +9,7 @@ export function Testimonial({ id, background = "ink", spacing = "lg", quote, aut
     <Section id={id} background={background} spacing={spacing} width="narrow">
       <figure className="text-center">
         <blockquote className="text-[17px] italic leading-[1.75] text-white md:text-[20px]">&quot;{quote}&quot;</blockquote>
-        <figcaption className="mt-6 text-[13px] font-bold text-brand">{author}</figcaption>
+        <figcaption className="mt-6 font-bold text-brand">{author}</figcaption>
       </figure>
     </Section>
   );

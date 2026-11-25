@@ -40,7 +40,7 @@ export type HeroBannerSection = SectionBase & {
   hideTitle?: boolean;
   subtitle?: string;
   buttons?: Cta[];
-  minHeight?: "sm" | "md" | "lg";
+  minHeight?: "xs" | "sm" | "md" | "lg";
   contentPosition?: "center" | "bottom";
   overlay?: boolean;
 };
@@ -68,14 +68,22 @@ export type HeadingSection = SectionBase & {
   as?: HeadingLevel;
   size?: HeadingSize;
   eyebrow?: string;
+  eyebrowColor?: HighlightColor;
   subtitle?: string;
+  tagline?: string;
+  taglineColor?: HighlightColor;
   html?: string;
   align?: "left" | "center";
   divider?: boolean;
-  dividerColor?: "brand" | "accent";
+  dividerColor?: "brand" | "accent" | "llumar";
   highlightColor?: HighlightColor;
   bold?: boolean;
+  /** "inline" puts the buttons to the right of the title on wide screens */
+  layout?: "stacked" | "inline";
+  /** Render only the heading text for screen readers and search engines, as some live pages do */
+  visuallyHidden?: boolean;
   topRule?: boolean;
+  bottomRule?: boolean;
   buttons?: Cta[];
   stackButtons?: boolean;
   showPaymentLogos?: boolean;
@@ -86,6 +94,9 @@ export type TileItem = {
   href?: string;
   title?: string;
   text?: string;
+  /** Trusted HTML caption, used instead of text where the copy has links or emphasis */
+  html?: string;
+  bullets?: string[];
   link?: TextLink;
   button?: Cta;
 };
@@ -96,6 +107,10 @@ export type TileGridSection = SectionBase & {
   columns?: 2 | 3 | 4;
   gap?: "none" | "sm" | "md";
   variant?: "plain" | "card" | "story";
+  /** Card captions centred (default) or left-aligned with natural-size images */
+  captionAlign?: "center" | "left";
+  /** "natural" keeps product shots at their own width instead of filling the column */
+  imageSize?: "fill" | "natural";
   items: TileItem[];
 };
 
@@ -106,7 +121,7 @@ export type ImageBannerSection = SectionBase & {
   href?: string;
   title?: string;
   titleAlign?: "left" | "center";
-  width?: "container" | "narrow" | "full";
+  width?: "container" | "narrow" | "half" | "full";
 };
 
 export type ReviewsSection = SectionBase & {
@@ -138,6 +153,10 @@ export type FeatureSplitSection = SectionBase & {
   paymentText?: string;
   image: ImageAsset;
   imagePosition?: "left" | "right";
+  /** "bleed" runs the image to the screen edge; "contained" keeps it inside the page width */
+  layout?: "bleed" | "contained";
+  /** "timeline" lists features with gem markers joined by a line */
+  featureStyle?: "plain" | "timeline";
 };
 
 export type IconFeaturesSection = SectionBase & {
@@ -146,9 +165,10 @@ export type IconFeaturesSection = SectionBase & {
   title?: string;
   highlightColor?: HighlightColor;
   divider?: boolean;
-  dividerColor?: "brand" | "accent";
-  variant?: "divided" | "circle";
-  columns?: 2 | 3 | 4;
+  dividerColor?: "brand" | "accent" | "llumar";
+  /** divided = vertical rules, circle = icons in rings, plain = icon and label only */
+  variant?: "divided" | "circle" | "plain";
+  columns?: 2 | 3 | 4 | 6;
   items: { icon: string; title: string; text?: string }[];
   button?: Cta;
 };
@@ -182,6 +202,9 @@ export type AccordionSection = SectionBase & {
   defaultOpen?: number;
   /** Product pages centre the panels; some pages use left-aligned ones */
   align?: "left" | "center";
+  /** "toggle" shows each item as its own bordered box with a chevron */
+  variant?: "panel" | "toggle";
+  columns?: 1 | 2;
 };
 
 export type TestimonialSection = SectionBase & {
@@ -195,7 +218,15 @@ export type RichTextSection = SectionBase & {
   title?: string;
   as?: HeadingLevel;
   size?: HeadingSize;
+  highlightColor?: HighlightColor;
+  bold?: boolean;
   html: string;
+  /** Extra HTML blocks shown side by side with html on wider screens */
+  htmlColumns?: string[];
+  /** "card" shows each column as a white card */
+  columnStyle?: "plain" | "card";
+  /** Colour for h3 headings inside the copy */
+  headingColor?: HighlightColor;
   align?: "left" | "center";
   width?: "container" | "narrow";
 };
@@ -207,9 +238,12 @@ export type MediaTextSection = SectionBase & {
   imageHref?: string;
   imagePosition?: "left" | "right";
   eyebrow?: string;
+  eyebrowColor?: HighlightColor;
   title?: string;
   as?: HeadingLevel;
   size?: HeadingSize;
+  divider?: boolean;
+  dividerColor?: "brand" | "accent" | "llumar";
   html?: string;
   buttons?: Cta[];
   showPaymentLogos?: boolean;
@@ -219,12 +253,45 @@ export type MediaTextSection = SectionBase & {
 export type InfoCardsSection = SectionBase & {
   type: "infoCards";
   title?: string;
+  /** Card title colour; defaults to the heading colour on light bands and brand gold on dark ones */
+  titleColor?: "heading" | "brand" | "olive";
   items: { title: string; text: string; link?: TextLink }[];
+};
+
+/** Several sections sharing one background colour and photo; children default to the "overlay" band */
+export type GroupSection = SectionBase & {
+  type: "group";
+  backgroundImage?: ImageAsset;
+  imagePosition?: "center" | "top";
+  sections: Section[];
+};
+
+/** Questions and answers; answers are trusted HTML from the content files */
+export type FaqSection = SectionBase & {
+  type: "faq";
+  title?: string;
+  highlightColor?: HighlightColor;
+  columns?: 1 | 2;
+  questionColor?: HighlightColor;
+  items: { question: string; answerHtml: string }[];
+};
+
+/** Spec bars, short call-outs and a button beside a list of key features */
+export type SpecsPanelSection = SectionBase & {
+  type: "specsPanel";
+  accent?: "accent" | "brand" | "olive";
+  specs: { title: string; items: { label: string; value: number }[]; note?: string };
+  lines?: string[];
+  button?: Cta;
+  features: { title: string; text: string }[];
+  showPaymentLogos?: boolean;
 };
 
 /** Centred offer card with a background image */
 export type PromoCardSection = SectionBase & {
   type: "promoCard";
+  /** "card" is a centred tile; "band" runs the artwork full width with stacked buttons */
+  layout?: "card" | "band";
   image: ImageAsset;
   html: string;
   buttons?: Cta[];
@@ -233,7 +300,10 @@ export type PromoCardSection = SectionBase & {
 export type StoreLocatorSection = SectionBase & {
   type: "storeLocator";
   title?: string;
+  /** Keep the H1 for search engines and screen readers but don't show it, as on the live page */
+  hideTitle?: boolean;
   intro?: string;
+  listTitle?: string;
 };
 
 /** Quick Quote form with the selected store panel; the store comes from ?id= or ?store_id= */
@@ -289,7 +359,10 @@ export type Section =
   | StoreLocatorSection
   | QuickQuoteSection
   | ProductShowcaseSection
-  | CompareCardsSection;
+  | CompareCardsSection
+  | GroupSection
+  | FaqSection
+  | SpecsPanelSection;
 
 export type SectionType = Section["type"];
 

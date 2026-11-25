@@ -10,7 +10,7 @@ export function CtaStrip({ id, background, spacing = "md", text, buttons, link }
   return (
     <Section id={id} background={background} spacing={spacing}>
       <div className="flex flex-col items-center gap-3 text-center">
-        {text && <p className="text-[13px] leading-5">{text}</p>}
+        {text && <p className="leading-6">{text}</p>}
         <div className="flex flex-wrap justify-center gap-4">
           {buttons.map((button) => (
             <Button key={button.label} href={button.href} variant={button.variant ?? "outline"} size={button.size ?? "sm"}>

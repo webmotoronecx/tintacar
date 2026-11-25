@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
 const HEIGHTS = {
+  xs: "min-h-[240px] md:min-h-[430px]",
   sm: "min-h-[280px] md:min-h-[420px]",
   md: "min-h-[440px] md:min-h-[577px]",
   lg: "min-h-[520px] md:min-h-[720px]",
@@ -47,8 +48,8 @@ export function HeroBanner({ id, image, mobileImage, title, titleAs: TitleTag = 
             )}
           >
             <div className="container-site flex flex-col items-center gap-4 text-center">
-              {showTitle && <TitleTag className="text-[34px] leading-tight text-white md:text-[60px]">{title}</TitleTag>}
-              {subtitle && <p className="max-w-2xl text-[16px] text-white md:text-[20px]">{subtitle}</p>}
+              {showTitle && <TitleTag className={cn("leading-tight text-white", TitleTag === "h1" ? "text-[34px] md:text-[60px]" : "text-[28px] md:text-[36px]")}>{title}</TitleTag>}
+              {subtitle && <p className={cn("max-w-2xl text-white", TitleTag === "h1" ? "text-[16px] md:text-[20px]" : "text-[15px]")}>{subtitle}</p>}
               {buttons?.map((button, index) => (
                 <Button
                   key={button.label}

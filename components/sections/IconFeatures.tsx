@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 
 type IconFeaturesProps = Omit<IconFeaturesSection, "type">;
 
-const COLUMNS = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-2 lg:grid-cols-3", 4: "grid-cols-2 lg:grid-cols-4" };
+const COLUMNS = { 2: "sm:grid-cols-2", 3: "sm:grid-cols-2 lg:grid-cols-3", 4: "grid-cols-2 lg:grid-cols-4", 6: "grid-cols-2 sm:grid-cols-3 lg:grid-cols-6" };
 
 // Row of icon + label features; "divided" uses vertical rules, "circle" puts icons in rings
 export function IconFeatures({
@@ -39,13 +39,23 @@ export function IconFeatures({
         />
       )}
 
-      {variant === "divided" ? (
+      {variant === "plain" ? (
+        <ul className={cn("grid gap-y-8", COLUMNS[columns])}>
+          {items.map((item) => (
+            <li key={item.title} className="flex flex-col items-center px-4 text-center">
+              <Image src={item.icon} alt="" width={40} height={40} className="h-9 w-auto" />
+              <p className="mt-4">{item.title}</p>
+              {item.text && <p className="mt-1 leading-6">{item.text}</p>}
+            </li>
+          ))}
+        </ul>
+      ) : variant === "divided" ? (
         <ul className={cn("grid gap-y-8", COLUMNS[columns])}>
           {items.map((item) => (
             <li key={item.title} className="flex flex-col items-center px-4 text-center lg:border-r lg:border-line lg:last:border-r-0">
               <Image src={item.icon} alt="" width={40} height={40} className="h-9 w-auto" />
-              <p className="mt-4 font-heading text-[14px] font-bold text-heading">{item.title}</p>
-              {item.text && <p className="mt-1 text-[13px] leading-6">{item.text}</p>}
+              <p className="mt-4 font-heading text-[15px] font-bold text-heading">{item.title}</p>
+              {item.text && <p className="mt-1 leading-6">{item.text}</p>}
             </li>
           ))}
         </ul>
@@ -58,7 +68,7 @@ export function IconFeatures({
               </span>
               <div>
                 <p className="font-heading text-[17px] font-semibold leading-snug text-heading">{item.title}</p>
-                {item.text && <p className="mt-1 text-[13px] leading-6">{item.text}</p>}
+                {item.text && <p className="mt-1 leading-6">{item.text}</p>}
               </div>
             </li>
           ))}

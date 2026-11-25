@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 
 type DividerProps = {
-  color?: "brand" | "accent";
+  color?: "brand" | "accent" | "llumar";
   align?: "left" | "center";
   className?: string;
 };
@@ -13,7 +13,7 @@ export function Divider({ color = "brand", align = "left", className }: DividerP
       aria-hidden="true"
       className={cn(
         "block h-[3px] w-[70px]",
-        color === "brand" ? "bg-brand" : "bg-accent",
+        { brand: "bg-brand", accent: "bg-accent", llumar: "bg-llumar" }[color],
         align === "center" && "mx-auto",
         className,
       )}

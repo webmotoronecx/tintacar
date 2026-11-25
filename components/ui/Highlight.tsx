@@ -1,12 +1,14 @@
 import { Fragment } from "react";
 import { cn } from "@/lib/utils";
 
-export type HighlightColor = "accent" | "accent-soft" | "brand";
+export type HighlightColor = "accent" | "accent-soft" | "brand" | "olive" | "llumar";
 
-const COLORS: Record<HighlightColor, string> = {
+export const HIGHLIGHT_TEXT: Record<HighlightColor, string> = {
   accent: "text-accent",
   "accent-soft": "text-accent-soft",
   brand: "text-brand",
+  olive: "text-olive",
+  llumar: "text-llumar",
 };
 
 type HighlightProps = {
@@ -22,10 +24,15 @@ export function Highlight({ text, color = "accent" }: HighlightProps) {
     <>
       {lines.map((line, lineIndex) => (
         <Fragment key={lineIndex}>
-          {lineIndex > 0 && <br />}
+          {lineIndex > 0 && (
+            <>
+              {" "}
+              <br />
+            </>
+          )}
           {line.split(/(==[^=]+==)/g).map((part, i) =>
             part.startsWith("==") && part.endsWith("==") ? (
-              <span key={i} className={cn(COLORS[color])}>
+              <span key={i} className={cn(HIGHLIGHT_TEXT[color])}>
                 {part.slice(2, -2)}
               </span>
             ) : (

@@ -32,7 +32,7 @@ export function ProductShowcase({
           {title}
         </h3>
         {text && (
-          <p className="mx-auto mt-2 max-w-3xl font-heading text-[22px] leading-snug text-heading md:text-[26px]">
+          <p className="mx-auto mt-2 max-w-4xl font-body text-[24px] leading-snug text-heading md:text-[40px]">
             {text}
           </p>
         )}
@@ -64,16 +64,16 @@ export function ProductShowcase({
                 sizes="(min-width: 640px) 570px, 100vw"
                 className="h-auto w-full"
               />
-              <h2 className="mt-3 text-[26px] leading-tight text-heading md:text-[32px]">
+              <h2 className="mt-3 text-[26px] font-bold leading-tight text-heading md:text-[36px]">
                 {tile.title}
               </h2>
               {tile.subtitle && (
-                <h3 className="mt-1 text-[18px] font-bold text-heading md:text-[20px]">
+                <h3 className="mt-1 text-[18px] font-bold text-heading">
                   {tile.subtitle}
                 </h3>
               )}
               {tile.text && (
-                <p className="mt-3 text-[13px] leading-6">{tile.text}</p>
+                <p className="mt-3 leading-6">{tile.text}</p>
               )}
             </div>
           ))}

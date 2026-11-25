@@ -9,7 +9,7 @@ type PaymentLogosProps = {
 
 // Afterpay + Zip badges linking to their info pages
 export function PaymentLogos({ className, light }: PaymentLogosProps) {
-  const imageClasses = cn("h-7 w-auto", light && "brightness-0 invert");
+  const imageClasses = cn("h-[46px] w-auto", light && "brightness-0 invert");
 
   return (
     <div className={cn("flex items-center gap-10", className)}>

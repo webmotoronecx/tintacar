@@ -2,19 +2,21 @@ import type { ButtonHTMLAttributes, ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { SmartLink } from "./SmartLink";
 
-export type ButtonVariant = "solid" | "outline" | "outline-light" | "white" | "muted";
+export type ButtonVariant = "solid" | "outline" | "outline-light" | "outline-white" | "outline-black" | "white" | "muted";
 export type ButtonSize = "sm" | "md" | "lg";
 
 const VARIANTS: Record<ButtonVariant, string> = {
   solid: "border-brand bg-brand text-white hover:border-brand-dark hover:bg-brand-dark",
   outline: "border-brand bg-transparent text-ink hover:bg-brand hover:text-white",
   "outline-light": "border-brand bg-transparent text-white hover:bg-brand",
+  "outline-white": "border-white bg-transparent text-white hover:bg-white hover:text-ink",
+  "outline-black": "border-black bg-transparent text-ink hover:bg-black hover:text-white",
   white: "border-white bg-white text-ink hover:border-ink hover:bg-ink hover:text-white",
   muted: "border-transparent bg-[#e2e2e2] text-ink hover:bg-brand hover:text-white",
 };
 
 const SIZES: Record<ButtonSize, string> = {
-  sm: "px-6 py-2 text-[12px]",
+  sm: "px-6 py-2 text-[13px]",
   md: "px-[30px] py-3 text-[13px]",
   lg: "px-10 py-[14px] text-[15px]",
 };
