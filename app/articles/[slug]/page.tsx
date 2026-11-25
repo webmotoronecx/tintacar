@@ -54,8 +54,10 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     headline: article.title,
     datePublished: article.date,
     dateModified: article.modified,
+    author: { "@type": "Organization", name: siteConfig.name, url: siteConfig.url },
     publisher: { "@type": "Organization", name: siteConfig.name },
     mainEntityOfPage: `${siteConfig.url}/articles/${article.slug}/`,
+    ...(article.image ? { image: new URL(article.image.src, siteConfig.url).href } : {}),
   };
 
   return (
