@@ -51,8 +51,8 @@ export function DesktopNav({ items }: DesktopNavProps) {
   }, [hovered]);
 
   return (
-    <nav aria-label="Main navigation" className="hidden lg:block">
-      <ul className="flex items-center gap-11">
+    <nav aria-label="Main navigation" className="hidden nav:block">
+      <ul className="flex items-center gap-5 xl:gap-11">
         {items.map((item) => {
           const hasDropdown = Boolean(item.groups?.length || item.links?.length);
           const active = isActive(pathname, item);

@@ -47,7 +47,7 @@ export function MobileNav({ items, cta }: MobileNavProps) {
   };
 
   return (
-    <div className="lg:hidden" onKeyDown={handleKeyDown}>
+    <div className="nav:hidden" onKeyDown={handleKeyDown}>
       <button
         ref={toggleRef}
         type="button"

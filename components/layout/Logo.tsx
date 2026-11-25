@@ -15,7 +15,7 @@ type LogoProps = {
   className?: string;
 };
 
-const DESKTOP_QUERY = "(min-width: 1024px)";
+const DESKTOP_QUERY = "(min-width: 992px)";
 
 // Single <picture> so only the logo for the current breakpoint is downloaded
 export function Logo({ alt, desktop, mobile, className }: LogoProps) {

@@ -18,6 +18,9 @@
   /* Darkest grey that still reads as muted while meeting 4.5:1 on white */
   --color-muted: #707070;
 
+  /* Desktop navigation from 992px, as on the live site (mobile menu below 991px) */
+  --breakpoint-nav: 62rem;
+
   --container-site: 1200px;
   --container-wide: 1920px;
 }
