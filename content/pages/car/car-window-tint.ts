@@ -12,8 +12,15 @@ export const carWindowTintPage: PageData = {
   },
   sections: [
     {
+      type: "heroBanner",
+      title: "Window Tinting for Car, Home & Office.",
+      hideTitle: true,
+      image: { src: `${IMG}/sunroof-bundle-hero.webp`, alt: "Complete your vehicle's glass protection. Bundle tint and Sunroof Protection Film and save $100.", width: 2100, height: 600 },
+      mobileImage: { src: "/images/home/hero-mobile.png", alt: "Tint a Car - Protects Best. Because your car & home deserve it.", width: 1080, height: 1350 },
+    },
+    {
       type: "heading",
-      as: "h1",
+      as: "h2",
       spacing: "sm",
       title: "Choose from our range of car tints, then select your nearest store.",
       subtitle: "From $295* (Shop Now, Pay Later with Afterpay or Zip Pay)",
