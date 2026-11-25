@@ -14,6 +14,7 @@ export const carCarePage: PageData = {
       type: "heading",
       title: "Elite X Car Care Range",
       as: "h1",
+      size: "lg",
       subtitle: "The ultimate in vehicle maintenance is now available at your nearest store!",
       spacing: "sm",
     },
@@ -34,59 +35,56 @@ export const carCarePage: PageData = {
       buttons: [{ ...FIND_STORE, variant: "solid" }],
     },
     {
-      type: "mediaText",
-      imagePosition: "left",
-      spacing: "sm",
-      image: { src: "/images/protection/car-care-shampoo-gallery.png", alt: "Elite X Shampoo and Ceramic Rejuvenator and WindowCleaner by Tint a Car", width: 1044, height: 1035 },
-      html: `<p><strong>Elite X Shampoo</strong><br>Specially formulated to be used after ${CERAMIC_LINK} application, Elite X Shampoo enhances and maintains the high gloss finish, hydrophobic and UV protective qualities, in addition to being a high performing car shampoo for any car.<br><em>Best paired with <strong>Elite X Ceramic Rejuvenator.</strong></em></p>`,
-    },
-    {
-      type: "mediaText",
-      imagePosition: "right",
-      spacing: "sm",
-      image: { src: "/images/protection/car-care-ceramic-rejuvenator-gallery.png", alt: "Elite X Ceramic Rejuvenator by Tint a Car", width: 1044, height: 1035 },
-      html: `<p><strong>Elite X Ceramic Rejuvenator</strong><br>Using Elite X Ceramic Rejuvenator when washing your car helps to not only detail your car to showroom quality, but build upon the protective ceramic qualities of Elite X.<br><em>For best results, use after <strong>${CERAMIC_LINK}</strong> has been applied, in conjunction with the microfibre cloth and twist drying towel.</em></p>`,
+      type: "tileGrid",
+      variant: "card",
+      captionAlign: "left",
+      columns: 2,
+      items: [
+        {
+          image: { src: "/images/protection/car-care-shampoo-gallery.png", alt: "Elite X Shampoo and Ceramic Rejuvenator and WindowCleaner by Tint a Car", width: 1044, height: 1035 },
+          html: `<p><strong>Elite X Shampoo</strong><br>Specially formulated to be used after ${CERAMIC_LINK} application, Elite X Shampoo enhances and maintains the high gloss finish, hydrophobic and UV protective qualities, in addition to being a high performing car shampoo for any car.<br><em>Best paired with <strong>Elite X Ceramic Rejuvenator.</strong></em></p>`,
+        },
+        {
+          image: { src: "/images/protection/car-care-ceramic-rejuvenator-gallery.png", alt: "Elite X Ceramic Rejuvenator by Tint a Car", width: 1044, height: 1035 },
+          html: `<p><strong>Elite X Ceramic Rejuvenator</strong><br>Using Elite X Ceramic Rejuvenator when washing your car helps to not only detail your car to showroom quality, but build upon the protective ceramic qualities of Elite X.<br><em>For best results, use after <strong>${CERAMIC_LINK}</strong> has been applied, in conjunction with the microfibre cloth and twist drying towel.</em></p>`,
+        },
+      ],
     },
     {
       type: "tileGrid",
       variant: "card",
+      captionAlign: "left",
       columns: 3,
       items: [
         {
           image: { src: "/images/protection/car-care-tyre-magic.jpg", alt: "EliteX Tyre Magic car care product", width: 800, height: 793 },
-          title: "Elite X Tyre Magic",
-          text: "A water based gel that is applied to the tyre producing a dry film that prevents messy application. Comes with free applicator sponge.",
+          html: "<p><strong>Elite X Tyre Magic</strong><br>A water based gel that is applied to the tyre producing a dry film that prevents messy application. Comes with free applicator sponge.</p>",
         },
         {
           image: { src: "/images/protection/car-care-interior-rejuvenator.jpg", alt: "EliteX Interior Rejuvenator Product", width: 800, height: 793 },
-          title: "Elite X Interior Rejuvenator",
-          text: "Formulated for vinyl, rubber and plastic trims to clean, rejuvenate & protect against harmful UV Rays. For the perfect application, use in conjunction with our microfibre cloth.",
+          html: "<p><strong>Elite X Interior Rejuvenator</strong><br>Formulated for vinyl, rubber and plastic trims to clean, rejuvenate & protect against harmful UV Rays. For the perfect application, use in conjunction with our microfibre cloth.</p>",
         },
         {
           image: { src: "/images/protection/car-care-protection-pack.jpg", alt: "EliteX Bundle+Bucket car care pack", width: 800, height: 793 },
-          title: "Elite X Protection Pack",
-          text: "Get the full range of car care products, plus our 15L Elite X Bucket!",
+          html: "<p><strong>Elite X Protection Pack</strong><br>Get the full range of car care products, plus our 15L Elite X Bucket!</p>",
         },
         {
           image: { src: "/images/protection/car-care-drying-towel.jpg", alt: "Tint a Car car care products Black Twist Towel", width: 800, height: 793 },
-          title: "Drying Towel",
-          text: "Scratch-free super-soft microfibre weave, dries quickly without getting too heavy. 90 x 60cm, machine washable.",
+          html: "<p><strong>Drying Towel</strong><br>Scratch-free super-soft microfibre weave, dries quickly without getting too heavy. 90 x 60cm, machine washable.</p>",
         },
         {
           image: { src: "/images/protection/car-care-wash-mitt.jpg", alt: "Tint a Car car care products Noodle Mit", width: 800, height: 793 },
-          title: "Microfibre Wash Mitt",
-          text: "Deep-pile microfibre noodles absorb dirt and grime, to prevent dragging across the paintwork. Machine washable.",
+          html: "<p><strong>Microfibre Wash Mitt</strong><br>Deep-pile microfibre noodles absorb dirt and grime, to prevent dragging across the paintwork. Machine washable.</p>",
         },
         {
           image: { src: "/images/protection/car-care-microfibre-cloth.jpg", alt: "tint a car Blue Microfibre cloth", width: 800, height: 793 },
-          title: "Microfibre Cloth",
-          text: "Perfect for product application, and buffing. 50x50cm, machine washable.",
+          html: "<p><strong>Microfibre Cloth</strong><br>Perfect for product application, and buffing. 50x50cm, machine washable.</p>",
         },
       ],
     },
     {
       type: "heading",
-      title: "Found something you fancy? Contact your local store and make a purchase today!",
+      title: "Found something you fancy?\nContact your local store and make a purchase today!",
       as: "h3",
       size: "sm",
       align: "center",
@@ -105,6 +103,8 @@ export const carCarePage: PageData = {
     },
     {
       type: "accordion",
+      variant: "toggle",
+      columns: 2,
       spacing: "sm",
       defaultOpen: -1,
       items: [

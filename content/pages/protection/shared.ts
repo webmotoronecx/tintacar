@@ -11,7 +11,7 @@ export const neanyTestimonial: Section = {
 /** "Interest free" heading with Afterpay/Zip logos, followed by a warranty footnote */
 export function interestFreeSections(title: string, warranty: string): Section[] {
   return [
-    { type: "heading", title, as: "h2", size: "sm", align: "center", divider: false, showPaymentLogos: true, spacing: "sm" },
+    { type: "heading", title, as: "h2", size: "xs", align: "center", divider: false, showPaymentLogos: true, topRule: true, bottomRule: true, spacing: "sm" },
     { type: "note", text: warranty, spacing: "sm" },
   ];
 }

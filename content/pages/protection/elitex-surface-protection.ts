@@ -9,7 +9,13 @@ export const elitexSurfaceProtectionPage: PageData = {
       "An advanced hydrophobic surface protection, EliteX is extremely durable & gives a super gloss finish. Protect your car paint by calling 13TINT for a free quote!",
   },
   sections: [
-    { type: "heading", title: "Car Paint Protection and Interior Surface Protection", as: "h1", spacing: "sm" },
+    {
+      type: "heading",
+      title: "Car Paint Protection and Interior Surface Protection",
+      as: "h1",
+      subtitle: "The ultimate protective combination, essential for every new car.",
+      spacing: "sm",
+    },
     {
       type: "imageBanner",
       spacing: "sm",
@@ -18,36 +24,38 @@ export const elitexSurfaceProtectionPage: PageData = {
     {
       type: "buttonGroup",
       spacing: "sm",
-      align: "left",
+      align: "center",
+      stack: true,
       buttons: [
-        { ...FIND_STORE, variant: "solid" },
-        { label: "Enquire now", href: "/contact-a-store/", variant: "outline" },
+        { ...FIND_STORE, variant: "solid", size: "sm" },
+        { label: "Enquire now", href: "/contact-a-store/", variant: "outline", size: "sm" },
       ],
     },
     {
       type: "heading",
       title: "Discover the importance of both paint and interior surface protection for your car.",
       as: "h2",
-      size: "md",
+      size: "lg",
       align: "center",
+      divider: false,
       spacing: "sm",
     },
     {
       type: "richText",
       spacing: "sm",
+      headingColor: "brand",
       html: "<h3>Elite X Paint Protection:</h3><p>Ceramic surface paint protection provides a durable and high gloss finish to your car that keeps it looking new!</p><h4>For protection against:</h4><ul><li>Weather induced oxidisation, fading &amp; loss of gloss</li><li>Bird &amp; bat droppings</li><li>Road grime</li><li>Tree sap &amp; bug splatter</li><li>Bore water &amp; water marks</li></ul><h4>Why is Elite X Ceramic Paint Protection important?</h4><ul><li>Hydrophobic ceramic technology, makes water bead off your car</li><li>Developed to be extremely tough and durable against the elements</li><li>Helps to protect from the results of harmful UV rays</li><li>Provides an outstanding high gloss mirror-like finish</li><li>Helps keep your vehicle cleaner for longer</li><li>Once-off application</li><li>Professionally applied</li><li>Can help to maximise re-sale value</li><li>Backed by a nationwide limited lifetime warranty**</li></ul>",
+      htmlColumns: [
+        "<h3>Elite X Interior Protection:</h3><p>Designed to maintain the condition of your car’s leather, vinyl &amp; fabric areas maintaining the showroom finish of your car.</p><h4>For protection against:</h4><ul><li>Dehydration &amp; Discolouration</li><li>Cracking, splitting and hardening</li><li>Mould and mildew growth</li><li>Food and drink stains</li><li>Make-up &amp; Sunscreen</li></ul><h4>Added benefits of Interior Surface Protection:</h4><ul><li>Once-off application</li><li>Helps to make cleaning easier</li><li>Professionally applied</li><li>Backed by a nationwide limited lifetime warranty**</li></ul>",
+      ],
     },
-    {
-      type: "richText",
-      spacing: "sm",
-      html: "<h3>Elite X Interior Protection:</h3><p>Designed to maintain the condition of your car’s leather, vinyl &amp; fabric areas maintaining the showroom finish of your car.</p><h4>For protection against:</h4><ul><li>Dehydration &amp; Discolouration</li><li>Cracking, splitting and hardening</li><li>Mould and mildew growth</li><li>Food and drink stains</li><li>Make-up &amp; Sunscreen</li></ul><h4>Added benefits of Interior Surface Protection:</h4><ul><li>Once-off application</li><li>Helps to make cleaning easier</li><li>Professionally applied</li><li>Backed by a nationwide limited lifetime warranty**</li></ul>",
-    },
-    { type: "buttonGroup", spacing: "sm", buttons: [FIND_STORE] },
+    { type: "buttonGroup", spacing: "sm", align: "center", buttons: [{ ...FIND_STORE, variant: "solid", size: "sm" }] },
     {
       type: "mediaText",
       background: "panel",
       imagePosition: "right",
       title: "==A protective coating with double the protection.==",
+      highlightColor: "brand",
       size: "md",
       html: "<p>Elite X has been developed to add an incredible 8 microns of protection directly onto your vehicle’s exterior surfaces.</p>",
       image: { src: "/images/protection/elitex-diagram.png", alt: "elite x car paint protection and interior protection", width: 578, height: 169 },
@@ -59,15 +67,17 @@ export const elitexSurfaceProtectionPage: PageData = {
       as: "h2",
       size: "md",
       align: "center",
-      buttons: [{ ...FIND_STORE, variant: "solid" }],
+      divider: false,
+      buttons: [{ ...FIND_STORE, variant: "solid", size: "sm" }],
     },
     { type: "video", youtubeId: "7W69tF8sze4", title: "Elite X Ceramic Paint Protection" },
     {
       type: "promoCard",
+      layout: "band",
       image: { src: "/images/protection/elitex-special-offer-bg.png", alt: "", width: 1564, height: 700 },
       html: "<h3>SPECIAL OFFER</h3><h2>Ceramic Bundle!</h2><h3>Elite X Ceramic Surface Paint Protection + Any Car Tint*</h3><h3>Get the total bundle with</h3><h2>Elite X Exterior + Interior Protection!</h2><p>Contact your local store today to find out more.</p>",
       buttons: [
-        { ...FIND_STORE, variant: "outline-light" },
+        { ...FIND_STORE, variant: "outline-white" },
         { label: "Quick quote", href: "/contact-a-store/", variant: "white" },
       ],
     },
@@ -78,7 +88,8 @@ export const elitexSurfaceProtectionPage: PageData = {
     ),
     {
       type: "accordion",
-      title: "Some key reasons to buy Elite X Exterior Surface Coating.",
+      title: "Some ==key reasons== to buy Elite X Exterior Surface Coating.",
+      defaultOpen: -1,
       items: [
         {
           title: "Learn more about Interior Surface Protection by Elite X",

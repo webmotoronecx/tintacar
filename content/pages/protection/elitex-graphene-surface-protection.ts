@@ -13,6 +13,7 @@ export const elitexGraphenePage: PageData = {
   sections: [
     {
       type: "heroBanner",
+      minHeight: "xs",
       image: { src: "/images/protection/elitex-graphene-banner.webp", alt: "Elite X +Graphene Infused Surface Protection", width: 1920, height: 750 },
       buttons: [
         { ...FIND_STORE, variant: "solid" },
@@ -23,13 +24,18 @@ export const elitexGraphenePage: PageData = {
       type: "heading",
       title: "==Elite X +Graphene Infused== Surface Protection.",
       as: "h1",
-      size: "md",
+      size: "lg",
+      highlightColor: "brand",
+      divider: false,
+      bottomRule: true,
       spacing: "sm",
       html: "<h3>Now more durable than ever.</h3><p>ELITE X +Graphene Infused formula brings exceptional levels of hardness and greater defence against fading and oxidation of clear and base coats. Only one atom thick, Graphene helps deliver incredible strength and added durability for longer lasting protection to the surface of your vehicle.</p>",
     },
     {
       type: "featureSplit",
       title: "Elite X +Graphene Infused Exterior Surface Coating",
+      layout: "contained",
+      featureStyle: "timeline",
       features: [
         {
           title: "EXTREME HARDNESS & RESISTANCE AGAINST THE ELEMENTS",
@@ -55,7 +61,10 @@ export const elitexGraphenePage: PageData = {
       type: "heading",
       title: "==Elite X Interior== Surface Protection.",
       as: "h2",
-      size: "md",
+      size: "lg",
+      highlightColor: "brand",
+      divider: false,
+      bottomRule: true,
       spacing: "sm",
       html: "<h3>Advanced protection against common stains.</h3><p>Unmatched protection for your vehicle’s interior surfaces. Elite X Interior Protection forms a powerful barrier against UV damage, spills, stains, dirt, and grime, helping preserve your interior’s look, feel, and value for years to come.</p>",
     },
@@ -63,6 +72,8 @@ export const elitexGraphenePage: PageData = {
       type: "featureSplit",
       title: "Elite X Interior Surface Coating",
       imagePosition: "left",
+      layout: "contained",
+      featureStyle: "timeline",
       features: [
         {
           title: "EXCEPTIONAL DURABILITY AND STAIN RESISTANCE",
@@ -85,26 +96,27 @@ export const elitexGraphenePage: PageData = {
       id: "protects-against",
       title: "Discover the importance of both paint and interior surface protection for your car.",
       as: "h2",
-      size: "md",
+      size: "lg",
       align: "center",
+      divider: false,
       spacing: "sm",
     },
     {
       type: "richText",
       spacing: "sm",
+      headingColor: "brand",
       html: "<h3>Elite X +Graphene Infused Paint Protection:</h3><h4>For protection against:</h4><ul><li>Weather induced oxidisation</li><li>Fading &amp; loss of gloss</li><li>Bird &amp; bat droppings</li><li>Tree sap &amp; bug splatter</li><li>Rail dust &amp; fallen leaves</li></ul><h4>Additional benefits:</h4><ul><li>Once-off application with no inspections</li><li>Professionally applied</li><li>Less maintenance, keeps your vehicle cleaner for longer</li><li>Backed by a nationwide limited lifetime warranty**</li></ul>",
+      htmlColumns: [
+        "<h3>Elite X Interior Protection:</h3><h4>For protection against:</h4><ul><li>Dehydration &amp; Discolouration</li><li>Cracking, splitting and hardening</li><li>Mould and mildew growth</li><li>Food and drink stains</li><li>Make-up &amp; Sunscreen</li></ul><h4>Added benefits of Interior Surface Protection:</h4><ul><li>Once-off application</li><li>Helps to make cleaning easier</li><li>Professionally applied</li><li>Backed by a nationwide limited lifetime warranty**</li></ul>",
+      ],
     },
-    {
-      type: "richText",
-      spacing: "sm",
-      html: "<h3>Elite X Interior Protection:</h3><h4>For protection against:</h4><ul><li>Dehydration &amp; Discolouration</li><li>Cracking, splitting and hardening</li><li>Mould and mildew growth</li><li>Food and drink stains</li><li>Make-up &amp; Sunscreen</li></ul><h4>Added benefits of Interior Surface Protection:</h4><ul><li>Once-off application</li><li>Helps to make cleaning easier</li><li>Professionally applied</li><li>Backed by a nationwide limited lifetime warranty**</li></ul>",
-    },
-    { type: "buttonGroup", spacing: "sm", buttons: [FIND_STORE] },
+    { type: "buttonGroup", spacing: "sm", align: "center", buttons: [{ ...FIND_STORE, variant: "solid", size: "sm" }] },
     {
       type: "mediaText",
       background: "panel",
       imagePosition: "right",
       title: "==Evolution of Graphene Technology.==",
+      highlightColor: "brand",
       size: "md",
       html: "<p>Elite X was developed to add an incredible 8 microns of protection directly onto your vehicle’s exterior surfaces. Now with an added layer of graphene infused formula, brings exceptional levels of hardness and greater defence against fading and oxidation of clear and base coats.</p>",
       image: { src: "/images/protection/elitex-graphene-diagram.png", alt: "Standard coat, Elite X coating and Elite X +Graphene infusion compared", width: 969, height: 282 },
@@ -116,7 +128,8 @@ export const elitexGraphenePage: PageData = {
       as: "h2",
       size: "md",
       align: "center",
-      buttons: [{ ...FIND_STORE, variant: "solid" }],
+      divider: false,
+      buttons: [{ ...FIND_STORE, variant: "solid", size: "sm" }],
     },
     {
       type: "imageBanner",
@@ -129,7 +142,8 @@ export const elitexGraphenePage: PageData = {
     ),
     {
       type: "accordion",
-      title: "Some key reasons to buy Elite X + Graphene Infused Exterior Surface Coating.",
+      title: "Some ==key reasons== to buy Elite X + Graphene Infused Exterior Surface Coating.",
+      defaultOpen: -1,
       items: [
         {
           title: "Why Choose EliteX +Graphene over Standard EliteX?",
