@@ -15,7 +15,7 @@ export const googleReviews: Review[] = [
     text: "The team looked after me and did an excellent job - my car looks awesome!  Thanks tint a car!",
   },
   {
-    author: "Scott Purdey",
+    author: "SCOTT PURDEY",
     rating: 5,
     date: "April 2024",
     text: "Wouldn’t bother taking my cars anywhere else, work is always top notch and the service is great. Best going around by a mile",
