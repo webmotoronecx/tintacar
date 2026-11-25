@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { categoryPath } from "@/components/articles/CategoryArchive";
 import { QuoteCtaBox } from "@/components/articles/QuoteCtaBox";
 import { ZipLandingWidget } from "@/components/articles/ZipLandingWidget";
 import { RichText } from "@/components/ui/RichText";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site.config";
-import { getArticle, getArticleSummaries } from "@/lib/articles";
+import { getArticle, getArticleCategory, getArticleSummaries } from "@/lib/articles";
+import { formatDate } from "@/lib/utils";
 
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
@@ -45,6 +47,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
   const article = getArticle(slug);
   if (!article) notFound();
 
+  const categories = article.categories.map(getArticleCategory).filter((category) => category !== undefined);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -60,12 +63,31 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <h1 className="text-[28px] font-bold leading-tight text-heading md:text-[32px]">{article.title}</h1>
       <nav aria-label="Breadcrumb" className="mt-2 text-[13px]">
-        <Link href="/articles/" className="inline-block py-1 underline hover:text-brand">
-          Articles
+        <Link href="/" className="inline-block py-1 underline hover:text-brand">
+          Home
         </Link>
         <span aria-hidden="true"> &gt; </span>
+        {categories[0] && (
+          <>
+            <Link href={categoryPath(categories[0].slug)} className="inline-block py-1 underline hover:text-brand">
+              {categories[0].name}
+            </Link>
+            <span aria-hidden="true"> &gt; </span>
+          </>
+        )}
         <span aria-current="page">{article.title}</span>
       </nav>
+      <p className="mt-1 text-[13px] text-muted">
+        <time dateTime={article.date}>{formatDate(article.date)}</time>
+        {categories.map((category, index) => (
+          <span key={category.slug}>
+            {index === 0 ? " · " : ", "}
+            <Link href={categoryPath(category.slug)} className="inline-block py-1 hover:text-brand">
+              {category.name}
+            </Link>
+          </span>
+        ))}
+      </p>
 
       <div className="mt-8 grid gap-12 lg:grid-cols-[minmax(0,1fr)_320px]">
         <div className="min-w-0">

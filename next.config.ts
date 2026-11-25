@@ -32,6 +32,9 @@ const nextConfig: NextConfig = {
         destination: "/contact-a-store/",
         permanent: true,
       },
+      // WordPress archive URLs: page 1 lives at the category root, and author archives go to the article index
+      { source: "/articles/category/:category/page/1/", destination: "/articles/category/:category/", permanent: true },
+      { source: "/articles/author/:author/", destination: "/articles/", permanent: true },
       ...loadRedirects(),
     ];
   },

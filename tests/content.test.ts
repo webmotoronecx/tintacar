@@ -4,7 +4,7 @@ import { describe, expect, test } from "vitest";
 import { loadRedirects } from "@/config/redirects";
 import nextConfig from "@/next.config";
 import { siteConfig } from "@/config/site.config";
-import { getArticle, getArticleSummaries, getArticlesByGroup } from "@/lib/articles";
+import { categoryPageCount, getArticle, getArticleCategories, getArticleCategory, getArticleSummaries, getArticlesByGroup } from "@/lib/articles";
 import { getAllPages } from "@/lib/pages";
 import { directionsUrl, formatAddress, getStoreBySlug, getStores, mapEmbedUrl } from "@/lib/stores";
 
@@ -108,6 +108,17 @@ describe("articles", () => {
       return [...html.matchAll(/src="(\/[^"]+)"/g)].map((m) => m[1]).filter((src) => !fs.existsSync(path.join(PUBLIC_DIR, src)));
     });
     expect(missing).toEqual([]);
+  });
+
+  test("every article category has a name and the live archive page count", () => {
+    const categories = getArticleCategories();
+    const unnamed = summaries.flatMap((article) => article.categories).filter((slug) => !getArticleCategory(slug));
+    expect(unnamed).toEqual([]);
+    expect(categories).toHaveLength(13);
+    expect(getArticleCategory("home-window-tinting")?.count).toBe(133);
+    expect(categoryPageCount("home-window-tinting")).toBe(14);
+    expect(categoryPageCount("car-wraps")).toBe(1);
+    expect(summaries).toHaveLength(242);
   });
 
   test("rejects unsafe slugs", () => {
