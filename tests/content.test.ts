@@ -6,6 +6,7 @@ import nextConfig from "@/next.config";
 import { siteConfig } from "@/config/site.config";
 import { categoryPageCount, getArticle, getArticleCategories, getArticleCategory, getArticleSummaries, getArticlesByGroup } from "@/lib/articles";
 import { getAllPages } from "@/lib/pages";
+import { getStoreReviews, storeReviewSlugs } from "@/lib/store-reviews";
 import { directionsUrl, formatAddress, getStoreBySlug, getStores, mapEmbedUrl } from "@/lib/stores";
 
 const PUBLIC_DIR = path.join(process.cwd(), "public");
@@ -151,6 +152,20 @@ describe("stores", () => {
     expect(mapEmbedUrl(store)).toContain("output=embed");
     expect(directionsUrl(store)).toContain("destination=");
     expect(getStoreBySlug("nowhere")).toBeUndefined();
+  });
+
+  test("store reviews belong to real stores and show one to three five-star reviews", () => {
+    const slugs = storeReviewSlugs();
+    expect(slugs.length).toBeGreaterThan(0);
+    for (const slug of slugs) {
+      expect(getStoreBySlug(slug), slug).toBeDefined();
+      const entry = getStoreReviews(slug);
+      expect(entry?.reviews.length, slug).toBeGreaterThan(0);
+      expect(entry?.reviews.length, slug).toBeLessThanOrEqual(3);
+      expect(entry?.reviews.every((review) => review.rating === 5 && review.text.trim() && /^[A-Z][a-z]+ \d{4}$/.test(review.date ?? "")), slug).toBe(true);
+      expect(entry?.writeReviewUrl, slug).toMatch(/^https:\/\/search\.google\.com\/local\/writereview\?placeid=\w/);
+    }
+    expect(getStoreReviews("nowhere")).toBeUndefined();
   });
 });
 

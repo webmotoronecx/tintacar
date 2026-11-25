@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import type { Store } from "@/types/content";
 import { Button } from "@/components/ui/Button";
 import { RichText } from "@/components/ui/RichText";
@@ -10,6 +11,8 @@ type StoreDetailsProps = {
   /** Where the EMAIL button goes, e.g. the Quick Quote form with this store preselected */
   enquireHref: string;
   enquireLabel?: string;
+  /** Extra blocks shown between the store details and the store description, e.g. reviews */
+  children?: ReactNode;
 };
 
 function telHref(phone: string): string {
@@ -17,7 +20,7 @@ function telHref(phone: string): string {
 }
 
 // Single store: contact details, services, opening hours and map
-export function StoreDetails({ store, enquireHref, enquireLabel = "Enquire now" }: StoreDetailsProps) {
+export function StoreDetails({ store, enquireHref, enquireLabel = "Enquire now", children }: StoreDetailsProps) {
   const socials: SocialLink[] = [
     ...(store.socials.facebook ? [{ platform: "facebook" as const, href: store.socials.facebook }] : []),
     ...(store.socials.instagram ? [{ platform: "instagram" as const, href: store.socials.instagram }] : []),
@@ -98,6 +101,8 @@ export function StoreDetails({ store, enquireHref, enquireLabel = "Enquire now" 
           />
         </div>
       </div>
+
+      {children}
 
       {store.descriptionHtml && <RichText html={store.descriptionHtml} className="mt-8 border-b border-line pb-10" />}
     </div>

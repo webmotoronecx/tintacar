@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { StoreDetails } from "@/components/stores/StoreDetails";
+import { StoreReviews } from "@/components/stores/StoreReviews";
 import { Section } from "@/components/ui/Section";
 import { siteConfig } from "@/config/site.config";
 import { formatAddress, getStoreBySlug, getStores, quickQuoteUrl } from "@/lib/stores";
 import type { Store } from "@/types/content";
 import { openingHoursSpecification } from "@/lib/opening-hours";
+import { getStoreReviews } from "@/lib/store-reviews";
 
 type StorePageProps = {
   params: Promise<{ slug: string }>;
@@ -57,6 +59,7 @@ export default async function StorePage({ params }: StorePageProps) {
   const { slug } = await params;
   const store = getStoreBySlug(slug);
   if (!store) notFound();
+  const reviews = getStoreReviews(store.slug);
 
   return (
     <>
@@ -65,7 +68,9 @@ export default async function StorePage({ params }: StorePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd(store)).replace(/</g, "\\u003c") }}
       />
       <Section spacing="md">
-        <StoreDetails store={store} enquireHref={quickQuoteUrl(store)} />
+        <StoreDetails store={store} enquireHref={quickQuoteUrl(store)}>
+          {reviews && <StoreReviews {...reviews} className="mt-10" />}
+        </StoreDetails>
       </Section>
     </>
   );
