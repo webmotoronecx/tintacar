@@ -34,6 +34,8 @@ type StoreLocatorProps = {
   categories: string[];
   /** Google Maps JavaScript API key; without one the finder uses a Maps embed and text search */
   mapsApiKey?: string;
+  /** Heading above the results list, e.g. "Stores near you" */
+  listTitle?: string;
 };
 
 const SAVED_ORIGIN_KEY = "store-finder-origin";
@@ -79,7 +81,7 @@ function subscribeStorage(onChange: () => void): () => void {
 }
 
 // Store finder: address or text search, "near me", radius and category filters, results list and map
-export function StoreLocator({ stores, brandName, region, categories, mapsApiKey }: StoreLocatorProps) {
+export function StoreLocator({ stores, brandName, region, categories, mapsApiKey, listTitle }: StoreLocatorProps) {
   const defaultMap = `https://maps.google.com/maps?q=${encodeURIComponent(region)}&z=4&output=embed`;
   const remembered = useSyncExternalStore(subscribeStorage, readSavedOrigin, () => null);
   const [chosenOrigin, setChosenOrigin] = useState<LatLng | null | undefined>(undefined);
@@ -224,6 +226,7 @@ export function StoreLocator({ stores, brandName, region, categories, mapsApiKey
           </div>
         </div>
 
+        {listTitle && <h2 className="px-4 pt-4 text-[26px] leading-tight text-accent md:text-[30px]">{listTitle}</h2>}
         <div className="flex items-center justify-between gap-2 px-4 pt-3 text-[12px]">
           <p aria-live="polite" className="text-muted">
             {GEO_MESSAGES[geoStatus] || `${results.length} of ${stores.length} stores`}

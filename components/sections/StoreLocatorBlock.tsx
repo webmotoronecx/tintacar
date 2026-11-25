@@ -10,7 +10,7 @@ import { directionsUrl, formatAddress, getStores, mapEmbedUrl, quickQuoteUrl } f
 type StoreLocatorBlockProps = Omit<StoreLocatorSection, "type">;
 
 // Server wrapper: prepares a slim store list for the client-side finder
-export function StoreLocatorBlock({ id, background, spacing = "md", title, intro }: StoreLocatorBlockProps) {
+export function StoreLocatorBlock({ id, background, spacing = "md", title, hideTitle, intro, listTitle }: StoreLocatorBlockProps) {
   const stores: LocatorStore[] = getStores().map((store) => {
     const addressLine = formatAddress(store);
     return {
@@ -32,13 +32,14 @@ export function StoreLocatorBlock({ id, background, spacing = "md", title, intro
 
   return (
     <Section id={id} background={background} spacing={spacing}>
-      {title && <SectionHeading title={title} as="h1" size="lg" subtitle={intro} className="mb-8" />}
+      {title && (hideTitle ? <h1 className="sr-only">{title}</h1> : <SectionHeading title={title} as="h1" size="lg" subtitle={intro} className="mb-8" />)}
       <StoreLocator
         stores={stores}
         brandName={siteConfig.name}
         region={siteConfig.country}
         categories={locatorCategories.map((category) => category.label)}
         mapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
+        listTitle={listTitle}
       />
     </Section>
   );

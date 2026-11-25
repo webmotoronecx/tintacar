@@ -11,7 +11,7 @@ type QuoteCtaBoxProps = {
 export function QuoteCtaBox({ title = "Get a Quick Quote", primary, secondary }: QuoteCtaBoxProps) {
   return (
     <div className="flex flex-col items-center bg-white px-6 py-8 text-center lg:border lg:border-[#efefef]">
-      <p className="font-heading text-[30px] leading-tight text-heading">{title}</p>
+      <h2 className="font-heading text-[30px] leading-tight text-heading">{title}</h2>
       <Divider align="center" className="mt-5" />
       <Button href={primary.href} className="mt-8 w-full max-w-[250px]">
         {primary.label}
