@@ -97,7 +97,7 @@ describe("POST /api/quick-quote", () => {
     expect((await POST(quoteRequest(validQuote))).status).toBe(200);
   });
 
-  test("fails loudly when SMTP is not configured", async () => {
+  test("fails loudly when email is not configured", async () => {
     vi.mocked(createMailer).mockReturnValue(null);
     expect((await POST(quoteRequest(validQuote))).status).toBe(503);
   });

@@ -18,7 +18,7 @@ const FALLBACK_ERROR = `Sorry, we couldn't send your enquiry. Please try again o
 const VERIFY_ERROR = `We couldn't verify your request. Please try again or ${CALL_US}.`;
 const schema = createQuickQuoteSchema(quickQuoteConfig);
 
-// SMTP error codes only: messages can echo recipient addresses, and customer data must stay out of logs
+// Error codes only: provider messages can echo recipient addresses, and customer data must stay out of logs
 function mailError(error: unknown): string {
   const { code, responseCode } = (error ?? {}) as { code?: string; responseCode?: number };
   return [code, responseCode].filter(Boolean).join(" ") || "unknown error";
@@ -55,7 +55,7 @@ export async function POST(request: NextRequest) {
 
   const mailer = createMailer();
   if (!mailer) {
-    console.error("[quick-quote] SMTP is not configured; enquiry was not delivered.");
+    console.error("[quick-quote] Email is not configured (RESEND_API_KEY or SMTP_HOST, plus QUICK_QUOTE_FROM); enquiry was not delivered.");
     return reply({ success: false, error: FALLBACK_ERROR }, 503);
   }
 

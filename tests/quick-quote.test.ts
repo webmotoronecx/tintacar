@@ -53,9 +53,39 @@ describe("quick quote emails", () => {
     expect(bccFor("NZ", quickQuoteConfig, env)).toEqual([]);
   });
 
-  test("mailer stays off until SMTP is configured", () => {
+  test("mailer stays off until a sender is configured", () => {
+    const from = "Tint a Car <noreply@example.com>";
     expect(createMailer({})).toBeNull();
-    expect(createMailer({ SMTP_HOST: "smtp.example.com", QUICK_QUOTE_FROM: "Tint a Car <noreply@example.com>" })).not.toBeNull();
+    expect(createMailer({ SMTP_HOST: "smtp.example.com" })).toBeNull();
+    expect(createMailer({ RESEND_API_KEY: "re_key" })).toBeNull();
+    expect(createMailer({ SMTP_HOST: "smtp.example.com", QUICK_QUOTE_FROM: from })).not.toBeNull();
+    expect(createMailer({ RESEND_API_KEY: "re_key", QUICK_QUOTE_FROM: from })).not.toBeNull();
+  });
+
+  test("Resend sends the store email with reply-to and BCC", async () => {
+    const fetchImpl = vi.fn().mockResolvedValue(new Response(JSON.stringify({ id: "1" }), { status: 200 }));
+    const mailer = createMailer({ RESEND_API_KEY: "re_key", QUICK_QUOTE_FROM: "Tint a Car <noreply@example.com>" }, fetchImpl);
+    await mailer?.send(buildStoreEmail(parse(validQuote), store, quickQuoteConfig, ["nsw@example.com"]));
+
+    const [url, init] = fetchImpl.mock.calls[0];
+    expect(url).toBe("https://api.resend.com/emails");
+    expect(init.headers.Authorization).toBe("Bearer re_key");
+    expect(JSON.parse(init.body)).toMatchObject({
+      from: "Tint a Car <noreply@example.com>",
+      to: [store.email],
+      reply_to: "sam@example.com",
+      bcc: ["nsw@example.com"],
+      subject: "Tint a Car Sam Citizen",
+    });
+  });
+
+  test("Resend errors carry the status and error name, not the provider message", async () => {
+    const body = JSON.stringify({ name: "validation_error", message: "Invalid `to` field: sam@example.com" });
+    const fetchImpl = vi.fn().mockResolvedValue(new Response(body, { status: 422 }));
+    const mailer = createMailer({ RESEND_API_KEY: "re_key", QUICK_QUOTE_FROM: "noreply@example.com" }, fetchImpl);
+    const error = await mailer?.send(buildAutoreply(parse(validQuote), store, quickQuoteConfig)).catch((caught: unknown) => caught);
+    expect(error).toMatchObject({ code: "validation_error", responseCode: 422 });
+    expect(JSON.stringify(error)).not.toContain("sam@example.com");
   });
 });
 
