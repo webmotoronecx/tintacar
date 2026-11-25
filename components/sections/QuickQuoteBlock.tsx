@@ -4,6 +4,7 @@ import { Section } from "@/components/ui/Section";
 import { quickQuoteConfig } from "@/config/quick-quote";
 import { siteConfig } from "@/config/site.config";
 import { getStores, toQuickQuoteStore } from "@/lib/stores";
+import { lowerFirst } from "@/lib/utils";
 
 type QuickQuoteBlockProps = Omit<QuickQuoteSection, "type">;
 
@@ -22,7 +23,7 @@ export function QuickQuoteBlock({ id, background, spacing = "sm", formTitle, sto
         storeTitle={storeTitle}
         privacyHtml={privacyHtml}
         recaptchaSiteKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-        fallbackContact={siteConfig.phone.label.toLowerCase()}
+        fallbackContact={lowerFirst(siteConfig.phone.label)}
         leadEvent={siteConfig.analytics.leadEvent}
       />
     </Section>
