@@ -26,6 +26,7 @@ export const whyChoosePage: PageData = {
     {
       type: "accordion",
       title: "Some ==key reasons== to choose Tint a Car.",
+      align: "left",
       items: [
         {
           title: "Lifetime Warranty",
@@ -41,6 +42,6 @@ export const whyChoosePage: PageData = {
         },
       ],
     },
-    { type: "note", text: "^Warranty terms, conditions and exclusions apply *Where available", spacing: "sm" },
+    { type: "note", text: "^Warranty terms, conditions and exclusions apply *Where available", align: "left", spacing: "sm" },
   ],
 };
