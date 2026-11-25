@@ -6,7 +6,7 @@ import { storeSchema } from "./schemas";
 
 let cache: Store[] | null = null;
 
-// Store repository; bundled JSON so serverless routes (e.g. the enquiry API) can read it
+// Store repository; bundled JSON so serverless routes (e.g. the Quick Quote API) can read it
 export function getStores(): Store[] {
   if (!cache) {
     const result = z.array(storeSchema).safeParse(storesData);

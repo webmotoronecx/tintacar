@@ -180,6 +180,8 @@ export type AccordionSection = SectionBase & {
   highlightColor?: HighlightColor;
   items: { title: string; html: string }[];
   defaultOpen?: number;
+  /** Product pages centre the panels; some pages use left-aligned ones */
+  align?: "left" | "center";
 };
 
 export type TestimonialSection = SectionBase & {
@@ -234,6 +236,15 @@ export type StoreLocatorSection = SectionBase & {
   intro?: string;
 };
 
+/** Quick Quote form with the selected store panel; the store comes from ?id= or ?store_id= */
+export type QuickQuoteSection = SectionBase & {
+  type: "quickQuote";
+  formTitle: string;
+  storeTitle: string;
+  /** Trusted HTML under the form, e.g. the privacy statement link */
+  privacyHtml?: string;
+};
+
 /** Product showcase: logo, intro, video, wide banner, then image tiles with captions */
 export type ProductShowcaseSection = SectionBase & {
   type: "productShowcase";
@@ -276,6 +287,7 @@ export type Section =
   | InfoCardsSection
   | PromoCardSection
   | StoreLocatorSection
+  | QuickQuoteSection
   | ProductShowcaseSection
   | CompareCardsSection;
 
@@ -286,4 +298,6 @@ export type PageData = {
   path: string;
   seo: Seo & { image?: string };
   sections: Section[];
+  /** Leave out of sitemap.xml, e.g. pages that only work with query parameters */
+  excludeFromSitemap?: boolean;
 };

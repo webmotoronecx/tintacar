@@ -3,7 +3,7 @@ import { StoreLocator, type LocatorStore } from "@/components/stores/StoreLocato
 import { Section } from "@/components/ui/Section";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/config/site.config";
-import { directionsUrl, formatAddress, getStores, mapEmbedUrl } from "@/lib/stores";
+import { directionsUrl, formatAddress, getStores, mapEmbedUrl, quickQuoteUrl } from "@/lib/stores";
 
 type StoreLocatorBlockProps = Omit<StoreLocatorSection, "type">;
 
@@ -21,6 +21,7 @@ export function StoreLocatorBlock({ id, background, spacing = "md", title, intro
       lng: store.lng,
       mapUrl: mapEmbedUrl(store),
       directionsUrl: directionsUrl(store),
+      enquireHref: quickQuoteUrl(store),
       searchText: `${store.name} ${addressLine}`.toLowerCase(),
     };
   });

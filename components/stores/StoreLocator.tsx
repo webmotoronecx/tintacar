@@ -16,6 +16,8 @@ export type LocatorStore = {
   lng?: number;
   mapUrl: string;
   directionsUrl: string;
+  /** Quick Quote link with this store preselected */
+  enquireHref: string;
   searchText: string;
 };
 
@@ -173,7 +175,7 @@ export function StoreLocator({ stores, brandName, region }: StoreLocatorProps) {
                 <Link href={`/store/${store.slug}/`} className="py-1 underline hover:text-brand">
                   Store information
                 </Link>
-                <Link href={`/store/${store.slug}/#enquire`} className="py-1 underline hover:text-brand">
+                <Link href={store.enquireHref} className="py-1 underline hover:text-brand">
                   Email
                 </Link>
                 <a href={store.directionsUrl} target="_blank" rel="noopener noreferrer" className="py-1 underline hover:text-brand">

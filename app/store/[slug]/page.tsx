@@ -1,11 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { EnquiryForm } from "@/components/forms/EnquiryForm";
 import { StoreDetails } from "@/components/stores/StoreDetails";
 import { Section } from "@/components/ui/Section";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { siteConfig } from "@/config/site.config";
-import { formatAddress, getStoreBySlug, getStores } from "@/lib/stores";
+import { formatAddress, getStoreBySlug, getStores, quickQuoteUrl } from "@/lib/stores";
 import type { Store } from "@/types/content";
 
 type StorePageProps = {
@@ -64,16 +62,7 @@ export default async function StorePage({ params }: StorePageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd(store)).replace(/</g, "\\u003c") }}
       />
       <Section spacing="md">
-        <StoreDetails store={store} />
-      </Section>
-      <Section id="enquire" spacing="md" background="mist" className="scroll-mt-28">
-        <SectionHeading title={`Enquire with ${store.name}`} size="md" className="mb-8" />
-        <EnquiryForm
-          storeSlug={store.slug}
-          storeName={store.name}
-          fallbackContact={siteConfig.phone.label.toLowerCase()}
-          leadEvent={siteConfig.analytics.leadEvent}
-        />
+        <StoreDetails store={store} enquireHref={quickQuoteUrl(store)} />
       </Section>
     </>
   );

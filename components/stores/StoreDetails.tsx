@@ -7,7 +7,9 @@ import type { SocialLink } from "@/types/site";
 
 type StoreDetailsProps = {
   store: Store;
-  enquireHref?: string;
+  /** Where the EMAIL button goes, e.g. the Quick Quote form with this store preselected */
+  enquireHref: string;
+  enquireLabel?: string;
 };
 
 function telHref(phone: string): string {
@@ -15,7 +17,7 @@ function telHref(phone: string): string {
 }
 
 // Single store: contact details, services, opening hours and map
-export function StoreDetails({ store, enquireHref = "#enquire" }: StoreDetailsProps) {
+export function StoreDetails({ store, enquireHref, enquireLabel = "Email" }: StoreDetailsProps) {
   const socials: SocialLink[] = [
     ...(store.socials.facebook ? [{ platform: "facebook" as const, href: store.socials.facebook }] : []),
     ...(store.socials.instagram ? [{ platform: "instagram" as const, href: store.socials.instagram }] : []),
@@ -80,7 +82,7 @@ export function StoreDetails({ store, enquireHref = "#enquire" }: StoreDetailsPr
               </Button>
             )}
             <Button href={enquireHref} className="w-[200px]">
-              Enquire now
+              {enquireLabel}
             </Button>
           </div>
           {socials.length > 0 && <SocialIcons links={socials} className="mt-6 flex gap-4" iconClassName="h-6 w-6 text-ink" />}

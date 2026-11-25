@@ -1,5 +1,4 @@
 import { afterEach, describe, expect, test, vi } from "vitest";
-import { enquirySchema } from "@/lib/enquiry";
 import { distanceKm } from "@/lib/geo";
 import { getPageByPath, pageMetadata, pathToSegments } from "@/lib/pages";
 import { isRateLimited } from "@/lib/rate-limit";
@@ -38,27 +37,6 @@ describe("geo", () => {
 
   test("distanceKm is zero for the same point", () => {
     expect(distanceKm({ lat: -27.46, lng: 153.0 }, { lat: -27.46, lng: 153.0 })).toBe(0);
-  });
-});
-
-describe("enquiry schema", () => {
-  const valid = { name: "Sam Citizen", email: "sam@example.com", phone: "0400 123 456", message: "Quote for a sedan please", store: "milton" };
-
-  test("accepts a complete enquiry and trims text", () => {
-    const result = enquirySchema.safeParse({ ...valid, name: "  Sam Citizen  " });
-    expect(result.success).toBe(true);
-    expect(result.data?.name).toBe("Sam Citizen");
-  });
-
-  test("allows an empty optional phone", () => {
-    expect(enquirySchema.safeParse({ ...valid, phone: "" }).success).toBe(true);
-  });
-
-  test("rejects invalid email, phone and short message", () => {
-    const result = enquirySchema.safeParse({ ...valid, email: "nope", phone: "call me", message: "hi" });
-    expect(result.success).toBe(false);
-    const fields = result.error?.issues.map((issue) => issue.path[0]);
-    expect(fields).toEqual(expect.arrayContaining(["email", "phone", "message"]));
   });
 });
 

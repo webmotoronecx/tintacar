@@ -21,7 +21,19 @@ const nextConfig: NextConfig = {
     remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com" }],
   },
   async redirects() {
-    return loadRedirects();
+    return [
+      // As on live: the Quick Quote page needs a store, so without one it goes to the store finder
+      {
+        source: "/quick-quote/",
+        missing: [
+          { type: "query", key: "id" },
+          { type: "query", key: "store_id" },
+        ],
+        destination: "/contact-a-store/",
+        permanent: true,
+      },
+      ...loadRedirects(),
+    ];
   },
   async headers() {
     return [

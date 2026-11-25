@@ -1001,7 +1001,7 @@
   },
   {
     "source": "/email-a-store/",
-    "destination": "/contact-a-store/"
+    "destination": "/quick-quote/"
   },
   {
     "source": "/enerlogic-window-film/",
@@ -2410,10 +2410,6 @@
   {
     "source": "/protection-products/elitex-shampoo/",
     "destination": "/car-care/"
-  },
-  {
-    "source": "/quick-quote/",
-    "destination": "/contact-a-store/"
   },
   {
     "source": "/store-locator/",

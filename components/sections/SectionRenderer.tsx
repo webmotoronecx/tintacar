@@ -15,6 +15,7 @@ import { MediaText } from "./MediaText";
 import { Note } from "./Note";
 import { ProductShowcase } from "./ProductShowcase";
 import { PromoCard } from "./PromoCard";
+import { QuickQuoteBlock } from "./QuickQuoteBlock";
 import { Reviews } from "./Reviews";
 import { RichTextBlock } from "./RichTextBlock";
 import { SplitHero } from "./SplitHero";
@@ -65,6 +66,8 @@ function renderSection(section: Section) {
       return <PromoCard {...section} />;
     case "storeLocator":
       return <StoreLocatorBlock {...section} />;
+    case "quickQuote":
+      return <QuickQuoteBlock {...section} />;
     case "productShowcase":
       return <ProductShowcase {...section} />;
     case "compareCards":
